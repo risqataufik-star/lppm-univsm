@@ -32,17 +32,18 @@
       <div>
         <h2 class="text-2xl font-bold text-navy-800 title-bar mb-6">Formulir Konsultasi &amp; Layanan</h2>
         <div data-form-wrap>
-          <form data-ajax-form class="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-5">
+          <form data-ajax-form data-jenis="konsultasi" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-7 space-y-5">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
             <div class="grid sm:grid-cols-2 gap-5">
-              <div><label class="form-label">Nama Lengkap <span class="text-red-500">*</span></label><input type="text" class="form-input" placeholder="Nama Anda" required></div>
+              <div><label class="form-label">Nama Lengkap <span class="text-red-500">*</span></label><input type="text" name="nama" class="form-input" placeholder="Nama Anda" required></div>
               <div><label class="form-label">NIDN/NIM</label><input type="text" class="form-input" placeholder="Nomor identitas (opsional)"></div>
             </div>
             <div class="grid sm:grid-cols-2 gap-5">
-              <div><label class="form-label">Email <span class="text-red-500">*</span></label><input type="email" class="form-input" placeholder="email@domain.com" required></div>
-              <div><label class="form-label">No. Telepon/WA <span class="text-red-500">*</span></label><input type="tel" class="form-input" placeholder="08xx-xxxx-xxxx" required></div>
+              <div><label class="form-label">Email <span class="text-red-500">*</span></label><input type="email" name="email" class="form-input" placeholder="email@domain.com" required></div>
+              <div><label class="form-label">No. Telepon/WA <span class="text-red-500">*</span></label><input type="tel" name="telepon" class="form-input" placeholder="08xx-xxxx-xxxx" required></div>
             </div>
             <div><label class="form-label">Jenis Layanan <span class="text-red-500">*</span></label>
-              <select class="form-input form-select" required>
+              <select class="form-input form-select" name="subjek" required>
                 <option value="">-- Pilih Jenis Layanan --</option>
                 <optgroup label="Penelitian">
                   <option>Konsultasi Proposal Penelitian</option>
@@ -66,7 +67,7 @@
                 </optgroup>
               </select>
             </div>
-            <div><label class="form-label">Pesan / Pertanyaan <span class="text-red-500">*</span></label><textarea class="form-input h-32 resize-none" placeholder="Tuliskan pertanyaan atau kebutuhan layanan Anda secara detail..." required></textarea></div>
+            <div><label class="form-label">Pesan / Pertanyaan <span class="text-red-500">*</span></label><textarea name="isi" class="form-input h-32 resize-none" placeholder="Tuliskan pertanyaan atau kebutuhan layanan Anda secara detail..." required></textarea></div>
             <div class="flex items-start gap-3"><input type="checkbox" id="consent" class="mt-1 flex-shrink-0" required><label for="consent" class="text-xs text-gray-500">Saya menyetujui bahwa data yang diberikan akan digunakan oleh LPPM UnivSM untuk keperluan pelayanan dan tindak lanjut.</label></div>
             <button type="submit" class="w-full py-3 bg-navy-800 hover:bg-navy-700 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"><i class="ri-send-plane-line"></i>Kirim Konsultasi</button>
           </form>

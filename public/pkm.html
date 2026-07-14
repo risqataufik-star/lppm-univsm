@@ -110,8 +110,8 @@
         <div class="flex flex-col sm:flex-row gap-4 mb-6"><h3 class="text-xl font-bold text-navy-800 flex-1">Daftar Kegiatan PkM</h3><select class="form-input form-select w-auto text-sm"><option>Semua Tahun</option><option selected>2026</option><option>2025</option></select></div>
         <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
           <table class="data-table">
-            <thead><tr><th>No.</th><th>Judul PkM</th><th>Ketua Pelaksana</th><th>Lokasi/Mitra</th><th>Tahun</th><th>Status</th></tr></thead>
-            <tbody>
+            <thead><tr><th>Judul PkM</th><th>Skema</th><th>Tahun</th><th>Status</th></tr></thead>
+            <tbody id="list-pkm">
               <tr><td>1</td><td class="font-medium">Pelatihan Literasi Digital untuk Ibu Rumah Tangga Pengusaha UMKM</td><td>Hendra Wijaya, M.M.</td><td>Kel. Harapan Jaya</td><td>2026</td><td><span class="badge-aktif">Aktif</span></td></tr>
               <tr><td>2</td><td class="font-medium">Pendampingan Penyusunan Laporan Keuangan Sederhana bagi Pengurus BUMDES</td><td>Sri Lestari, M.Ak.</td><td>Desa Makmur Sejati</td><td>2026</td><td><span class="badge-aktif">Aktif</span></td></tr>
               <tr><td>3</td><td class="font-medium">Sosialisasi Kesehatan Reproduksi Remaja Berbasis Nilai Spiritual</td><td>dr. Ratna Kumala, M.Kes.</td><td>SMA Negeri 5</td><td>2026</td><td><span class="badge-aktif">Aktif</span></td></tr>
@@ -161,5 +161,6 @@
 
 <footer class="bg-navy-900 text-white mt-8"><div class="max-w-7xl mx-auto px-4 py-10"><div class="flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-9 w-9 object-contain"><div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div></div><div class="flex flex-wrap gap-5 text-sm text-white/60"><a href="index.html" class="hover:text-gold-400">Beranda</a><a href="penelitian.html" class="hover:text-gold-400">Penelitian</a><a href="publikasi.html" class="hover:text-gold-400">Publikasi</a><a href="dokumen.html" class="hover:text-gold-400">Dokumen</a><a href="kontak.html" class="hover:text-gold-400">Kontak</a></div></div><div class="mt-6 pt-5 border-t border-white/10 text-center text-xs text-white/35">© 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</div></div></footer>
 <button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40"><i class="ri-arrow-up-line"></i></button>
+<script src="assets/js/api-content.js" defer></script>
 <script src="assets/js/main.js"></script>
 </body></html>

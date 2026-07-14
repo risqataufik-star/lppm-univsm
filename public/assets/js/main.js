@@ -201,17 +201,36 @@ function initActiveNav() {
   });
 }
 
-/* ── Contact / consultation form ──────────────────────────────── */
+/* ── Contact / consultation form (POST nyata ke /api/pesan) ────── */
 function initForms() {
   document.querySelectorAll('form[data-ajax-form]').forEach(form => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('[type="submit"]');
       const orig = btn.innerHTML;
       btn.innerHTML = '<svg class="animate-spin w-4 h-4 mr-2 inline" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="60" stroke-dashoffset="20"/></svg>Mengirim...';
       btn.disabled = true;
 
-      setTimeout(() => {
+      const fd = new FormData(form);
+      const body = {
+        nama: fd.get('nama') || '',
+        email: fd.get('email') || '',
+        telepon: fd.get('telepon') || '',
+        jenis: form.dataset.jenis || 'kontak',
+        subjek: fd.get('subjek') || '',
+        isi: fd.get('isi') || '',
+        website: fd.get('website') || '', // honeypot
+      };
+
+      try {
+        const res = await fetch('/api/pesan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        const json = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(json.error || 'Gagal mengirim pesan.');
+
         const wrapper = form.closest('[data-form-wrap]') || form.parentElement;
         wrapper.innerHTML = `
           <div class="text-center py-14">
@@ -223,7 +242,11 @@ function initForms() {
             <h3 class="text-xl font-bold text-gray-800 mb-2">Pesan Berhasil Terkirim!</h3>
             <p class="text-gray-500 max-w-sm mx-auto">Tim LPPM akan menghubungi Anda melalui email atau telepon dalam 1–2 hari kerja.</p>
           </div>`;
-      }, 1400);
+      } catch (err) {
+        btn.innerHTML = orig;
+        btn.disabled = false;
+        alert(err.message + '\nJika masalah berlanjut, silakan kirim email langsung ke LPPM.');
+      }
     });
   });
 }

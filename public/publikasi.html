@@ -39,8 +39,8 @@
         <div class="flex flex-col sm:flex-row gap-4 mb-6"><h3 class="text-xl font-bold text-navy-800 flex-1">Publikasi Jurnal Dosen</h3><select class="form-input form-select w-auto text-sm"><option>Semua Tahun</option><option selected>2026</option><option>2025</option><option>2024</option></select><select class="form-input form-select w-auto text-sm"><option>Semua Indeksasi</option><option>Sinta 1–2</option><option>Sinta 3–4</option><option>Scopus/WoS</option></select></div>
         <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
           <table class="data-table">
-            <thead><tr><th>No.</th><th>Penulis</th><th>Judul Artikel</th><th>Nama Jurnal</th><th>Vol./No./Hal.</th><th>Tahun</th><th>Indeksasi</th></tr></thead>
-            <tbody>
+            <thead><tr><th>Judul</th><th>Penulis</th><th>Jenis</th><th>Penerbit</th><th>Tahun</th></tr></thead>
+            <tbody id="list-publikasi">
               <tr><td>1</td><td class="font-medium">Ahmad Fauzi, M.T.</td><td>AI-Based Learning System: Implementation in Higher Education</td><td>Jurnal Teknologi Pendidikan</td><td>12(2):45-58</td><td>2026</td><td><span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-semibold">Sinta 2</span></td></tr>
               <tr><td>2</td><td class="font-medium">Siti Rahayu, M.Pd.</td><td>Pengaruh Nilai Moral terhadap Motivasi Belajar: Studi Kasus Perguruan Tinggi</td><td>Jurnal Pendidikan dan Kebudayaan</td><td>8(1):12-25</td><td>2026</td><td><span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Sinta 3</span></td></tr>
               <tr><td>3</td><td class="font-medium">Hendra Wijaya, M.M.</td><td>Digital Marketing Adoption Among SMEs: A Bibliometric Analysis</td><td>Indonesian Journal of Business</td><td>5(1):88-102</td><td>2025</td><td><span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">Scopus Q3</span></td></tr>
@@ -124,5 +124,6 @@
 </main>
 <footer class="bg-navy-900 text-white mt-8"><div class="max-w-7xl mx-auto px-4 py-10"><div class="flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-9 w-9 object-contain"><div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div></div><div class="flex flex-wrap gap-5 text-sm text-white/60"><a href="index.html" class="hover:text-gold-400">Beranda</a><a href="penelitian.html" class="hover:text-gold-400">Penelitian</a><a href="pkm.html" class="hover:text-gold-400">PkM</a><a href="dokumen.html" class="hover:text-gold-400">Dokumen</a><a href="kontak.html" class="hover:text-gold-400">Kontak</a></div></div><div class="mt-6 pt-5 border-t border-white/10 text-center text-xs text-white/35">© 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</div></div></footer>
 <button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40"><i class="ri-arrow-up-line"></i></button>
+<script src="assets/js/api-content.js" defer></script>
 <script src="assets/js/main.js"></script>
 </body></html>

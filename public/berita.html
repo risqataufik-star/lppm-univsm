@@ -19,7 +19,7 @@
     <div class="flex flex-col lg:flex-row gap-8">
 
       <!-- MAIN CONTENT -->
-      <div class="flex-1">
+      <div class="flex-1" id="berita-list-section">
         <!-- Filter -->
         <div class="flex flex-wrap gap-2 mb-7">
           <button class="tab-btn active text-xs px-4 py-2">Semua</button>
@@ -30,6 +30,7 @@
           <button class="tab-btn text-xs px-4 py-2">PkM</button>
         </div>
 
+        <div id="list-berita" class="space-y-5 mb-5">
         <!-- BERITA UTAMA -->
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden card-hover mb-5">
           <div class="grid sm:grid-cols-5">
@@ -64,6 +65,7 @@
             <div class="h-40 bg-gradient-to-br from-blue-600 to-indigo-900 relative flex items-center justify-center"><i class="ri-medal-line text-6xl text-white/20"></i><span class="absolute top-3 left-3 bg-blue-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">HKI</span></div>
             <div class="p-4"><p class="text-[11px] text-gray-400 mb-1.5"><i class="ri-calendar-line mr-1"></i>20 April 2026</p><h4 class="text-sm font-bold text-navy-800 group-hover:text-navy-600 leading-snug mb-2">9 Dosen UnivSM Terima Sertifikat HKI dari DJKI Semester Ini</h4><p class="text-xs text-gray-500 line-clamp-2">LPPM berhasil memfasilitasi 9 dosen meraih sertifikat Hak Kekayaan Intelektual dari Dirjen Kekayaan Intelektual...</p></div>
           </a>
+        </div>
         </div>
 
         <!-- PAGINATION -->
@@ -116,8 +118,20 @@
       </aside>
     </div>
   </div>
+
+  <!-- ===== DETAIL BERITA (diisi api-content.js) ===== -->
+  <section id="berita-detail" class="hidden py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="berita.html" class="text-sm text-navy-600 hover:underline"><i class="ri-arrow-left-line"></i> Kembali ke daftar berita</a>
+      <h1 data-d-judul class="text-3xl font-extrabold text-navy-800 mt-4 mb-2"></h1>
+      <p data-d-meta class="text-sm text-gray-400 mb-6"></p>
+      <img data-d-gambar src="" alt="" class="hidden w-full rounded-2xl mb-6">
+      <div data-d-konten class="text-gray-700"></div>
+    </div>
+  </section>
 </main>
 <footer class="bg-navy-900 text-white mt-8"><div class="max-w-7xl mx-auto px-4 py-10"><div class="flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-9 w-9 object-contain"><div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div></div><div class="flex flex-wrap gap-5 text-sm text-white/60"><a href="index.html" class="hover:text-gold-400">Beranda</a><a href="penelitian.html" class="hover:text-gold-400">Penelitian</a><a href="pkm.html" class="hover:text-gold-400">PkM</a><a href="kontak.html" class="hover:text-gold-400">Kontak</a></div></div><div class="mt-6 pt-5 border-t border-white/10 text-center text-xs text-white/35">© 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</div></div></footer>
 <button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40"><i class="ri-arrow-up-line"></i></button>
+<script src="assets/js/api-content.js" defer></script>
 <script src="assets/js/main.js"></script>
 </body></html>

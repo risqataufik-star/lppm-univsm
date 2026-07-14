@@ -153,23 +153,23 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
         <div class="fade-up" data-delay="0">
-          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="45">0</div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="45" data-stat="penelitian">0</div>
           <p class="text-white/70 text-sm mt-1 font-medium">Penelitian Aktif</p>
         </div>
         <div class="fade-up" data-delay="100">
-          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="38">0</div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="38" data-stat="pkm">0</div>
           <p class="text-white/70 text-sm mt-1 font-medium">Kegiatan PkM</p>
         </div>
         <div class="fade-up" data-delay="200">
-          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="127">0</div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="127" data-stat="publikasi">0</div>
           <p class="text-white/70 text-sm mt-1 font-medium">Publikasi</p>
         </div>
         <div class="fade-up" data-delay="300">
-          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="24">0</div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="24" data-stat="hki">0</div>
           <p class="text-white/70 text-sm mt-1 font-medium">HKI Terdaftar</p>
         </div>
         <div class="fade-up col-span-2 sm:col-span-1" data-delay="400">
-          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="18">0</div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="18" data-stat="mitra">0</div>
           <p class="text-white/70 text-sm mt-1 font-medium">Mitra Aktif</p>
         </div>
       </div>
@@ -323,7 +323,7 @@
             <h2 class="text-xl font-bold text-navy-800 title-bar">Berita Terbaru</h2>
             <a href="berita.html" class="text-sm font-semibold text-navy-600 hover:text-gold-600 transition-colors flex items-center gap-1">Lihat Semua <i class="ri-arrow-right-line"></i></a>
           </div>
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid sm:grid-cols-2 gap-5" id="list-berita-index">
             <!-- Berita 1 -->
             <a href="berita.html" class="bg-white rounded-2xl border border-gray-100 hover:shadow-md card-hover overflow-hidden group">
               <div class="h-40 bg-gradient-to-br from-blue-600 to-navy-800 flex items-center justify-center relative overflow-hidden">
@@ -484,6 +484,7 @@
   <i class="ri-arrow-up-line"></i>
 </button>
 
+<script src="assets/js/api-content.js" defer></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
