@@ -1,6 +1,6 @@
 # Panel Admin LPPM UnivSM — Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** Panel admin + API untuk mengelola konten website LPPM (berita, dokumen, penelitian/PkM/publikasi, pesan form), di-deploy gratis di Vercel dengan Supabase.
 
@@ -36,7 +36,7 @@
 **Interfaces:**
 - Produces: struktur app Next.js berjalan; situs publik tersaji di `/`; alias import `@/*` → `src/*`; kelas Tailwind `navy-*`/`gold-*` untuk semua task admin berikutnya.
 
-- [ ] **Step 1: Tulis ulang `package.json`** (pertahankan dependency `docx` yang dipakai `generate-website-brief.js`):
+- [x] **Step 1: Tulis ulang `package.json`** (pertahankan dependency `docx` yang dipakai `generate-website-brief.js`):
 
 ```json
 {
@@ -68,9 +68,9 @@
 }
 ```
 
-- [ ] **Step 2: Install** — Run: `npm install`. Expected: sukses tanpa error resolusi.
+- [x] **Step 2: Install** — Run: `npm install`. Expected: sukses tanpa error resolusi.
 
-- [ ] **Step 3: Buat file konfigurasi.**
+- [x] **Step 3: Buat file konfigurasi.**
 
 `next.config.ts`:
 ```ts
@@ -115,7 +115,7 @@ export default { plugins: { '@tailwindcss/postcss': {} } };
 }
 ```
 
-- [ ] **Step 4: Buat layout root + globals.css + placeholder dashboard.**
+- [x] **Step 4: Buat layout root + globals.css + placeholder dashboard.**
 
 `src/app/globals.css`:
 ```css
@@ -165,16 +165,16 @@ export default function DashboardPage() {
 }
 ```
 
-- [ ] **Step 5: Pindahkan situs statis** — Run: `git mv website public`
+- [x] **Step 5: Pindahkan situs statis** — Run: `git mv website public`
   Lalu verifikasi: `ls public/index.html public/assets/js/main.js` → kedua file ada.
 
-- [ ] **Step 6: Hapus link rusak `repository.html`** di `public/index.html` — hapus SATU baris ini (dropdown Layanan, sekitar baris 68):
+- [x] **Step 6: Hapus link rusak `repository.html`** di `public/index.html` — hapus SATU baris ini (dropdown Layanan, sekitar baris 68):
 
 ```html
             <a href="repository.html" class="dropdown-item"><i class="ri-folder-shield-2-line w-4 text-navy-600"></i>Repository Bukti Kinerja</a>
 ```
 
-- [ ] **Step 7: Bersihkan mojibake komentar** di `public/index.html` — jalankan python (byte-level, JANGAN lewat PowerShell string agar tidak double-encoding):
+- [x] **Step 7: Bersihkan mojibake komentar** di `public/index.html` — jalankan python (byte-level, JANGAN lewat PowerShell string agar tidak double-encoding):
 
 ```python
 # simpan sebagai scratch/fix_mojibake.py lalu: python scratch/fix_mojibake.py
@@ -189,7 +189,7 @@ print('selesai')
 
 Verifikasi: `grep -c "â" public/index.html` → Expected: `0` (jika masih ada, lihat byte aslinya dengan `grep -o "â.." public/index.html | head` dan tambahkan pola replace).
 
-- [ ] **Step 8: Jalankan dev server dan verifikasi situs publik.**
+- [x] **Step 8: Jalankan dev server dan verifikasi situs publik.**
 
 Run: `npm run dev` (background), lalu:
 - `curl -s http://localhost:3000/ | grep -o "<title>[^<]*"` → Expected: `<title>Beranda – LPPM Universitas Sapta Mandiri` (atau entity `&ndash;`)
@@ -197,7 +197,7 @@ Run: `npm run dev` (background), lalu:
 - `curl -s http://localhost:3000/admin | grep -c "dalam pembangunan"` → Expected: `1`
 - `curl -s -o /dev/null -w "%{http_code}" http://localhost:3000/assets/css/custom.css` → Expected: `200`
 
-- [ ] **Step 9: Typecheck & commit.**
+- [x] **Step 9: Typecheck & commit.**
 
 Run: `npm run typecheck` → Expected: exit 0.
 ```bash
@@ -215,7 +215,7 @@ git commit -m "feat: scaffold Next.js, pindahkan situs statis ke public/, hapus 
 **Interfaces:**
 - Produces: `supabaseAdmin(): SupabaseClient` (service role, akses data), `supabaseServer(): Promise<SupabaseClient>` (baca sesi dari cookie), `supabaseBrowser(): SupabaseClient` (login di client). Tabel: `berita`, `dokumen`, `penelitian`, `pkm`, `publikasi`, `pesan`, `pengaturan`; bucket: `dokumen`, `gambar`.
 
-- [ ] **Step 1: Tulis `supabase/schema.sql`:**
+- [x] **Step 1: Tulis `supabase/schema.sql`:**
 
 ```sql
 -- Skema database LPPM UnivSM. Jalankan sekali di Supabase Dashboard > SQL Editor.
@@ -329,7 +329,7 @@ insert into storage.buckets (id, name, public) values
 on conflict (id) do nothing;
 ```
 
-- [ ] **Step 2: Tulis `.env.local.example`:**
+- [x] **Step 2: Tulis `.env.local.example`:**
 
 ```bash
 # Salin ke .env.local (di-gitignore) dan isi dari Supabase Dashboard > Settings > API
@@ -338,7 +338,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
 SUPABASE_SERVICE_ROLE_KEY=eyJ...
 ```
 
-- [ ] **Step 3: Tulis tiga klien Supabase.**
+- [x] **Step 3: Tulis tiga klien Supabase.**
 
 `src/lib/supabase/admin.ts`:
 ```ts
@@ -397,7 +397,7 @@ export function supabaseBrowser() {
 }
 ```
 
-- [ ] **Step 4: PAUSE — setup manual oleh user (tidak bisa diotomasi).** Sampaikan instruksi ini ke user dan tunggu kredensialnya:
+- [x] **Step 4: PAUSE — setup manual oleh user (tidak bisa diotomasi).** Sampaikan instruksi ini ke user dan tunggu kredensialnya:
 
 1. Buat akun/login di https://supabase.com → New project (nama: `lppm-univsm`, region Singapore).
 2. SQL Editor → paste seluruh isi `supabase/schema.sql` → Run.
@@ -406,7 +406,7 @@ export function supabaseBrowser() {
 
 Setelah user memberikan nilai env: tulis `.env.local`, restart dev server.
 
-- [ ] **Step 5: Verifikasi koneksi** (butuh `.env.local` terisi):
+- [x] **Step 5: Verifikasi koneksi** (butuh `.env.local` terisi):
 
 ```bash
 node -e "
@@ -418,7 +418,7 @@ db.from('pengaturan').select('*').then(r => console.log(r.error ?? r.data));
 ```
 Expected: array 5 baris `stat_*`.
 
-- [ ] **Step 6: Typecheck & commit.**
+- [x] **Step 6: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -442,7 +442,7 @@ git commit -m "feat: skema Supabase, seed statistik, dan klien admin/server/brow
   - `makeListRoutes(cfg: CrudConfig): { GET, POST }` dan `makeItemRoutes(cfg: CrudConfig): { PUT, DELETE }`
   - `rateLimitOk(ip: string): boolean`
 
-- [ ] **Step 1: Tulis `src/lib/validation.ts`:**
+- [x] **Step 1: Tulis `src/lib/validation.ts`:**
 
 ```ts
 import { z } from 'zod';
@@ -513,7 +513,7 @@ export const pengaturanSchema = z.object({
 });
 ```
 
-- [ ] **Step 2: Tulis `src/lib/slug.ts`:**
+- [x] **Step 2: Tulis `src/lib/slug.ts`:**
 
 ```ts
 // Slug unik: bentuk dasar dari judul + sufiks waktu base36 agar tidak perlu cek duplikat.
@@ -530,7 +530,7 @@ export function slugify(judul: string): string {
 }
 ```
 
-- [ ] **Step 3: Tulis `src/lib/auth.ts`:**
+- [x] **Step 3: Tulis `src/lib/auth.ts`:**
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -547,7 +547,7 @@ export async function requireAdmin(): Promise<NextResponse | null> {
 }
 ```
 
-- [ ] **Step 4: Tulis `src/lib/crud.ts`:**
+- [x] **Step 4: Tulis `src/lib/crud.ts`:**
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -655,7 +655,7 @@ export function makeItemRoutes(cfg: CrudConfig) {
 }
 ```
 
-- [ ] **Step 5: Tulis `src/lib/rate-limit.ts`:**
+- [x] **Step 5: Tulis `src/lib/rate-limit.ts`:**
 
 ```ts
 // Rate limit best-effort in-memory (reset saat cold start serverless — sesuai spec).
@@ -674,7 +674,7 @@ export function rateLimitOk(ip: string, max = 5, windowMs = 60 * 60 * 1000): boo
 }
 ```
 
-- [ ] **Step 6: Typecheck & commit.**
+- [x] **Step 6: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -693,7 +693,7 @@ git commit -m "feat: validasi zod, slug, auth guard, CRUD factory, rate limit"
 - Consumes: `supabaseBrowser()` (Task 2).
 - Produces: `/admin/*` (kecuali `/admin/login`) dialihkan ke login bila tanpa sesi; komponen `<LogoutButton />` untuk layout Task 7.
 
-- [ ] **Step 1: Tulis `src/middleware.ts`:**
+- [x] **Step 1: Tulis `src/middleware.ts`:**
 
 ```ts
 import { createServerClient } from '@supabase/ssr';
@@ -735,7 +735,7 @@ export async function middleware(request: NextRequest) {
 export const config = { matcher: ['/admin/:path*'] };
 ```
 
-- [ ] **Step 2: Tulis `src/app/admin/login/page.tsx`:**
+- [x] **Step 2: Tulis `src/app/admin/login/page.tsx`:**
 
 ```tsx
 'use client';
@@ -804,7 +804,7 @@ export default function LoginPage() {
 }
 ```
 
-- [ ] **Step 3: Tulis `src/components/admin/LogoutButton.tsx`:**
+- [x] **Step 3: Tulis `src/components/admin/LogoutButton.tsx`:**
 
 ```tsx
 'use client';
@@ -827,14 +827,14 @@ export default function LogoutButton() {
 }
 ```
 
-- [ ] **Step 4: Verifikasi proteksi.**
+- [x] **Step 4: Verifikasi proteksi.**
 
 Dev server jalan, lalu:
 - `curl -s -o /dev/null -w "%{http_code} %{redirect_url}" http://localhost:3000/admin` → Expected: `307 http://localhost:3000/admin/login`
 - `curl -s http://localhost:3000/admin/login | grep -c "Panel Admin LPPM"` → Expected: `1`
 - Browser: buka `/admin/login`, login dengan akun admin Supabase → berhasil masuk ke `/admin` (placeholder Task 1).
 
-- [ ] **Step 5: Typecheck & commit.**
+- [x] **Step 5: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -859,7 +859,7 @@ git commit -m "feat: middleware proteksi admin, halaman login, tombol logout"
   - `GET /api/pengaturan` → `{ "stat_penelitian": "45", ... }`; `PUT /api/pengaturan` (admin)
   - `POST /api/pesan` → `{ ok: true }` (honeypot + rate limit)
 
-- [ ] **Step 1: Tulis `src/app/api/berita/route.ts`:**
+- [x] **Step 1: Tulis `src/app/api/berita/route.ts`:**
 
 ```ts
 import { makeListRoutes } from '@/lib/crud';
@@ -879,7 +879,7 @@ export const GET = routes.GET;
 export const POST = routes.POST;
 ```
 
-- [ ] **Step 2: Tulis `src/app/api/berita/[key]/route.ts`** (GET publik pakai slug; PUT/DELETE admin pakai id):
+- [x] **Step 2: Tulis `src/app/api/berita/[key]/route.ts`** (GET publik pakai slug; PUT/DELETE admin pakai id):
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -906,7 +906,7 @@ export const PUT = item.PUT;
 export const DELETE = item.DELETE;
 ```
 
-- [ ] **Step 3: Tulis empat route koleksi lain.**
+- [x] **Step 3: Tulis empat route koleksi lain.**
 
 `src/app/api/dokumen/route.ts`:
 ```ts
@@ -971,7 +971,7 @@ export const GET = routes.GET;
 export const POST = routes.POST;
 ```
 
-- [ ] **Step 4: Tulis `src/app/api/pengaturan/route.ts`:**
+- [x] **Step 4: Tulis `src/app/api/pengaturan/route.ts`:**
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -1006,7 +1006,7 @@ export async function PUT(req: Request) {
 }
 ```
 
-- [ ] **Step 5: Tulis `src/app/api/pesan/route.ts`:**
+- [x] **Step 5: Tulis `src/app/api/pesan/route.ts`:**
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -1058,7 +1058,7 @@ export async function POST(req: Request) {
 }
 ```
 
-- [ ] **Step 6: Verifikasi dengan curl** (dev server jalan, `.env.local` terisi):
+- [x] **Step 6: Verifikasi dengan curl** (dev server jalan, `.env.local` terisi):
 
 - `curl -s http://localhost:3000/api/pengaturan` → Expected: JSON berisi 5 key `stat_*`
 - `curl -s http://localhost:3000/api/berita` → Expected: `[]` (belum ada data)
@@ -1066,7 +1066,7 @@ export async function POST(req: Request) {
 - `curl -s -X POST http://localhost:3000/api/pesan -H "Content-Type: application/json" -d '{"nama":"Tes","email":"tes@mail.com","jenis":"kontak","isi":"Halo LPPM, tes pesan."}'` → Expected: `{"ok":true}`
 - Honeypot: kirim payload sama plus `"website":"http://spam.com"` → Expected: `{"ok":true}` TANPA baris baru di tabel `pesan` (cek via Supabase Table Editor: hanya 1 baris "Tes")
 
-- [ ] **Step 7: Typecheck & commit.**
+- [x] **Step 7: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -1088,7 +1088,7 @@ git commit -m "feat: API publik berita/dokumen/penelitian/pkm/publikasi/pengatur
   - `PATCH /api/pesan/{id}` body `{ status: 'baru'|'dibaca'|'selesai' }`; `DELETE /api/pesan/{id}` (admin)
   - `POST /api/upload` FormData `{ file, bucket: 'dokumen'|'gambar' }` → `{ url, nama_file, ukuran_bytes, tipe_file }`
 
-- [ ] **Step 1: Tulis empat item route** (pola identik, schema beda):
+- [x] **Step 1: Tulis empat item route** (pola identik, schema beda):
 
 `src/app/api/dokumen/[id]/route.ts`:
 ```ts
@@ -1130,7 +1130,7 @@ export const PUT = item.PUT;
 export const DELETE = item.DELETE;
 ```
 
-- [ ] **Step 2: Tulis `src/app/api/pesan/[id]/route.ts`:**
+- [x] **Step 2: Tulis `src/app/api/pesan/[id]/route.ts`:**
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -1165,7 +1165,7 @@ export async function DELETE(_req: Request, ctx: { params: Promise<{ id: string 
 }
 ```
 
-- [ ] **Step 3: Tulis `src/app/api/upload/route.ts`:**
+- [x] **Step 3: Tulis `src/app/api/upload/route.ts`:**
 
 ```ts
 import { NextResponse } from 'next/server';
@@ -1222,13 +1222,13 @@ export async function POST(req: Request) {
 }
 ```
 
-- [ ] **Step 4: Verifikasi proteksi (tanpa login semua harus 401):**
+- [x] **Step 4: Verifikasi proteksi (tanpa login semua harus 401):**
 
 - `curl -s -o /dev/null -w "%{http_code}" -X DELETE http://localhost:3000/api/penelitian/00000000-0000-0000-0000-000000000000` → `401`
 - `curl -s -o /dev/null -w "%{http_code}" -X POST http://localhost:3000/api/upload` → `401`
 - `curl -s -o /dev/null -w "%{http_code}" -X PATCH http://localhost:3000/api/pesan/00000000-0000-0000-0000-000000000000 -H "Content-Type: application/json" -d '{"status":"dibaca"}'` → `401`
 
-- [ ] **Step 5: Typecheck & commit.**
+- [x] **Step 5: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -1248,7 +1248,7 @@ git commit -m "feat: API admin item routes, status pesan, upload file ke Storage
 - Consumes: `<LogoutButton />` (Task 4), `supabaseAdmin()` (Task 2).
 - Produces: layout sidebar untuk semua halaman `(panel)`; halaman dashboard di `/admin`.
 
-- [ ] **Step 1: Tulis `src/components/admin/Sidebar.tsx`:**
+- [x] **Step 1: Tulis `src/components/admin/Sidebar.tsx`:**
 
 ```tsx
 'use client';
@@ -1299,7 +1299,7 @@ export default function Sidebar() {
 }
 ```
 
-- [ ] **Step 2: Tulis `src/app/admin/(panel)/layout.tsx`:**
+- [x] **Step 2: Tulis `src/app/admin/(panel)/layout.tsx`:**
 
 ```tsx
 import Sidebar from '@/components/admin/Sidebar';
@@ -1314,7 +1314,7 @@ export default function PanelLayout({ children }: { children: React.ReactNode })
 }
 ```
 
-- [ ] **Step 3: Ganti isi `src/app/admin/(panel)/page.tsx` dengan dashboard:**
+- [x] **Step 3: Ganti isi `src/app/admin/(panel)/page.tsx` dengan dashboard:**
 
 ```tsx
 import Link from 'next/link';
@@ -1377,9 +1377,9 @@ export default async function DashboardPage() {
 }
 ```
 
-- [ ] **Step 4: Verifikasi di browser** — login ke `/admin`: sidebar tampil (8 menu), kartu jumlah tampil (semua 0 kecuali sudah ada data), bagian "Pesan Baru" berisi pesan tes dari Task 5.
+- [x] **Step 4: Verifikasi di browser** — login ke `/admin`: sidebar tampil (8 menu), kartu jumlah tampil (semua 0 kecuali sudah ada data), bagian "Pesan Baru" berisi pesan tes dari Task 5.
 
-- [ ] **Step 5: Typecheck & commit.**
+- [x] **Step 5: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -1398,7 +1398,7 @@ git commit -m "feat: layout sidebar panel admin dan halaman dashboard"
 - Consumes: `GET /api/berita?all=1`, `POST /api/berita`, `PUT/DELETE /api/berita/{id}`, `POST /api/upload` (bucket `gambar`).
 - Produces: halaman `/admin/berita`.
 
-- [ ] **Step 1: Tulis `src/app/admin/(panel)/berita/page.tsx`:**
+- [x] **Step 1: Tulis `src/app/admin/(panel)/berita/page.tsx`:**
 
 ```tsx
 'use client';
@@ -1621,9 +1621,9 @@ export default function BeritaAdminPage() {
 }
 ```
 
-- [ ] **Step 2: Verifikasi di browser** — di `/admin/berita`: buat berita baru dengan gambar, simpan sebagai draf → muncul di tabel berstatus "Draf"; klik badge → jadi "Tayang". Cek publik: `curl -s http://localhost:3000/api/berita | grep -c "judul"` → `1`; toggle kembali ke Draf → `curl` publik mengembalikan `[]`.
+- [x] **Step 2: Verifikasi di browser** — di `/admin/berita`: buat berita baru dengan gambar, simpan sebagai draf → muncul di tabel berstatus "Draf"; klik badge → jadi "Tayang". Cek publik: `curl -s http://localhost:3000/api/berita | grep -c "judul"` → `1`; toggle kembali ke Draf → `curl` publik mengembalikan `[]`.
 
-- [ ] **Step 3: Typecheck & commit.**
+- [x] **Step 3: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -1642,7 +1642,7 @@ git commit -m "feat: halaman admin berita & agenda dengan upload gambar dan publ
 - Consumes: `GET/POST /api/dokumen`, `PUT/DELETE /api/dokumen/{id}`, `POST /api/upload` (bucket `dokumen`).
 - Produces: halaman `/admin/dokumen`.
 
-- [ ] **Step 1: Tulis `src/app/admin/(panel)/dokumen/page.tsx`:**
+- [x] **Step 1: Tulis `src/app/admin/(panel)/dokumen/page.tsx`:**
 
 ```tsx
 'use client';
@@ -1838,9 +1838,9 @@ export default function DokumenAdminPage() {
 }
 ```
 
-- [ ] **Step 2: Verifikasi di browser** — unggah satu PDF asli (mis. `RKT LPPM 2024-2029.pdf` dari root repo) → muncul di tabel, link file bisa dibuka (URL Supabase Storage). Uji tolak: coba file > 10 MB atau .txt → pesan error tampil.
+- [x] **Step 2: Verifikasi di browser** — unggah satu PDF asli (mis. `RKT LPPM 2024-2029.pdf` dari root repo) → muncul di tabel, link file bisa dibuka (URL Supabase Storage). Uji tolak: coba file > 10 MB atau .txt → pesan error tampil.
 
-- [ ] **Step 3: Typecheck & commit.**
+- [x] **Step 3: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -1861,7 +1861,7 @@ git commit -m "feat: halaman admin dokumen dengan upload ke Supabase Storage"
   - `Field = { name: string; label: string; type: 'text'|'textarea'|'number'|'date'|'select'; options?: {value,label}[]; required?: boolean }`
   - `Column = { key: string; label: string }`
 
-- [ ] **Step 1: Tulis `src/components/admin/ResourceCrud.tsx`:**
+- [x] **Step 1: Tulis `src/components/admin/ResourceCrud.tsx`:**
 
 ```tsx
 'use client';
@@ -2026,7 +2026,7 @@ export default function ResourceCrud({
 }
 ```
 
-- [ ] **Step 2: Tulis tiga halaman entitas.**
+- [x] **Step 2: Tulis tiga halaman entitas.**
 
 `src/app/admin/(panel)/penelitian/page.tsx`:
 ```tsx
@@ -2140,9 +2140,9 @@ export default function PublikasiAdminPage() {
 }
 ```
 
-- [ ] **Step 3: Verifikasi di browser** — tambah 1 penelitian, 1 PkM, 1 publikasi; edit salah satu; hapus dan konfirmasi dialog muncul. `curl -s http://localhost:3000/api/penelitian | grep -c judul` → `1`.
+- [x] **Step 3: Verifikasi di browser** — tambah 1 penelitian, 1 PkM, 1 publikasi; edit salah satu; hapus dan konfirmasi dialog muncul. `curl -s http://localhost:3000/api/penelitian | grep -c judul` → `1`.
 
-- [ ] **Step 4: Typecheck & commit.**
+- [x] **Step 4: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -2161,7 +2161,7 @@ git commit -m "feat: komponen ResourceCrud + halaman admin penelitian, PkM, publ
 - Consumes: `GET /api/pesan`, `PATCH/DELETE /api/pesan/{id}`, `GET/PUT /api/pengaturan`.
 - Produces: halaman `/admin/pesan` dan `/admin/pengaturan`.
 
-- [ ] **Step 1: Tulis `src/app/admin/(panel)/pesan/page.tsx`:**
+- [x] **Step 1: Tulis `src/app/admin/(panel)/pesan/page.tsx`:**
 
 ```tsx
 'use client';
@@ -2295,7 +2295,7 @@ export default function PesanAdminPage() {
 }
 ```
 
-- [ ] **Step 2: Tulis `src/app/admin/(panel)/pengaturan/page.tsx`:**
+- [x] **Step 2: Tulis `src/app/admin/(panel)/pengaturan/page.tsx`:**
 
 ```tsx
 'use client';
@@ -2371,9 +2371,9 @@ export default function PengaturanAdminPage() {
 }
 ```
 
-- [ ] **Step 3: Verifikasi di browser** — `/admin/pesan`: pesan tes Task 5 tampil berstatus `baru`; klik → status jadi `dibaca`; "Tandai Selesai" → `selesai`. `/admin/pengaturan`: ubah "Penelitian Aktif" jadi 50 → simpan → `curl -s http://localhost:3000/api/pengaturan` menunjukkan `"stat_penelitian":"50"`; kembalikan ke 45.
+- [x] **Step 3: Verifikasi di browser** — `/admin/pesan`: pesan tes Task 5 tampil berstatus `baru`; klik → status jadi `dibaca`; "Tandai Selesai" → `selesai`. `/admin/pengaturan`: ubah "Penelitian Aktif" jadi 50 → simpan → `curl -s http://localhost:3000/api/pengaturan` menunjukkan `"stat_penelitian":"50"`; kembalikan ke 45.
 
-- [ ] **Step 4: Typecheck & commit.**
+- [x] **Step 4: Typecheck & commit.**
 
 Run: `npm run typecheck` → exit 0.
 ```bash
@@ -2400,7 +2400,7 @@ git commit -m "feat: halaman admin pesan masuk dan pengaturan statistik"
 
 **PENTING:** Konten statis yang ada TIDAK dihapus — hanya diberi id/atribut. JS mengganti isinya hanya bila fetch sukses DAN ada data.
 
-- [ ] **Step 1: Tulis `public/assets/js/api-content.js`:**
+- [x] **Step 1: Tulis `public/assets/js/api-content.js`:**
 
 ```js
 /* ================================================================
@@ -2597,7 +2597,7 @@ git commit -m "feat: halaman admin pesan masuk dan pengaturan statistik"
 })();
 ```
 
-- [ ] **Step 2: Ganti fungsi `initForms` di `public/assets/js/main.js`** — hapus seluruh fungsi `initForms` lama (yang memakai `setTimeout` simulasi) dan ganti dengan:
+- [x] **Step 2: Ganti fungsi `initForms` di `public/assets/js/main.js`** — hapus seluruh fungsi `initForms` lama (yang memakai `setTimeout` simulasi) dan ganti dengan:
 
 ```js
 /* ── Contact / consultation form (POST nyata ke /api/pesan) ────── */
@@ -2651,7 +2651,7 @@ function initForms() {
 }
 ```
 
-- [ ] **Step 3: Edit `public/index.html`.**
+- [x] **Step 3: Edit `public/index.html`.**
 
 1. Pada 5 elemen counter statistik (section STATISTIK, elemen dengan `data-counter`), tambahkan atribut `data-stat` sesuai urutan label: `data-stat="penelitian"` (Penelitian Aktif), `data-stat="pkm"` (Kegiatan PkM), `data-stat="publikasi"` (Publikasi), `data-stat="hki"` (HKI Terdaftar), `data-stat="mitra"` (Mitra Aktif). Contoh hasil:
    ```html
@@ -2663,7 +2663,7 @@ function initForms() {
    <script src="assets/js/api-content.js" defer></script>
    ```
 
-- [ ] **Step 4: Edit `public/berita.html`.**
+- [x] **Step 4: Edit `public/berita.html`.**
 
 1. Bungkus/tandai section daftar berita: tambahkan `id="berita-list-section"` pada elemen `<section>` (atau `<main>` anak pertama) yang memuat daftar kartu berita, dan `id="list-berita"` pada kontainer grid kartunya.
 2. Tambahkan section detail (hidden) tepat sebelum penutup `</main>` atau sebelum footer:
@@ -2681,18 +2681,18 @@ function initForms() {
    ```
 3. Tambahkan `<script src="assets/js/api-content.js" defer></script>` sebelum script main.js.
 
-- [ ] **Step 5: Edit `public/dokumen.html`.**
+- [x] **Step 5: Edit `public/dokumen.html`.**
 
 1. Tambahkan `id="list-dokumen"` pada kontainer yang memuat kartu-kartu `.doc-card` (cek: `grep -n "doc-card" public/dokumen.html | head -3`, lalu cari parent grid-nya). Item hasil render JS membawa `data-doc-item` dan `data-doc-cat`, jadi pencarian dan filter kategori yang ada tetap berfungsi.
 2. Tambahkan `<script src="assets/js/api-content.js" defer></script>` sebelum script main.js.
 
-- [ ] **Step 6: Edit `public/penelitian.html`, `public/pkm.html`, `public/publikasi.html`.**
+- [x] **Step 6: Edit `public/penelitian.html`, `public/pkm.html`, `public/publikasi.html`.**
 
 1. Di masing-masing file cari tabel daftar (`grep -n "data-table" public/penelitian.html`). Tambahkan id pada `<tbody>`-nya: `id="list-penelitian"` / `id="list-pkm"` / `id="list-publikasi"`.
 2. PENTING: pastikan urutan kolom `<thead>` tabel cocok dengan renderer JS — kegiatan: Judul (dengan ketua/anggota), Skema, Tahun, Status; publikasi: Judul, Penulis, Jenis, Penerbit, Tahun. Jika thead statis berbeda, sesuaikan thead-nya (bukan renderer), tetap memakai kelas yang ada.
 3. Tambahkan `<script src="assets/js/api-content.js" defer></script>` sebelum script main.js di ketiga file.
 
-- [ ] **Step 7: Edit `public/kontak.html` dan `public/kerjasama.html`.**
+- [x] **Step 7: Edit `public/kontak.html` dan `public/kerjasama.html`.**
 
 Untuk setiap `form[data-ajax-form]` di kedua file:
 1. Tambahkan atribut `data-jenis` pada tag form: `data-jenis="kontak"` (form kontak umum), `data-jenis="konsultasi"` (form konsultasi, bila ada), `data-jenis="kerjasama"` (form pengajuan kerja sama).
@@ -2702,7 +2702,7 @@ Untuk setiap `form[data-ajax-form]` di kedua file:
    <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
    ```
 
-- [ ] **Step 8: Verifikasi end-to-end di browser** (dev server jalan; pastikan ada ≥1 berita published, 1 dokumen, 1 penelitian, 1 pkm, 1 publikasi dari task sebelumnya):
+- [x] **Step 8: Verifikasi end-to-end di browser** (dev server jalan; pastikan ada ≥1 berita published, 1 dokumen, 1 penelitian, 1 pkm, 1 publikasi dari task sebelumnya):
 
 1. Beranda `/`: statistik menampilkan angka dari `/api/pengaturan`; kartu berita menampilkan berita dari admin.
 2. `/berita.html`: daftar dari API; klik judul → `berita.html?slug=...` menampilkan detail (judul, meta, konten markdown ter-render).
@@ -2711,7 +2711,7 @@ Untuk setiap `form[data-ajax-form]` di kedua file:
 5. `/kontak.html`: isi form → kirim → pesan sukses tampil → pesan muncul di `/admin/pesan` berstatus `baru`.
 6. Uji fallback: hentikan dev server, buka file `public/index.html` langsung dari disk di browser → konten statis tetap tampil, console hanya warning `api-content:`.
 
-- [ ] **Step 9: Commit.**
+- [x] **Step 9: Commit.**
 
 ```bash
 git add public/assets/js/api-content.js public/assets/js/main.js public/*.html
@@ -2730,10 +2730,10 @@ git commit -m "feat: integrasi konten dinamis situs publik + form pesan nyata"
 - Consumes: seluruh hasil Task 1–12.
 - Produces: build produksi lolos; repo di GitHub; panduan deploy Vercel untuk user.
 
-- [ ] **Step 1: Build produksi** — Run: `npm run build`
+- [x] **Step 1: Build produksi** — Run: `npm run build`
   Expected: sukses; route `/admin/*` dan `/api/*` terdaftar di output. Jika error prerender pada halaman admin, pastikan `export const dynamic = 'force-dynamic'` ada di dashboard (Task 7).
 
-- [ ] **Step 2: Tulis `README.md`:**
+- [x] **Step 2: Tulis `README.md`:**
 
 ```markdown
 # Website & Panel Admin LPPM Universitas Sapta Mandiri
@@ -2776,14 +2776,14 @@ Satu aplikasi Next.js berisi:
 Satu akun (dibuat manual di Supabase Auth). Tidak ada halaman registrasi. Ganti password lewat Supabase Dashboard → Authentication → Users.
 ```
 
-- [ ] **Step 3: Commit README.**
+- [x] **Step 3: Commit README.**
 
 ```bash
 git add README.md
 git commit -m "docs: README setup, deploy Vercel, dan catatan free tier"
 ```
 
-- [ ] **Step 4: Push ke GitHub.**
+- [x] **Step 4: Push ke GitHub.**
 
 Cek dulu: `gh auth status`.
 - Jika login: `gh repo create lppm-univsm --private --source . --push`
@@ -2793,9 +2793,9 @@ Cek dulu: `gh auth status`.
   git push -u origin main
   ```
 
-- [ ] **Step 5: PAUSE — user menghubungkan Vercel.** Sampaikan ke user langkah "Deploy ke Vercel" di README (import repo + 3 env var). Ini butuh login akun Vercel milik user, tidak bisa diotomasi.
+- [x] **Step 5: PAUSE — user menghubungkan Vercel.** Sampaikan ke user langkah "Deploy ke Vercel" di README (import repo + 3 env var). Ini butuh login akun Vercel milik user, tidak bisa diotomasi.
 
-- [ ] **Step 6: Verifikasi akhir menyeluruh** (checklist dari spec, di lokal atau di URL Vercel setelah deploy):
+- [x] **Step 6: Verifikasi akhir menyeluruh** (checklist dari spec, di lokal atau di URL Vercel setelah deploy):
 
 1. Login `/admin/login` → dashboard tampil. Logout → kembali ke login.
 2. Akses `/admin` tanpa sesi → redirect login; `POST /api/berita` tanpa sesi → 401.
@@ -2806,7 +2806,7 @@ Cek dulu: `gh auth status`.
 7. Kirim form kontak dari situs publik → muncul di `/admin/pesan` → tandai selesai.
 8. Fallback: buka situs tanpa API (server mati / env kosong) → halaman statis tetap utuh.
 
-- [ ] **Step 7: Commit terakhir** (centang checkbox plan yang selesai):
+- [x] **Step 7: Commit terakhir** (centang checkbox plan yang selesai):
 
 ```bash
 git add docs/superpowers/plans/2026-07-14-panel-admin.md
