@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   const form = await req.formData().catch(() => null);
   const file = form?.get('file');
   const bucket = String(form?.get('bucket') ?? '');
-  if (!(file instanceof File) || !(bucket in LIMITS)) {
+  if (!(file instanceof File) || !Object.prototype.hasOwnProperty.call(LIMITS, bucket)) {
     return NextResponse.json({ error: 'Permintaan upload tidak valid.' }, { status: 400 });
   }
   const cfg = LIMITS[bucket as keyof typeof LIMITS];
