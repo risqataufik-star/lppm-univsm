@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring &amp; Evaluasi — LPPM Universitas Sapta Mandiri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{50:'#eef1ff',100:'#e0e5ff',700:'#2d36bd',800:'#1d2b78',900:'#141d54',950:'#0c1237'},gold:{400:'#fbbf24',500:'#f0a500',600:'#d97706'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+<nav class="fixed top-0 inset-x-0 z-50 bg-navy-800" id="navbar"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16"><a href="index.html" class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-10 w-10 object-contain"><div class="hidden sm:block leading-none"><p class="text-white font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-[11px]">Universitas Sapta Mandiri</p></div></a><div class="hidden lg:flex items-center gap-0.5 text-sm"><a href="index.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Beranda</a><div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Profil LPPM<svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="profil.html#sejarah" class="dropdown-item">Sejarah LPPM</a><a href="profil.html#visi-misi" class="dropdown-item">Visi, Misi &amp; Tujuan</a><a href="profil.html#struktur" class="dropdown-item">Struktur Organisasi</a></div></div><div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Tridharma<svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="penelitian.html" class="dropdown-item">Penelitian</a><a href="pkm.html" class="dropdown-item">Pengabdian Masyarakat</a><a href="roadmap.html" class="dropdown-item">Roadmap</a><a href="publikasi.html" class="dropdown-item">Publikasi &amp; Luaran</a></div></div><div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-gold-300 font-semibold hover:bg-white/10 rounded-lg">Layanan<svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="dokumen.html" class="dropdown-item">Dokumen &amp; Template</a><a href="monev.html" class="dropdown-item font-semibold text-navy-800">Monitoring &amp; Evaluasi</a><a href="kerjasama.html" class="dropdown-item">Kerja Sama</a></div></div><a href="berita.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Berita &amp; Agenda</a><a href="kontak.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Kontak</a></div><button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10" id="menu-btn"><svg class="w-6 h-6 icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="w-6 h-6 icon-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div></div><div class="lg:hidden hidden bg-navy-900 border-t border-white/10" id="mobile-menu"><div class="px-4 py-3 space-y-1 text-sm"><a href="index.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Beranda</a><a href="penelitian.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Penelitian</a><a href="pkm.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">PkM</a><a href="monev.html" class="block px-3 py-2 text-gold-400 font-semibold hover:bg-white/10 rounded-lg">Monev</a><a href="kontak.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Kontak</a></div></div></nav>
+
+<main class="page-content">
+  <div class="page-header-bg py-10 px-4"><div class="max-w-7xl mx-auto"><nav class="text-xs text-white/50 mb-3 flex items-center gap-2"><a href="index.html" class="hover:text-white/80">Beranda</a><span>/</span><span class="text-white/80">Monitoring &amp; Evaluasi</span></nav><h1 class="text-3xl font-bold text-white">Monitoring &amp; Evaluasi (Monev)</h1><p class="text-white/65 mt-2 text-sm">Sistem PPEPP untuk penjaminan mutu penelitian dan PkM UnivSM dalam kerangka SPMI</p></div></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- ALERT SPMI -->
+    <div class="alert-info mb-8"><i class="ri-shield-check-line text-lg flex-shrink-0"></i><div><p class="font-semibold">Monev dalam Kerangka SPMI</p><p class="mt-1">Monitoring dan Evaluasi LPPM dilaksanakan sebagai implementasi siklus <strong>PPEPP</strong> (Penetapan, Pelaksanaan, Evaluasi, Pengendalian, Peningkatan). Hasil monev digunakan sebagai bahan <strong>RTM</strong> dan <strong>AMI</strong>.</p></div></div>
+
+    <!-- DASHBOARD KPI -->
+    <div class="mb-10">
+      <h2 class="text-xl font-bold text-navy-800 mb-6">Dashboard Kinerja LPPM 2026</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 text-center"><p class="text-2xl font-extrabold text-navy-800" data-counter="45">0</p><p class="text-xs text-gray-500 mt-1">Penelitian Aktif</p></div>
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 text-center"><p class="text-2xl font-extrabold text-navy-800" data-counter="38">0</p><p class="text-xs text-gray-500 mt-1">PkM Aktif</p></div>
+        <div class="bg-green-50 rounded-2xl border border-green-100 shadow-sm p-4 text-center"><p class="text-2xl font-extrabold text-green-700">93%</p><p class="text-xs text-gray-500 mt-1">Ketepatan Laporan</p></div>
+        <div class="bg-blue-50 rounded-2xl border border-blue-100 shadow-sm p-4 text-center"><p class="text-2xl font-extrabold text-blue-700" data-counter="127">0</p><p class="text-xs text-gray-500 mt-1">Publikasi</p></div>
+        <div class="bg-purple-50 rounded-2xl border border-purple-100 shadow-sm p-4 text-center"><p class="text-2xl font-extrabold text-purple-700" data-counter="24">0</p><p class="text-xs text-gray-500 mt-1">HKI</p></div>
+        <div class="bg-gold-50 rounded-2xl border border-yellow-100 shadow-sm p-4 text-center"><p class="text-2xl font-extrabold text-gold-600" data-counter="18">0</p><p class="text-xs text-gray-500 mt-1">Mitra Aktif</p></div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div data-tabs>
+      <div class="flex flex-wrap gap-2 mb-8 p-1.5 bg-white rounded-2xl shadow-sm border border-gray-100 w-fit">
+        <button class="tab-btn" data-tab-btn="instrumen">Instrumen Monev</button>
+        <button class="tab-btn" data-tab-btn="jadwal">Jadwal Monev</button>
+        <button class="tab-btn" data-tab-btn="hasil">Hasil Monev</button>
+        <button class="tab-btn" data-tab-btn="rtl">RTL</button>
+      </div>
+
+      <!-- INSTRUMEN -->
+      <div data-tab-panel="instrumen" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Instrumen Monitoring &amp; Evaluasi</h3>
+        <div class="grid sm:grid-cols-2 gap-5 mb-6">
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-700"><i class="ri-microscope-line text-lg"></i></div><h4 class="font-bold text-navy-800">Instrumen Monev Penelitian</h4></div>
+            <p class="text-sm text-gray-600 mb-4 leading-relaxed">Mencakup: kesesuaian pelaksanaan dengan proposal, capaian luaran, penggunaan anggaran, kendala, dan rekomendasi tindak lanjut.</p>
+            <div class="space-y-2 text-xs text-gray-600">
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Checklist kesesuaian metodologi</span></div>
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Rubrik penilaian kemajuan (0–100)</span></div>
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Form verifikasi luaran (artikel, HKI)</span></div>
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Laporan keuangan 50% dan 100%</span></div>
+            </div>
+            <a href="dokumen.html" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-navy-700 hover:text-gold-600 transition-colors"><i class="ri-download-2-line"></i>Unduh Instrumen</a>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div class="flex items-center gap-3 mb-4"><div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-green-700"><i class="ri-community-line text-lg"></i></div><h4 class="font-bold text-navy-800">Instrumen Monev PkM</h4></div>
+            <p class="text-sm text-gray-600 mb-4 leading-relaxed">Mencakup: ketercapaian tujuan PkM, partisipasi masyarakat sasaran, dampak yang dirasakan, kelengkapan dokumentasi, dan keberlanjutan program.</p>
+            <div class="space-y-2 text-xs text-gray-600">
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Checklist pelaksanaan kegiatan</span></div>
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Form penilaian dampak masyarakat</span></div>
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Verifikasi surat keterangan mitra</span></div>
+              <div class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i><span>Dokumentasi foto/video kegiatan</span></div>
+            </div>
+            <a href="dokumen.html" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-navy-700 hover:text-gold-600 transition-colors"><i class="ri-download-2-line"></i>Unduh Instrumen</a>
+          </div>
+        </div>
+        <div class="alert-warn"><i class="ri-error-warning-line text-lg flex-shrink-0"></i><span>Seluruh instrumen monev diselaraskan dengan standar SPMI UnivSM dan kriteria BAN-PT untuk kebutuhan akreditasi institusi dan program studi.</span></div>
+      </div>
+
+      <!-- JADWAL -->
+      <div data-tab-panel="jadwal" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Jadwal Monev 2026</h3>
+        <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+          <table class="data-table">
+            <thead><tr><th>Kegiatan Monev</th><th>Tanggal</th><th>Lingkup</th><th>Reviewer</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td class="font-semibold">Monev Proposal — Seleksi Substansi</td><td>8–20 Juli 2026</td><td>Semua proposal masuk</td><td>Reviewer Internal (2 orang/proposal)</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td class="font-semibold">Monev Tengah — Penelitian</td><td>Oktober 2026</td><td>45 penelitian aktif</td><td>Tim Monev LPPM</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td class="font-semibold">Monev Tengah — PkM</td><td>Oktober 2026</td><td>38 PkM aktif</td><td>Tim Monev LPPM</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td class="font-semibold">Monev Akhir — Penelitian</td><td>Desember 2026</td><td>45 penelitian aktif</td><td>Tim Monev LPPM</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td class="font-semibold">Monev Akhir — PkM</td><td>November 2026</td><td>38 PkM aktif</td><td>Tim Monev LPPM</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td class="font-semibold">RTM (Rapat Tinjauan Manajemen)</td><td>Januari 2027</td><td>Rekap tahunan 2026</td><td>Pimpinan LPPM &amp; Rektorat</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HASIL -->
+      <div data-tab-panel="hasil" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Hasil Monev Terakhir (2025)</h3>
+        <div class="grid sm:grid-cols-4 gap-4 mb-8">
+          <div class="p-5 bg-green-50 rounded-2xl text-center"><p class="text-3xl font-extrabold text-green-700">95%</p><p class="text-xs text-gray-500 mt-1">Tepat Waktu Laporan</p></div>
+          <div class="p-5 bg-blue-50 rounded-2xl text-center"><p class="text-3xl font-extrabold text-blue-700">88%</p><p class="text-xs text-gray-500 mt-1">Capaian Luaran Sesuai</p></div>
+          <div class="p-5 bg-purple-50 rounded-2xl text-center"><p class="text-3xl font-extrabold text-purple-700">38</p><p class="text-xs text-gray-500 mt-1">Penelitian Termonev</p></div>
+          <div class="p-5 bg-teal-50 rounded-2xl text-center"><p class="text-3xl font-extrabold text-teal-700">34</p><p class="text-xs text-gray-500 mt-1">PkM Termonev</p></div>
+        </div>
+        <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+          <table class="data-table">
+            <thead><tr><th>Periode Monev</th><th>Jml Termonev</th><th>Tepat Waktu</th><th>Luaran Tercapai</th><th>Perlu Tindak Lanjut</th></tr></thead>
+            <tbody>
+              <tr><td class="font-semibold">Monev 1 Penelitian — Okt 2025</td><td>38</td><td>35 (92%)</td><td>30 artikel draf</td><td>3 penelitian terlambat</td></tr>
+              <tr><td class="font-semibold">Monev 2 Penelitian — Des 2025</td><td>38</td><td>36 (95%)</td><td>25 artikel submit, 8 HKI</td><td>2 perpanjangan disetujui</td></tr>
+              <tr><td class="font-semibold">Monev 1 PkM — Okt 2025</td><td>34</td><td>33 (97%)</td><td>Semua kegiatan berjalan</td><td>1 perubahan lokasi</td></tr>
+              <tr><td class="font-semibold">Monev 2 PkM — Nov 2025</td><td>34</td><td>34 (100%)</td><td>Semua laporan akhir masuk</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RTL -->
+      <div data-tab-panel="rtl" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Rencana Tindak Lanjut (RTL)</h3>
+        <div class="alert-info mb-6"><i class="ri-information-line text-lg flex-shrink-0"></i><span>RTL disusun berdasarkan hasil monev dan disampaikan dalam RTM serta AMI sebagai bukti pelaksanaan siklus PPEPP.</span></div>
+        <div class="space-y-4">
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div><h4 class="font-bold text-navy-800">RTL Monev 2025 — Peningkatan Ketepatan Pelaporan</h4><p class="text-xs text-gray-500 mt-1">Periode: Januari 2026 &nbsp;·&nbsp; Penanggung Jawab: Ka. Bag. Penelitian</p></div>
+              <span class="badge-selesai flex-shrink-0">Selesai</span>
+            </div>
+            <ul class="space-y-2 text-sm text-gray-700"><li class="flex gap-2"><i class="ri-checkbox-circle-line text-green-500 flex-shrink-0 mt-0.5"></i><span>Mengirimkan pengingat (reminder) ke seluruh peneliti H-30 dan H-7 sebelum batas laporan via email dan WhatsApp.</span></li><li class="flex gap-2"><i class="ri-checkbox-circle-line text-green-500 flex-shrink-0 mt-0.5"></i><span>Mengadakan klinik penulisan laporan untuk peneliti yang mengalami kesulitan pelaporan.</span></li><li class="flex gap-2"><i class="ri-checkbox-circle-line text-green-500 flex-shrink-0 mt-0.5"></i><span>Menetapkan sanksi administratif bagi peneliti yang terlambat melapor (tidak dapat mengajukan proposal di tahun berikutnya).</span></li></ul>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+              <div><h4 class="font-bold text-navy-800">RTL Monev 2025 — Peningkatan Capaian Publikasi</h4><p class="text-xs text-gray-500 mt-1">Periode: Maret 2026 &nbsp;·&nbsp; Penanggung Jawab: Ka. LPPM</p></div>
+              <span class="badge-aktif flex-shrink-0">Berjalan</span>
+            </div>
+            <ul class="space-y-2 text-sm text-gray-700"><li class="flex gap-2"><i class="ri-time-line text-blue-500 flex-shrink-0 mt-0.5"></i><span>Menyelenggarakan workshop penulisan artikel jurnal Sinta 2 dan 3 bagi peneliti yang belum mempublikasikan hasil penelitian.</span></li><li class="flex gap-2"><i class="ri-time-line text-blue-500 flex-shrink-0 mt-0.5"></i><span>Memberikan insentif tambahan bagi dosen yang mempublikasikan hasil penelitian di jurnal Sinta 1 atau terindeks Scopus.</span></li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOWNLOAD -->
+    <div class="mt-10 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+      <h3 class="font-bold text-navy-800 mb-4 flex items-center gap-2"><i class="ri-download-2-line text-gold-500"></i>Unduhan Dokumen Monev</h3>
+      <div class="grid sm:grid-cols-3 gap-3">
+        <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0"><i class="ri-file-pdf-line text-lg"></i></div><div><p class="text-sm font-semibold text-navy-800">Instrumen Monev Penelitian</p><p class="text-xs text-gray-400">PDF · 2026</p></div></a>
+        <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0"><i class="ri-file-pdf-line text-lg"></i></div><div><p class="text-sm font-semibold text-navy-800">Instrumen Monev PkM</p><p class="text-xs text-gray-400">PDF · 2026</p></div></a>
+        <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 flex-shrink-0"><i class="ri-file-word-line text-lg"></i></div><div><p class="text-sm font-semibold text-navy-800">Format Berita Acara Monev</p><p class="text-xs text-gray-400">DOCX · 2026</p></div></a>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="bg-navy-900 text-white mt-8"><div class="max-w-7xl mx-auto px-4 py-10"><div class="flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-9 w-9 object-contain"><div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div></div><div class="flex flex-wrap gap-5 text-sm text-white/60"><a href="index.html" class="hover:text-gold-400">Beranda</a><a href="penelitian.html" class="hover:text-gold-400">Penelitian</a><a href="pkm.html" class="hover:text-gold-400">PkM</a><a href="dokumen.html" class="hover:text-gold-400">Dokumen</a><a href="kontak.html" class="hover:text-gold-400">Kontak</a></div></div><div class="mt-6 pt-5 border-t border-white/10 text-center text-xs text-white/35">© 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</div></div></footer>
+<button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40"><i class="ri-arrow-up-line"></i></button>
+<script src="assets/js/main.js"></script>
+</body></html>

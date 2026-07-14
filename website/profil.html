@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil LPPM — LPPM Universitas Sapta Mandiri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{50:'#eef1ff',100:'#e0e5ff',200:'#c7d0fe',700:'#2d36bd',800:'#1d2b78',900:'#141d54',950:'#0c1237'},gold:{400:'#fbbf24',500:'#f0a500',600:'#d97706'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+<!-- NAVBAR (shared) -->
+<nav class="fixed top-0 inset-x-0 z-50 bg-navy-800" id="navbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="assets/img/logo-color.png" alt="Logo UnivSM" class="h-10 w-10 object-contain">
+        <div class="hidden sm:block leading-none"><p class="text-white font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-[11px]">Universitas Sapta Mandiri</p></div>
+      </a>
+      <div class="hidden lg:flex items-center gap-0.5 text-sm">
+        <a href="index.html" data-nav class="px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Beranda</a>
+        <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-gold-300 font-semibold hover:bg-white/10 rounded-lg transition-colors">Profil LPPM <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="dropdown-menu"><a href="profil.html#sejarah" class="dropdown-item">Sejarah LPPM</a><a href="profil.html#visi-misi" class="dropdown-item">Visi, Misi &amp; Tujuan</a><a href="profil.html#struktur" class="dropdown-item">Struktur Organisasi</a><a href="profil.html#tugas" class="dropdown-item">Tugas &amp; Fungsi</a><a href="profil.html#rkt" class="dropdown-item">Program Kerja (RKT)</a></div>
+        </div>
+        <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Tridharma <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="dropdown-menu"><a href="penelitian.html" class="dropdown-item">Penelitian</a><a href="pkm.html" class="dropdown-item">Pengabdian Masyarakat</a><a href="roadmap.html" class="dropdown-item">Roadmap Riset &amp; PkM</a><a href="publikasi.html" class="dropdown-item">Publikasi &amp; Luaran</a><a href="hibah.html" class="dropdown-item">Hibah &amp; Insentif</a></div>
+        </div>
+        <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Layanan <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="dropdown-menu"><a href="dokumen.html" class="dropdown-item">Dokumen &amp; Template</a><a href="monev.html" class="dropdown-item">Monitoring &amp; Evaluasi</a><a href="kerjasama.html" class="dropdown-item">Kerja Sama</a></div>
+        </div>
+        <a href="berita.html" data-nav class="px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Berita &amp; Agenda</a>
+        <a href="kontak.html" data-nav class="px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Kontak</a>
+      </div>
+      <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10" id="menu-btn"><svg class="w-6 h-6 icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="w-6 h-6 icon-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+  </div>
+  <div class="lg:hidden hidden bg-navy-900 border-t border-white/10" id="mobile-menu">
+    <div class="px-4 py-3 space-y-1 text-sm">
+      <a href="index.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Beranda</a>
+      <a href="profil.html" class="block px-3 py-2 text-gold-400 font-semibold hover:bg-white/10 rounded-lg">Profil LPPM</a>
+      <a href="penelitian.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Penelitian</a>
+      <a href="pkm.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Pengabdian Masyarakat</a>
+      <a href="dokumen.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Dokumen &amp; Template</a>
+      <a href="kontak.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page-content">
+  <!-- PAGE HEADER -->
+  <div class="page-header-bg py-10 px-4">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-xs text-white/50 mb-3 flex items-center gap-2"><a href="index.html" class="hover:text-white/80">Beranda</a><span>/</span><span class="text-white/80">Profil LPPM</span></nav>
+      <h1 class="text-3xl font-bold text-white">Profil LPPM UnivSM</h1>
+      <p class="text-white/65 mt-2 text-sm">Mengenal lebih dekat Lembaga Penelitian dan Pengabdian kepada Masyarakat Universitas Sapta Mandiri</p>
+    </div>
+  </div>
+
+  <!-- STICKY SIDEBAR LAYOUT -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+      <!-- Sidebar Navigation -->
+      <aside class="lg:w-56 flex-shrink-0">
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 lg:sticky lg:top-20">
+          <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 px-2">Navigasi Halaman</p>
+          <nav class="space-y-1">
+            <a href="#sejarah" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-navy-50 hover:text-navy-800 rounded-lg transition-colors"><i class="ri-history-line text-navy-400"></i>Sejarah</a>
+            <a href="#visi-misi" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-navy-50 hover:text-navy-800 rounded-lg transition-colors"><i class="ri-eye-line text-navy-400"></i>Visi, Misi &amp; Tujuan</a>
+            <a href="#struktur" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-navy-50 hover:text-navy-800 rounded-lg transition-colors"><i class="ri-organization-chart text-navy-400"></i>Struktur Organisasi</a>
+            <a href="#tugas" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-navy-50 hover:text-navy-800 rounded-lg transition-colors"><i class="ri-task-line text-navy-400"></i>Tugas &amp; Fungsi</a>
+            <a href="#rkt" class="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-navy-50 hover:text-navy-800 rounded-lg transition-colors"><i class="ri-calendar-check-line text-navy-400"></i>Program Kerja (RKT)</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="flex-1 space-y-14">
+
+        <!-- SEJARAH -->
+        <section id="sejarah" class="scroll-mt-20">
+          <h2 class="text-2xl font-bold text-navy-800 title-bar mb-6">Sejarah LPPM UnivSM</h2>
+          <div class="prose prose-sm max-w-none text-gray-600 leading-relaxed space-y-4">
+            <p>Lembaga Penelitian dan Pengabdian kepada Masyarakat (LPPM) Universitas Sapta Mandiri (UnivSM) didirikan sebagai unsur pelaksana akademik yang bertugas mengoordinasikan, memfasilitasi, memantau, mengevaluasi, dan mendokumentasikan seluruh kegiatan penelitian dan pengabdian kepada masyarakat (PkM) di lingkungan UnivSM.</p>
+            <p>LPPM dibentuk berdasarkan kebutuhan institusi untuk memiliki organ khusus yang mampu mengelola Tridharma Perguruan Tinggi secara profesional, terstruktur, dan berkelanjutan, sesuai dengan amanat Undang-Undang Nomor 12 Tahun 2012 tentang Pendidikan Tinggi.</p>
+            <p>Sejak berdirinya, LPPM UnivSM telah menjalankan peran strategis dalam meningkatkan kualitas dan kuantitas penelitian dosen, memperluas jangkauan program pengabdian kepada masyarakat, serta mendorong hilirisasi hasil riset melalui kerja sama dengan industri, pemerintah daerah, dan mitra strategis lainnya.</p>
+          </div>
+          <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-5 bg-navy-50 rounded-2xl text-center">
+              <div class="text-2xl font-extrabold text-navy-800 mb-1">2024</div>
+              <p class="text-xs text-gray-500">Tahun Berdiri LPPM</p>
+            </div>
+            <div class="p-5 bg-gold-50 rounded-2xl text-center">
+              <div class="text-2xl font-extrabold text-gold-600 mb-1">7</div>
+              <p class="text-xs text-gray-500">Bidang Fokus Riset</p>
+            </div>
+            <div class="p-5 bg-green-50 rounded-2xl text-center">
+              <div class="text-2xl font-extrabold text-green-700 mb-1">2036</div>
+              <p class="text-xs text-gray-500">Target Visi Nasional &amp; Internasional</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISI MISI -->
+        <section id="visi-misi" class="scroll-mt-20">
+          <h2 class="text-2xl font-bold text-navy-800 title-bar mb-6">Visi, Misi &amp; Tujuan</h2>
+          <!-- Visi -->
+          <div class="bg-gradient-to-br from-navy-800 to-navy-950 rounded-2xl p-7 text-white mb-6">
+            <div class="flex items-center gap-2 mb-4"><i class="ri-eye-line text-gold-400 text-xl"></i><h3 class="font-bold text-gold-400 uppercase tracking-wider text-sm">Visi</h3></div>
+            <p class="text-lg font-medium leading-relaxed">"Menjadi pusat unggulan dalam penelitian dan pengabdian kepada masyarakat yang inovatif, berlandaskan nilai moral dan spiritual, serta berdaya saing nasional dan internasional pada tahun 2036."</p>
+          </div>
+          <!-- Misi -->
+          <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm mb-6">
+            <div class="flex items-center gap-2 mb-5"><i class="ri-target-line text-navy-600 text-xl"></i><h3 class="font-bold text-navy-800 text-lg">Misi</h3></div>
+            <ol class="space-y-4">
+              <li class="flex gap-4"><span class="flex-shrink-0 w-7 h-7 bg-navy-800 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span><p class="text-sm text-gray-700 leading-relaxed pt-0.5">Meningkatkan kualitas dan kuantitas penelitian yang inovatif dan aplikatif yang sejalan dengan perkembangan IPTEKS serta berkontribusi terhadap pemecahan masalah di tingkat lokal, nasional, dan internasional.</p></li>
+              <li class="flex gap-4"><span class="flex-shrink-0 w-7 h-7 bg-navy-800 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span><p class="text-sm text-gray-700 leading-relaxed pt-0.5">Mengembangkan program pengabdian kepada masyarakat berbasis hasil penelitian, nilai-nilai lokal, dan kebutuhan nyata masyarakat dengan mengintegrasikan pendekatan moral dan spiritual.</p></li>
+              <li class="flex gap-4"><span class="flex-shrink-0 w-7 h-7 bg-navy-800 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span><p class="text-sm text-gray-700 leading-relaxed pt-0.5">Mendorong hilirisasi hasil riset dan pengabdian melalui kolaborasi strategis dengan dunia industri, pemerintah, dan mitra internasional guna menciptakan dampak sosial dan ekonomi yang berkelanjutan.</p></li>
+              <li class="flex gap-4"><span class="flex-shrink-0 w-7 h-7 bg-navy-800 text-white rounded-full flex items-center justify-center text-xs font-bold">4</span><p class="text-sm text-gray-700 leading-relaxed pt-0.5">Memfasilitasi sertifikasi kompetensi dan pelatihan berbasis riset bagi mahasiswa dan masyarakat sebagai bentuk kontribusi terhadap peningkatan kapasitas SDM.</p></li>
+              <li class="flex gap-4"><span class="flex-shrink-0 w-7 h-7 bg-navy-800 text-white rounded-full flex items-center justify-center text-xs font-bold">5</span><p class="text-sm text-gray-700 leading-relaxed pt-0.5">Menerapkan tata kelola LPPM yang profesional, transparan, dan berbasis teknologi informasi dalam mendukung sistem manajemen penelitian dan pengabdian secara efektif dan efisien.</p></li>
+            </ol>
+          </div>
+          <!-- Tujuan -->
+          <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm">
+            <div class="flex items-center gap-2 mb-5"><i class="ri-flag-line text-navy-600 text-xl"></i><h3 class="font-bold text-navy-800 text-lg">Tujuan</h3></div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="flex gap-3 p-4 bg-navy-50 rounded-xl"><i class="ri-check-double-line text-navy-600 text-lg flex-shrink-0 mt-0.5"></i><p class="text-sm text-gray-700 leading-relaxed">Meningkatkan kapasitas dan produktivitas penelitian dosen dan mahasiswa dalam menghasilkan karya ilmiah yang inovatif, aplikatif, dan relevan.</p></div>
+              <div class="flex gap-3 p-4 bg-navy-50 rounded-xl"><i class="ri-check-double-line text-navy-600 text-lg flex-shrink-0 mt-0.5"></i><p class="text-sm text-gray-700 leading-relaxed">Mewujudkan program PkM yang berbasis riset dan nilai-nilai lokal untuk mendukung pembangunan berkelanjutan.</p></div>
+              <div class="flex gap-3 p-4 bg-navy-50 rounded-xl"><i class="ri-check-double-line text-navy-600 text-lg flex-shrink-0 mt-0.5"></i><p class="text-sm text-gray-700 leading-relaxed">Mendorong hilirisasi hasil penelitian dan PkM melalui kerja sama strategis yang berdampak nyata secara sosial dan ekonomi.</p></div>
+              <div class="flex gap-3 p-4 bg-navy-50 rounded-xl"><i class="ri-check-double-line text-navy-600 text-lg flex-shrink-0 mt-0.5"></i><p class="text-sm text-gray-700 leading-relaxed">Meningkatkan kompetensi dan daya saing SDM melalui pelatihan, pendampingan, dan sertifikasi berbasis riset.</p></div>
+              <div class="flex gap-3 p-4 bg-navy-50 rounded-xl sm:col-span-2"><i class="ri-check-double-line text-navy-600 text-lg flex-shrink-0 mt-0.5"></i><p class="text-sm text-gray-700 leading-relaxed">Membangun sistem tata kelola LPPM yang transparan, akuntabel, dan berbasis TI untuk mendukung efektivitas manajemen penelitian dan PkM secara berkelanjutan.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- STRUKTUR ORGANISASI -->
+        <section id="struktur" class="scroll-mt-20">
+          <h2 class="text-2xl font-bold text-navy-800 title-bar mb-6">Struktur Organisasi</h2>
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 mb-6 text-center">
+            <img src="assets/img/struktur-org.jpeg" alt="Struktur Organisasi LPPM UnivSM" class="max-w-lg mx-auto w-full rounded-xl" data-lightbox>
+          </div>
+          <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+            <table class="data-table">
+              <thead><tr><th>No.</th><th>Jabatan</th><th>Nama</th><th>Keterangan</th></tr></thead>
+              <tbody>
+                <tr><td class="font-medium">1</td><td class="font-semibold text-navy-800">Kepala LPPM</td><td>Anita Juniarti, M.Pd</td><td class="text-gray-500 text-xs">Pimpinan tertinggi, bertanggung jawab kepada Rektor</td></tr>
+                <tr><td class="font-medium">2</td><td class="font-semibold text-navy-800">Sekretaris LPPM</td><td>Raditia, M.AP</td><td class="text-gray-500 text-xs">Mendukung administrasi dan koordinasi internal LPPM</td></tr>
+                <tr><td class="font-medium">3</td><td class="font-semibold text-navy-800">Ka. Bag. Pusat Penelitian</td><td>Ida Ariyani Hasanah, S.Kom</td><td class="text-gray-500 text-xs">Mengelola program, administrasi, dan monev penelitian</td></tr>
+                <tr><td class="font-medium">4</td><td class="font-semibold text-navy-800">Ka. Bag. Pusat PkM</td><td>Riama Simanjuntak, S.Kom</td><td class="text-gray-500 text-xs">Mengelola program, administrasi, dan monev PkM</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- TUGAS & FUNGSI -->
+        <section id="tugas" class="scroll-mt-20">
+          <h2 class="text-2xl font-bold text-navy-800 title-bar mb-6">Tugas &amp; Fungsi</h2>
+          <div class="space-y-3">
+            <div data-accordion-item="tugas-fungsi">
+              <button data-accordion-header class="w-full flex items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:bg-navy-50 transition-colors text-left">
+                <span class="font-semibold text-navy-800 text-sm flex items-center gap-3"><span class="w-8 h-8 bg-navy-100 rounded-lg flex items-center justify-center text-navy-700 flex-shrink-0"><i class="ri-user-star-line"></i></span>Tugas Pokok LPPM</span>
+                <i class="ri-add-line text-gray-400 transition-transform flex-shrink-0" data-acc-icon></i>
+              </button>
+              <div class="accordion-body"><div class="px-5 pb-5 pt-2 text-sm text-gray-600 leading-relaxed space-y-2 bg-white border border-t-0 border-gray-200 rounded-b-xl">
+                <p>LPPM bertugas mengoordinasikan, memfasilitasi, memantau, mengevaluasi, dan mendokumentasikan seluruh kegiatan penelitian dan pengabdian kepada masyarakat di lingkungan Universitas Sapta Mandiri.</p>
+                <ul class="list-disc pl-5 space-y-1"><li>Menyusun rencana dan program kerja LPPM</li><li>Mengkoordinasi kegiatan penelitian dan PkM seluruh program studi</li><li>Mengelola dan mendistribusikan dana penelitian dan PkM</li><li>Menyelenggarakan pelatihan dan workshop penulisan ilmiah</li><li>Memfasilitasi pengajuan HKI dan publikasi dosen</li></ul>
+              </div></div>
+            </div>
+            <div data-accordion-item="tugas-fungsi">
+              <button data-accordion-header class="w-full flex items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:bg-navy-50 transition-colors text-left">
+                <span class="font-semibold text-navy-800 text-sm flex items-center gap-3"><span class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-700 flex-shrink-0"><i class="ri-microscope-line"></i></span>Fungsi Bidang Penelitian</span>
+                <i class="ri-add-line text-gray-400 transition-transform flex-shrink-0" data-acc-icon></i>
+              </button>
+              <div class="accordion-body"><div class="px-5 pb-5 pt-2 text-sm text-gray-600 leading-relaxed space-y-2 bg-white border border-t-0 border-gray-200 rounded-b-xl">
+                <ul class="list-disc pl-5 space-y-1"><li>Menyusun dan mensosialisasikan pedoman penelitian internal</li><li>Mengelola hibah penelitian internal dan memfasilitasi akses hibah eksternal</li><li>Menyelenggarakan seleksi, monitoring, dan evaluasi penelitian</li><li>Mendorong hilirisasi hasil penelitian melalui publikasi dan HKI</li><li>Menyusun laporan kinerja penelitian untuk SPMI dan akreditasi</li></ul>
+              </div></div>
+            </div>
+            <div data-accordion-item="tugas-fungsi">
+              <button data-accordion-header class="w-full flex items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:bg-navy-50 transition-colors text-left">
+                <span class="font-semibold text-navy-800 text-sm flex items-center gap-3"><span class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center text-green-700 flex-shrink-0"><i class="ri-community-line"></i></span>Fungsi Bidang Pengabdian Masyarakat</span>
+                <i class="ri-add-line text-gray-400 transition-transform flex-shrink-0" data-acc-icon></i>
+              </button>
+              <div class="accordion-body"><div class="px-5 pb-5 pt-2 text-sm text-gray-600 leading-relaxed space-y-2 bg-white border border-t-0 border-gray-200 rounded-b-xl">
+                <ul class="list-disc pl-5 space-y-1"><li>Menyusun dan mensosialisasikan pedoman PkM internal</li><li>Mengelola program PkM berbasis riset dan kebutuhan masyarakat</li><li>Memfasilitasi kerja sama dengan mitra pemerintah, industri, dan komunitas</li><li>Menyelenggarakan monitoring dan evaluasi kegiatan PkM</li><li>Mendokumentasikan dampak dan capaian program PkM untuk pelaporan</li></ul>
+              </div></div>
+            </div>
+            <div data-accordion-item="tugas-fungsi">
+              <button data-accordion-header class="w-full flex items-center justify-between p-5 bg-white border border-gray-200 rounded-xl hover:bg-navy-50 transition-colors text-left">
+                <span class="font-semibold text-navy-800 text-sm flex items-center gap-3"><span class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center text-purple-700 flex-shrink-0"><i class="ri-shield-check-line"></i></span>Fungsi Penjaminan Mutu (SPMI)</span>
+                <i class="ri-add-line text-gray-400 transition-transform flex-shrink-0" data-acc-icon></i>
+              </button>
+              <div class="accordion-body"><div class="px-5 pb-5 pt-2 text-sm text-gray-600 leading-relaxed space-y-2 bg-white border border-t-0 border-gray-200 rounded-b-xl">
+                <ul class="list-disc pl-5 space-y-1"><li>Mengimplementasikan siklus PPEPP dalam pengelolaan penelitian dan PkM</li><li>Menyiapkan dokumen bukti kinerja untuk AMI dan RTM</li><li>Menyusun instrumen monev sesuai standar SPMI</li><li>Mengkoordinasikan pengisian data kinerja untuk keperluan akreditasi</li><li>Menjamin ketersediaan dan aksesibilitas dokumen mutu LPPM</li></ul>
+              </div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RKT -->
+        <section id="rkt" class="scroll-mt-20">
+          <h2 class="text-2xl font-bold text-navy-800 title-bar mb-6">Program Kerja Tahunan (RKT) 2024–2029</h2>
+          <div class="alert-info mb-6"><i class="ri-information-line text-lg flex-shrink-0"></i><span>RKT LPPM merupakan penjabaran Rencana Strategis UnivSM 2024–2029 dalam bidang penelitian dan pengabdian kepada masyarakat.</span></div>
+          <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+            <table class="data-table">
+              <thead><tr><th>Program</th><th>Target 2025</th><th>Target 2026</th><th>Target 2027–2029</th></tr></thead>
+              <tbody>
+                <tr><td class="font-semibold text-navy-800">Penelitian Dosen</td><td>Min. 1 per dosen</td><td>Peningkatan 20%</td><td>Publikasi Sinta &amp; Internasional</td></tr>
+                <tr><td class="font-semibold text-navy-800">Kegiatan PkM</td><td>Min. 1 per dosen</td><td>PkM berbasis riset</td><td>Kolaborasi mitra eksternal</td></tr>
+                <tr><td class="font-semibold text-navy-800">Publikasi Ilmiah</td><td>50+ artikel</td><td>100+ artikel</td><td>Terindeks Scopus/WoS</td></tr>
+                <tr><td class="font-semibold text-navy-800">HKI</td><td>10 sertifikat</td><td>20 sertifikat</td><td>Paten &amp; Merek Dagang</td></tr>
+                <tr><td class="font-semibold text-navy-800">Kerja Sama</td><td>5 MoU baru</td><td>10 MoU aktif</td><td>Mitra internasional</td></tr>
+                <tr><td class="font-semibold text-navy-800">Hibah Eksternal</td><td>Pendampingan Dikti</td><td>Perolehan hibah</td><td>Hibah kompetitif nasional</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="dokumen.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-navy-800 text-white text-sm font-semibold rounded-xl hover:bg-navy-700 transition-colors"><i class="ri-download-2-line"></i>Unduh Dokumen RKT</a>
+            <a href="roadmap.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-navy-200 text-navy-800 text-sm font-semibold rounded-xl hover:bg-navy-50 transition-colors"><i class="ri-road-map-line"></i>Lihat Roadmap Riset</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-navy-900 text-white mt-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-3 mb-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-10 w-10 object-contain"><div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div></div>
+        <p class="text-white/55 text-xs leading-relaxed">Mengelola penelitian dan pengabdian kepada masyarakat Universitas Sapta Mandiri secara profesional dan berkelanjutan.</p>
+      </div>
+      <div><h4 class="text-gold-400 text-xs font-bold uppercase tracking-wider mb-3">Profil</h4><ul class="space-y-2 text-xs text-white/60"><li><a href="#sejarah" class="hover:text-gold-400">Sejarah</a></li><li><a href="#visi-misi" class="hover:text-gold-400">Visi &amp; Misi</a></li><li><a href="#struktur" class="hover:text-gold-400">Struktur Organisasi</a></li><li><a href="#rkt" class="hover:text-gold-400">Program Kerja</a></li></ul></div>
+      <div><h4 class="text-gold-400 text-xs font-bold uppercase tracking-wider mb-3">Layanan</h4><ul class="space-y-2 text-xs text-white/60"><li><a href="penelitian.html" class="hover:text-gold-400">Penelitian</a></li><li><a href="pkm.html" class="hover:text-gold-400">PkM</a></li><li><a href="dokumen.html" class="hover:text-gold-400">Dokumen</a></li><li><a href="monev.html" class="hover:text-gold-400">Monev</a></li></ul></div>
+      <div><h4 class="text-gold-400 text-xs font-bold uppercase tracking-wider mb-3">Kontak</h4><ul class="space-y-2 text-xs text-white/60"><li class="flex gap-2"><i class="ri-mail-line text-gold-400"></i><a href="mailto:lppm@univsm.ac.id" class="hover:text-gold-400">lppm@univsm.ac.id</a></li><li class="flex gap-2"><i class="ri-time-line text-gold-400"></i><span>Sen–Jum 08.00–16.00</span></li></ul></div>
+    </div>
+    <div class="mt-10 pt-5 border-t border-white/10 text-center text-xs text-white/35">© 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</div>
+  </div>
+</footer>
+<button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40"><i class="ri-arrow-up-line"></i></button>
+<script src="assets/js/main.js"></script>
+</body></html>

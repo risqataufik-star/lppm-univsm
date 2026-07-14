@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap Riset &amp; PkM — LPPM Universitas Sapta Mandiri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{50:'#eef1ff',100:'#e0e5ff',700:'#2d36bd',800:'#1d2b78',900:'#141d54',950:'#0c1237'},gold:{400:'#fbbf24',500:'#f0a500',600:'#d97706'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-gray-800 font-sans">
+
+<nav class="fixed top-0 inset-x-0 z-50 bg-navy-800" id="navbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16">
+    <a href="index.html" class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo UnivSM" class="h-10 w-10 object-contain"><div class="hidden sm:block leading-none"><p class="text-white font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-[11px]">Universitas Sapta Mandiri</p></div></a>
+    <div class="hidden lg:flex items-center gap-0.5 text-sm">
+      <a href="index.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Beranda</a>
+      <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Profil LPPM <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="profil.html#sejarah" class="dropdown-item">Sejarah LPPM</a><a href="profil.html#visi-misi" class="dropdown-item">Visi, Misi &amp; Tujuan</a><a href="profil.html#struktur" class="dropdown-item">Struktur Organisasi</a><a href="profil.html#rkt" class="dropdown-item">Program Kerja (RKT)</a></div></div>
+      <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-gold-300 font-semibold hover:bg-white/10 rounded-lg">Tridharma <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="penelitian.html" class="dropdown-item">Penelitian</a><a href="pkm.html" class="dropdown-item">Pengabdian Masyarakat</a><a href="roadmap.html" class="dropdown-item font-semibold text-navy-800">Roadmap Riset &amp; PkM</a><a href="publikasi.html" class="dropdown-item">Publikasi &amp; Luaran</a><a href="hibah.html" class="dropdown-item">Hibah &amp; Insentif</a></div></div>
+      <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Layanan <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="dokumen.html" class="dropdown-item">Dokumen &amp; Template</a><a href="monev.html" class="dropdown-item">Monitoring &amp; Evaluasi</a><a href="kerjasama.html" class="dropdown-item">Kerja Sama</a></div></div>
+      <a href="berita.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Berita &amp; Agenda</a>
+      <a href="kontak.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Kontak</a>
+    </div>
+    <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10" id="menu-btn"><svg class="w-6 h-6 icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="w-6 h-6 icon-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+  </div></div>
+  <div class="lg:hidden hidden bg-navy-900 border-t border-white/10" id="mobile-menu"><div class="px-4 py-3 space-y-1 text-sm"><a href="index.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Beranda</a><a href="profil.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Profil LPPM</a><a href="roadmap.html" class="block px-3 py-2 text-gold-400 font-semibold hover:bg-white/10 rounded-lg">Roadmap</a><a href="penelitian.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Penelitian</a><a href="pkm.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">PkM</a></div></div>
+</nav>
+
+<main class="page-content">
+  <div class="page-header-bg py-10 px-4">
+    <div class="max-w-7xl mx-auto">
+      <nav class="text-xs text-white/50 mb-3 flex items-center gap-2"><a href="index.html" class="hover:text-white/80">Beranda</a><span>/</span><span class="text-white/80">Roadmap Riset &amp; PkM</span></nav>
+      <h1 class="text-3xl font-bold text-white">Roadmap Penelitian &amp; PkM</h1>
+      <p class="text-white/65 mt-2 text-sm">Arah kebijakan dan prioritas pengembangan riset UnivSM tahun 2025–2029</p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Intro -->
+    <div class="max-w-3xl mx-auto text-center mb-14">
+      <h2 class="text-2xl font-bold text-navy-800 title-bar center mb-4">Roadmap Riset UnivSM 2025–2029</h2>
+      <p class="text-gray-600 leading-relaxed">Roadmap ini merupakan panduan arah dan kebijakan strategis yang menjadi acuan seluruh kegiatan riset dan PkM selama lima tahun. Setiap tahap dirancang secara bertahap, terukur, dan terintegrasi dengan visi universitas.</p>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="relative pl-8 border-l-2 border-navy-200 space-y-10 mb-16 max-w-4xl">
+      <!-- 2025 -->
+      <div class="relative fade-up">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 ml-4">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-4 py-1.5 bg-navy-800 text-white text-sm font-bold rounded-full">2025</span>
+            <span class="text-sm font-semibold text-navy-700">Fondasi &amp; Pemenuhan Standar</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-green-500 flex-shrink-0 mt-0.5"></i><span>Pengembangan dan penyebarluasan hasil riset dasar sesuai nilai moral dan spiritual</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-green-500 flex-shrink-0 mt-0.5"></i><span>Penguatan Riset Unggulan Berbasis IPTEKS dan Kearifan Lokal</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-green-500 flex-shrink-0 mt-0.5"></i><span>Peningkatan Kapasitas dan Produktivitas Peneliti</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-green-500 flex-shrink-0 mt-0.5"></i><span>Integrasi Riset dalam Pembelajaran dan PkM</span></div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-100"><span class="text-xs font-semibold text-gray-500">Prioritas: </span><span class="text-xs text-gray-600">Pemenuhan Layanan Pendidikan Berkualitas; Peningkatan Produktivitas dan Daya Saing</span></div>
+        </div>
+      </div>
+      <!-- 2026 -->
+      <div class="relative fade-up" data-delay="100">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 ml-4">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-4 py-1.5 bg-navy-700 text-white text-sm font-bold rounded-full">2026</span>
+            <span class="text-sm font-semibold text-navy-700">Penguatan &amp; Produktivitas</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-blue-500 flex-shrink-0 mt-0.5"></i><span>Penguatan Riset Unggulan Berbasis IPTEKS &amp; Kearifan Lokal (lanjutan)</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-blue-500 flex-shrink-0 mt-0.5"></i><span>Peningkatan Kapasitas dan Produktivitas Peneliti (lanjutan)</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-blue-500 flex-shrink-0 mt-0.5"></i><span>Revolusi Mental; Budaya Literasi, Inovasi, dan Kreativitas</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-blue-500 flex-shrink-0 mt-0.5"></i><span>Peningkatan inovasi bidang pendidikan dan non-pendidikan skala lokal-nasional</span></div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-100"><span class="text-xs font-semibold text-gray-500">Prioritas: </span><span class="text-xs text-gray-600">Pembangunan Berkelanjutan; Penguatan Karakter &amp; Inovasi</span></div>
+        </div>
+      </div>
+      <!-- 2027 -->
+      <div class="relative fade-up" data-delay="200">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 ml-4">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-4 py-1.5 bg-gold-600 text-white text-sm font-bold rounded-full">2027</span>
+            <span class="text-sm font-semibold text-navy-700">Transformasi Digital</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-gold-500 flex-shrink-0 mt-0.5"></i><span>Transformasi digital dalam tata kelola akademik, keuangan, SDM, dan layanan kemahasiswaan berbasis riset inovatif</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-gold-500 flex-shrink-0 mt-0.5"></i><span>Pemanfaatan hasil riset untuk pengembangan sistem tata kelola berbasis TI yang transparan &amp; akuntabel</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-gold-500 flex-shrink-0 mt-0.5"></i><span>Tingkat pemanfaatan hasil riset dalam kebijakan internal universitas meningkat signifikan</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-gold-500 flex-shrink-0 mt-0.5"></i><span>Integrasi Riset dalam Pembelajaran dan PkM semakin kuat</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 2028 -->
+      <div class="relative fade-up" data-delay="300">
+        <div class="timeline-dot"></div>
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 ml-4">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-4 py-1.5 bg-teal-700 text-white text-sm font-bold rounded-full">2028</span>
+            <span class="text-sm font-semibold text-navy-700">Sertifikasi &amp; Kemitraan</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-teal-500 flex-shrink-0 mt-0.5"></i><span>Pengembangan sertifikasi kompetensi berbasis hasil riset untuk lulusan dan masyarakat</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-teal-500 flex-shrink-0 mt-0.5"></i><span>Peningkatan relevansi dan daya saing lulusan melalui program berbasis riset</span></div>
+            <div class="flex gap-2 text-sm text-gray-700"><i class="ri-checkbox-circle-line text-teal-500 flex-shrink-0 mt-0.5"></i><span>Kerja sama riset dengan mitra industri dan pemerintah daerah diperluas</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 2029 -->
+      <div class="relative fade-up" data-delay="400">
+        <div class="timeline-dot"></div>
+        <div class="bg-gradient-to-br from-navy-800 to-navy-950 rounded-2xl p-6 ml-4 text-white">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-4 py-1.5 bg-gold-500 text-navy-900 text-sm font-bold rounded-full">2029</span>
+            <span class="text-sm font-semibold text-gold-300">Internasionalisasi &amp; Keunggulan</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="flex gap-2 text-sm text-white/85"><i class="ri-star-line text-gold-400 flex-shrink-0 mt-0.5"></i><span>Jurnal UnivSM terakreditasi/terindeks nasional dan internasional</span></div>
+            <div class="flex gap-2 text-sm text-white/85"><i class="ri-star-line text-gold-400 flex-shrink-0 mt-0.5"></i><span>Publikasi terindeks Scopus/WoS dan sitasi per dosen meningkat signifikan</span></div>
+            <div class="flex gap-2 text-sm text-white/85"><i class="ri-star-line text-gold-400 flex-shrink-0 mt-0.5"></i><span>Produk inovasi dan HKI berdampak nasional, sebagian dengan potensi internasional</span></div>
+            <div class="flex gap-2 text-sm text-white/85"><i class="ri-star-line text-gold-400 flex-shrink-0 mt-0.5"></i><span>Peningkatan daya dukung pendanaan, jejaring kerja sama, dan produktivitas riset</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIDANG FOKUS RISET -->
+    <div class="mb-14">
+      <h2 class="text-2xl font-bold text-navy-800 title-bar mb-8">Bidang Fokus Riset</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div class="p-5 rounded-2xl bg-blue-50 border border-blue-100 card-hover fade-up"><div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white mb-3"><i class="ri-graduation-cap-line"></i></div><h4 class="font-bold text-navy-800 text-sm mb-1">Pendidikan &amp; Karakter Bangsa</h4><p class="text-xs text-gray-500">Inovasi pembelajaran, kurikulum, dan penguatan karakter berbasis nilai moral</p></div>
+        <div class="p-5 rounded-2xl bg-purple-50 border border-purple-100 card-hover fade-up" data-delay="80"><div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-white mb-3"><i class="ri-computer-line"></i></div><h4 class="font-bold text-navy-800 text-sm mb-1">TI &amp; Transformasi Digital</h4><p class="text-xs text-gray-500">Sistem informasi, kecerdasan buatan, dan digitalisasi tata kelola</p></div>
+        <div class="p-5 rounded-2xl bg-green-50 border border-green-100 card-hover fade-up" data-delay="160"><div class="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center text-white mb-3"><i class="ri-heart-pulse-line"></i></div><h4 class="font-bold text-navy-800 text-sm mb-1">Kesehatan &amp; Kesejahteraan</h4><p class="text-xs text-gray-500">Riset kesehatan komunitas dan pemberdayaan masyarakat rentan</p></div>
+        <div class="p-5 rounded-2xl bg-orange-50 border border-orange-100 card-hover fade-up" data-delay="240"><div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-white mb-3"><i class="ri-store-2-line"></i></div><h4 class="font-bold text-navy-800 text-sm mb-1">Pemberdayaan Ekonomi &amp; UMKM</h4><p class="text-xs text-gray-500">Pendampingan UMKM, kewirausahaan sosial, ekonomi lokal</p></div>
+        <div class="p-5 rounded-2xl bg-red-50 border border-red-100 card-hover fade-up"><div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center text-white mb-3"><i class="ri-scales-3-line"></i></div><h4 class="font-bold text-navy-800 text-sm mb-1">Hukum &amp; Kebijakan Publik</h4><p class="text-xs text-gray-500">Kajian hukum, reformasi kebijakan, dan tata kelola akuntabel</p></div>
+        <div class="p-5 rounded-2xl bg-teal-50 border border-teal-100 card-hover fade-up" data-delay="80"><div class="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white mb-3"><i class="ri-building-2-line"></i></div><h4 class="font-bold text-navy-800 text-sm mb-1">Manajemen Pendidikan &amp; TI</h4><p class="text-xs text-gray-500">Sistem informasi pendidikan, akreditasi, dan manajemen mutu</p></div>
+        <div class="p-5 rounded-2xl bg-amber-50 border border-amber-100 card-hover fade-up" data-delay="160"><div class="w-10 h-10 bg-amber-600 rounded-xl flex items-center justify-center text-white mb-3"><i class="ri-tools-line"></i></div><h4 class="font-bold text-navy-800 text-sm mb-1">Manajemen &amp; Teknologi Konstruksi</h4><p class="text-xs text-gray-500">Material berkelanjutan, manajemen proyek, dan infrastruktur</p></div>
+      </div>
+    </div>
+
+    <!-- INDIKATOR KINERJA -->
+    <div>
+      <h2 class="text-2xl font-bold text-navy-800 title-bar mb-6">Indikator Kinerja Utama</h2>
+      <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+        <table class="data-table">
+          <thead><tr><th>Indikator</th><th>Target 2025</th><th>Target 2027</th><th>Target 2029</th></tr></thead>
+          <tbody>
+            <tr><td class="font-semibold">Publikasi Nasional Terakreditasi (Sinta)</td><td>50+</td><td>100+</td><td>200+</td></tr>
+            <tr><td class="font-semibold">Publikasi Internasional (Scopus/WoS)</td><td>5</td><td>20</td><td>50+</td></tr>
+            <tr><td class="font-semibold">Jurnal UnivSM (Sinta/Terindeks)</td><td>1 jurnal</td><td>2 jurnal Sinta</td><td>3 jurnal Sinta</td></tr>
+            <tr><td class="font-semibold">Penelitian Didanai (Internal+Eksternal)</td><td>40+</td><td>60+</td><td>80+</td></tr>
+            <tr><td class="font-semibold">Sitasi per Dosen (rata-rata)</td><td>2</td><td>5</td><td>10+</td></tr>
+            <tr><td class="font-semibold">HKI (Hak Kekayaan Intelektual)</td><td>15</td><td>30</td><td>50+</td></tr>
+            <tr><td class="font-semibold">Produk Inovasi</td><td>5</td><td>15</td><td>30+</td></tr>
+            <tr><td class="font-semibold">Mitra Kerja Sama Aktif</td><td>10</td><td>20</td><td>30+</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-6"><a href="dokumen.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-navy-800 text-white text-sm font-semibold rounded-xl hover:bg-navy-700 transition-colors"><i class="ri-download-2-line"></i>Unduh Dokumen Roadmap Lengkap</a></div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="bg-navy-900 text-white mt-16"><div class="max-w-7xl mx-auto px-4 py-10"><div class="flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-9 w-9 object-contain"><div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div></div><div class="flex gap-5 text-sm text-white/60"><a href="index.html" class="hover:text-gold-400">Beranda</a><a href="profil.html" class="hover:text-gold-400">Profil</a><a href="penelitian.html" class="hover:text-gold-400">Penelitian</a><a href="kontak.html" class="hover:text-gold-400">Kontak</a></div></div><div class="mt-6 pt-5 border-t border-white/10 text-center text-xs text-white/35">© 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</div></div></footer>
+<button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40"><i class="ri-arrow-up-line"></i></button>
+<script src="assets/js/main.js"></script>
+</body></html>

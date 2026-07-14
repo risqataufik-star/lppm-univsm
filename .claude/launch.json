@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "lppm-website",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3030", "--directory", "website"],
+      "port": 3030
+    }
+  ]
+}

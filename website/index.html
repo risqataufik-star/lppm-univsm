@@ -1,0 +1,491 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LPPM Universitas Sapta Mandiri &ndash; Pusat penelitian dan pengabdian kepada masyarakat yang inovatif, kolaboratif, dan berdampak.">
+  <title>Beranda &ndash; LPPM Universitas Sapta Mandiri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          navy: { 50:'#eef1ff',100:'#e0e5ff',200:'#c7d0fe',300:'#a5b0fb',400:'#8089f4',500:'#5d64e8',600:'#4148d6',700:'#2d36bd',800:'#1d2b78',900:'#141d54',950:'#0c1237' },
+          gold: { 50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f0a500',600:'#d97706',700:'#b45309' },
+        },
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• NAVBAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<nav class="fixed top-0 inset-x-0 z-50 bg-navy-800" id="navbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 flex-shrink-0">
+        <img src="assets/img/logo-color.png" alt="Logo UnivSM" class="h-10 w-10 object-contain drop-shadow-sm">
+        <div class="hidden sm:block leading-none">
+          <p class="text-white font-bold text-sm tracking-wide">LPPM UnivSM</p>
+          <p class="text-gold-400 text-[11px] font-medium tracking-widest">Universitas Sapta Mandiri</p>
+        </div>
+      </a>
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-0.5 text-sm font-medium">
+        <a href="index.html" data-nav class="px-3 py-2 text-gold-300 font-semibold hover:bg-white/10 rounded-lg transition-colors">Beranda</a>
+        <div class="dropdown">
+          <button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Profil LPPM <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="dropdown-menu">
+            <a href="profil.html#sejarah" class="dropdown-item"><i class="ri-history-line w-4 text-navy-600"></i>Sejarah LPPM</a>
+            <a href="profil.html#visi-misi" class="dropdown-item"><i class="ri-eye-line w-4 text-navy-600"></i>Visi, Misi &amp; Tujuan</a>
+            <a href="profil.html#struktur" class="dropdown-item"><i class="ri-organization-chart w-4 text-navy-600"></i>Struktur Organisasi</a>
+            <a href="profil.html#tugas" class="dropdown-item"><i class="ri-task-line w-4 text-navy-600"></i>Tugas &amp; Fungsi</a>
+            <a href="profil.html#rkt" class="dropdown-item"><i class="ri-calendar-check-line w-4 text-navy-600"></i>Program Kerja (RKT)</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Tridharma <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="dropdown-menu">
+            <a href="penelitian.html" class="dropdown-item"><i class="ri-microscope-line w-4 text-navy-600"></i>Penelitian</a>
+            <a href="pkm.html" class="dropdown-item"><i class="ri-community-line w-4 text-navy-600"></i>Pengabdian Masyarakat</a>
+            <a href="roadmap.html" class="dropdown-item"><i class="ri-road-map-line w-4 text-navy-600"></i>Roadmap Riset &amp; PkM</a>
+            <a href="publikasi.html" class="dropdown-item"><i class="ri-book-open-line w-4 text-navy-600"></i>Publikasi &amp; Luaran</a>
+            <a href="hibah.html" class="dropdown-item"><i class="ri-funds-line w-4 text-navy-600"></i>Hibah &amp; Insentif</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Layanan <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+          <div class="dropdown-menu">
+            <a href="dokumen.html" class="dropdown-item"><i class="ri-file-list-3-line w-4 text-navy-600"></i>Dokumen &amp; Template</a>
+            <a href="monev.html" class="dropdown-item"><i class="ri-bar-chart-box-line w-4 text-navy-600"></i>Monitoring &amp; Evaluasi</a>
+            <a href="kerjasama.html" class="dropdown-item"><i class="ri-handshake-line w-4 text-navy-600"></i>Kerja Sama</a>
+            <a href="repository.html" class="dropdown-item"><i class="ri-folder-shield-2-line w-4 text-navy-600"></i>Repository Bukti Kinerja</a>
+          </div>
+        </div>
+        <a href="berita.html" data-nav class="px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Berita &amp; Agenda</a>
+        <a href="kontak.html" data-nav class="px-3 py-2 text-white/90 hover:text-white hover:bg-white/10 rounded-lg transition-colors">Kontak</a>
+      </div>
+      <!-- Hamburger -->
+      <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10" id="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg class="w-6 h-6 icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="w-6 h-6 icon-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="lg:hidden hidden bg-navy-900 border-t border-white/10" id="mobile-menu">
+    <div class="px-4 py-3 space-y-1 text-sm">
+      <a href="index.html" class="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-lg font-medium">Beranda</a>
+      <div><button data-mobile-acc="mob-profil" class="w-full flex items-center justify-between px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-lg font-medium">Profil LPPM <svg class="w-4 h-4 transition-transform" data-arrow fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+        <div id="mob-profil" class="hidden pl-4 mt-1 space-y-1">
+          <a href="profil.html#sejarah" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Sejarah LPPM</a>
+          <a href="profil.html#visi-misi" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Visi, Misi &amp; Tujuan</a>
+          <a href="profil.html#struktur" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Struktur Organisasi</a>
+          <a href="profil.html#rkt" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Program Kerja (RKT)</a>
+        </div>
+      </div>
+      <div><button data-mobile-acc="mob-tri" class="w-full flex items-center justify-between px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-lg font-medium">Tridharma <svg class="w-4 h-4 transition-transform" data-arrow fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+        <div id="mob-tri" class="hidden pl-4 mt-1 space-y-1">
+          <a href="penelitian.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Penelitian</a>
+          <a href="pkm.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Pengabdian Masyarakat</a>
+          <a href="roadmap.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Roadmap Riset &amp; PkM</a>
+          <a href="publikasi.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Publikasi &amp; Luaran</a>
+          <a href="hibah.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Hibah &amp; Insentif</a>
+        </div>
+      </div>
+      <div><button data-mobile-acc="mob-lay" class="w-full flex items-center justify-between px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-lg font-medium">Layanan <svg class="w-4 h-4 transition-transform" data-arrow fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button>
+        <div id="mob-lay" class="hidden pl-4 mt-1 space-y-1">
+          <a href="dokumen.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Dokumen &amp; Template</a>
+          <a href="monev.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Monitoring &amp; Evaluasi</a>
+          <a href="kerjasama.html" class="block px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg text-xs">Kerja Sama</a>
+        </div>
+      </div>
+      <a href="berita.html" class="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-lg font-medium">Berita &amp; Agenda</a>
+      <a href="kontak.html" class="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-lg font-medium">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page-content">
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="relative min-h-[88vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="assets/img/background.png" alt="Kampus UnivSM" class="w-full h-full object-cover object-center">
+      <div class="hero-overlay absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="max-w-2xl">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-gold-500/20 border border-gold-400/40 rounded-full text-gold-300 text-xs font-semibold tracking-wider mb-6 fade-up">
+          <i class="ri-award-line"></i> LEMBAGA PENELITIAN DAN PENGABDIAN KEPADA MASYARAKAT
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5 fade-up" data-delay="100">
+          Universitas<br><span class="text-gold-400">Sapta Mandiri</span>
+        </h1>
+        <p class="text-white/80 text-lg sm:text-xl leading-relaxed mb-8 fade-up" data-delay="200">
+          Inovatif &middot; Kolaboratif &middot; Berdampak<br>
+          <span class="text-base text-white/60 font-light">Mendorong penelitian berkualitas dan pengabdian masyarakat berbasis riset, berlandaskan nilai moral dan spiritual menuju daya saing nasional dan internasional.</span>
+        </p>
+        <div class="flex flex-wrap gap-3 fade-up" data-delay="300">
+          <a href="penelitian.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-200">
+            <i class="ri-microscope-line"></i> Lihat Penelitian
+          </a>
+          <a href="dokumen.html" class="inline-flex items-center gap-2 px-6 py-3 bg-white/15 hover:bg-white/25 text-white font-semibold rounded-xl border border-white/40 backdrop-blur-sm transition-all duration-200">
+            <i class="ri-download-2-line"></i> Unduh Template
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50 text-xs">
+      <span>Gulir ke bawah</span>
+      <svg class="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• STATISTIK â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="bg-navy-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+        <div class="fade-up" data-delay="0">
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="45">0</div>
+          <p class="text-white/70 text-sm mt-1 font-medium">Penelitian Aktif</p>
+        </div>
+        <div class="fade-up" data-delay="100">
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="38">0</div>
+          <p class="text-white/70 text-sm mt-1 font-medium">Kegiatan PkM</p>
+        </div>
+        <div class="fade-up" data-delay="200">
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="127">0</div>
+          <p class="text-white/70 text-sm mt-1 font-medium">Publikasi</p>
+        </div>
+        <div class="fade-up" data-delay="300">
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="24">0</div>
+          <p class="text-white/70 text-sm mt-1 font-medium">HKI Terdaftar</p>
+        </div>
+        <div class="fade-up col-span-2 sm:col-span-1" data-delay="400">
+          <div class="text-3xl sm:text-4xl font-extrabold text-gold-400 counter-val" data-counter="18">0</div>
+          <p class="text-white/70 text-sm mt-1 font-medium">Mitra Aktif</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• AKSES CEPAT â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="py-14 bg-navy-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-navy-800 title-bar center">Akses Cepat</h2>
+        <p class="text-gray-500 mt-4">Layanan dan informasi yang paling sering diakses</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <a href="penelitian.html" class="flex flex-col items-center gap-3 p-5 bg-white rounded-2xl shadow-sm hover:shadow-md card-hover border border-navy-100 fade-up" data-delay="0">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-2xl"><i class="ri-microscope-line"></i></div>
+          <span class="text-sm font-semibold text-navy-800 text-center leading-tight">Pedoman Penelitian</span>
+        </a>
+        <a href="pkm.html" class="flex flex-col items-center gap-3 p-5 bg-white rounded-2xl shadow-sm hover:shadow-md card-hover border border-navy-100 fade-up" data-delay="80">
+          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 text-2xl"><i class="ri-community-line"></i></div>
+          <span class="text-sm font-semibold text-navy-800 text-center leading-tight">Pedoman PkM</span>
+        </a>
+        <a href="dokumen.html" class="flex flex-col items-center gap-3 p-5 bg-white rounded-2xl shadow-sm hover:shadow-md card-hover border border-navy-100 fade-up" data-delay="160">
+          <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 text-2xl"><i class="ri-file-download-line"></i></div>
+          <span class="text-sm font-semibold text-navy-800 text-center leading-tight">Template Dokumen</span>
+        </a>
+        <a href="hibah.html" class="flex flex-col items-center gap-3 p-5 bg-white rounded-2xl shadow-sm hover:shadow-md card-hover border border-navy-100 fade-up" data-delay="240">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-2xl"><i class="ri-funds-line"></i></div>
+          <span class="text-sm font-semibold text-navy-800 text-center leading-tight">Hibah &amp; Insentif</span>
+        </a>
+        <a href="monev.html" class="flex flex-col items-center gap-3 p-5 bg-white rounded-2xl shadow-sm hover:shadow-md card-hover border border-navy-100 fade-up" data-delay="320">
+          <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-2xl"><i class="ri-bar-chart-box-line"></i></div>
+          <span class="text-sm font-semibold text-navy-800 text-center leading-tight">Monev Kegiatan</span>
+        </a>
+        <a href="kontak.html" class="flex flex-col items-center gap-3 p-5 bg-white rounded-2xl shadow-sm hover:shadow-md card-hover border border-navy-100 fade-up" data-delay="400">
+          <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center text-teal-600 text-2xl"><i class="ri-customer-service-2-line"></i></div>
+          <span class="text-sm font-semibold text-navy-800 text-center leading-tight">Hubungi LPPM</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• BIDANG FOKUS RISET â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-navy-800 title-bar center">Bidang Fokus Riset</h2>
+        <p class="text-gray-500 mt-4 max-w-xl mx-auto">Tujuh bidang unggulan sesuai Roadmap Penelitian UnivSM 2025&mdash;2029</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Card 1 -->
+        <div class="p-6 rounded-2xl border-2 border-blue-100 bg-gradient-to-br from-blue-50 to-white card-hover fade-up" data-delay="0">
+          <div class="w-11 h-11 bg-blue-600 rounded-xl flex items-center justify-center text-white text-xl mb-4"><i class="ri-graduation-cap-line"></i></div>
+          <h3 class="font-bold text-navy-800 mb-2 text-sm">Pendidikan &amp; Karakter Bangsa</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Inovasi pembelajaran, pengembangan kurikulum, dan penguatan karakter berbasis nilai moral.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="p-6 rounded-2xl border-2 border-purple-100 bg-gradient-to-br from-purple-50 to-white card-hover fade-up" data-delay="80">
+          <div class="w-11 h-11 bg-purple-600 rounded-xl flex items-center justify-center text-white text-xl mb-4"><i class="ri-computer-line"></i></div>
+          <h3 class="font-bold text-navy-800 mb-2 text-sm">TI &amp; Transformasi Digital</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Pengembangan sistem informasi, kecerdasan buatan, dan transformasi digital tata kelola.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="p-6 rounded-2xl border-2 border-green-100 bg-gradient-to-br from-green-50 to-white card-hover fade-up" data-delay="160">
+          <div class="w-11 h-11 bg-green-600 rounded-xl flex items-center justify-center text-white text-xl mb-4"><i class="ri-heart-pulse-line"></i></div>
+          <h3 class="font-bold text-navy-800 mb-2 text-sm">Kesehatan &amp; Kesejahteraan Masyarakat</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Riset kesehatan komunitas, promosi kesehatan, dan pemberdayaan masyarakat rentan.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="p-6 rounded-2xl border-2 border-orange-100 bg-gradient-to-br from-orange-50 to-white card-hover fade-up" data-delay="240">
+          <div class="w-11 h-11 bg-orange-500 rounded-xl flex items-center justify-center text-white text-xl mb-4"><i class="ri-store-2-line"></i></div>
+          <h3 class="font-bold text-navy-800 mb-2 text-sm">Pemberdayaan Ekonomi &amp; UMKM</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Pendampingan UMKM, kewirausahaan sosial, dan pengembangan ekonomi lokal.</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="p-6 rounded-2xl border-2 border-red-100 bg-gradient-to-br from-red-50 to-white card-hover fade-up" data-delay="0">
+          <div class="w-11 h-11 bg-red-600 rounded-xl flex items-center justify-center text-white text-xl mb-4"><i class="ri-scales-3-line"></i></div>
+          <h3 class="font-bold text-navy-800 mb-2 text-sm">Hukum, Tata Kelola &amp; Kebijakan Publik</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Kajian kebijakan, reformasi hukum, dan tata kelola pemerintahan yang akuntabel.</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="p-6 rounded-2xl border-2 border-teal-100 bg-gradient-to-br from-teal-50 to-white card-hover fade-up" data-delay="80">
+          <div class="w-11 h-11 bg-teal-600 rounded-xl flex items-center justify-center text-white text-xl mb-4"><i class="ri-building-2-line"></i></div>
+          <h3 class="font-bold text-navy-800 mb-2 text-sm">Manajemen Pendidikan &amp; TI Tata Kelola</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Sistem informasi pendidikan, akreditasi, dan manajemen mutu berbasis teknologi.</p>
+        </div>
+        <!-- Card 7 -->
+        <div class="p-6 rounded-2xl border-2 border-amber-100 bg-gradient-to-br from-amber-50 to-white card-hover fade-up" data-delay="160">
+          <div class="w-11 h-11 bg-amber-600 rounded-xl flex items-center justify-center text-white text-xl mb-4"><i class="ri-tools-line"></i></div>
+          <h3 class="font-bold text-navy-800 mb-2 text-sm">Manajemen &amp; Teknologi Konstruksi</h3>
+          <p class="text-gray-500 text-xs leading-relaxed">Material berkelanjutan, manajemen proyek konstruksi, dan inovasi infrastruktur.</p>
+        </div>
+        <!-- CTA Card -->
+        <div class="p-6 rounded-2xl border-2 border-dashed border-navy-300 bg-navy-50 flex flex-col items-center justify-center text-center card-hover fade-up" data-delay="240">
+          <i class="ri-road-map-line text-3xl text-navy-500 mb-3"></i>
+          <p class="text-sm font-semibold text-navy-700 mb-3">Lihat Roadmap Lengkap 2025&mdash;2029</p>
+          <a href="roadmap.html" class="inline-flex items-center gap-1 px-4 py-2 bg-navy-800 text-white text-xs font-semibold rounded-lg hover:bg-navy-700 transition-colors">
+            Roadmap <i class="ri-arrow-right-line"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PENGUMUMAN + BERITA â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- Pengumuman (1 col) -->
+        <div class="fade-up">
+          <h2 class="text-xl font-bold text-navy-800 title-bar mb-6">Pengumuman</h2>
+          <div class="space-y-3">
+            <a href="berita.html" class="flex gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-navy-200 hover:shadow-sm transition-all group">
+              <span class="flex-shrink-0 w-10 h-10 bg-gold-100 rounded-lg flex items-center justify-center text-gold-600"><i class="ri-notification-3-line"></i></span>
+              <div>
+                <p class="text-sm font-semibold text-navy-800 group-hover:text-navy-600 leading-snug">Batas Akhir Pengajuan Proposal Penelitian Internal 2026</p>
+                <p class="text-xs text-gray-400 mt-1"><i class="ri-calendar-line mr-1"></i>28 Juni 2026</p>
+              </div>
+            </a>
+            <a href="berita.html" class="flex gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-navy-200 hover:shadow-sm transition-all group">
+              <span class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600"><i class="ri-calendar-event-line"></i></span>
+              <div>
+                <p class="text-sm font-semibold text-navy-800 group-hover:text-navy-600 leading-snug">Jadwal Monev Tengah Semester Penelitian &amp; PkM</p>
+                <p class="text-xs text-gray-400 mt-1"><i class="ri-calendar-line mr-1"></i>15 Juli 2026</p>
+              </div>
+            </a>
+            <a href="berita.html" class="flex gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-navy-200 hover:shadow-sm transition-all group">
+              <span class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600"><i class="ri-award-line"></i></span>
+              <div>
+                <p class="text-sm font-semibold text-navy-800 group-hover:text-navy-600 leading-snug">Insentif Publikasi dan HKI Periode Semester Genap 2026</p>
+                <p class="text-xs text-gray-400 mt-1"><i class="ri-calendar-line mr-1"></i>1 Juli 2026</p>
+              </div>
+            </a>
+            <a href="berita.html" class="flex gap-3 p-4 bg-white rounded-xl border border-gray-100 hover:border-navy-200 hover:shadow-sm transition-all group">
+              <span class="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600"><i class="ri-briefcase-line"></i></span>
+              <div>
+                <p class="text-sm font-semibold text-navy-800 group-hover:text-navy-600 leading-snug">Pendaftaran Program Hibah Eksternal Dikti 2026/2027</p>
+                <p class="text-xs text-gray-400 mt-1"><i class="ri-calendar-line mr-1"></i>10 Agustus 2026</p>
+              </div>
+            </a>
+          </div>
+          <a href="berita.html" class="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-navy-700 hover:text-gold-600 transition-colors">
+            Semua Pengumuman <i class="ri-arrow-right-line"></i>
+          </a>
+        </div>
+
+        <!-- Berita Terbaru (2 col) -->
+        <div class="lg:col-span-2 fade-up" data-delay="150">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold text-navy-800 title-bar">Berita Terbaru</h2>
+            <a href="berita.html" class="text-sm font-semibold text-navy-600 hover:text-gold-600 transition-colors flex items-center gap-1">Lihat Semua <i class="ri-arrow-right-line"></i></a>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <!-- Berita 1 -->
+            <a href="berita.html" class="bg-white rounded-2xl border border-gray-100 hover:shadow-md card-hover overflow-hidden group">
+              <div class="h-40 bg-gradient-to-br from-blue-600 to-navy-800 flex items-center justify-center relative overflow-hidden">
+                <img src="assets/img/kampus-1.jpeg" alt="Workshop Publikasi" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 bg-gold-500 text-navy-900 text-[10px] font-bold px-2.5 py-1 rounded-full">WORKSHOP</span>
+              </div>
+              <div class="p-4">
+                <p class="text-[11px] text-gray-400 mb-1.5"><i class="ri-calendar-line mr-1"></i>3 Juni 2026</p>
+                <h4 class="text-sm font-bold text-navy-800 group-hover:text-navy-600 leading-snug mb-2">Workshop Penulisan Artikel Ilmiah Terindeks Scopus &amp; Sinta</h4>
+                <p class="text-xs text-gray-500 line-clamp-2">LPPM UnivSM menyelenggarakan workshop penulisan artikel untuk meningkatkan produktivitas publikasi dosen...</p>
+              </div>
+            </a>
+            <!-- Berita 2 -->
+            <a href="berita.html" class="bg-white rounded-2xl border border-gray-100 hover:shadow-md card-hover overflow-hidden group">
+              <div class="h-40 bg-gradient-to-br from-green-600 to-teal-800 flex items-center justify-center relative overflow-hidden">
+                <img src="assets/img/kampus-2.jpeg" alt="Hibah Penelitian" class="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500">
+                <span class="absolute top-3 left-3 bg-green-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">HIBAH</span>
+              </div>
+              <div class="p-4">
+                <p class="text-[11px] text-gray-400 mb-1.5"><i class="ri-calendar-line mr-1"></i>28 Mei 2026</p>
+                <h4 class="text-sm font-bold text-navy-800 group-hover:text-navy-600 leading-snug mb-2">Launching Hibah Penelitian Internal UnivSM 2026 Resmi Dibuka</h4>
+                <p class="text-xs text-gray-500 line-clamp-2">LPPM secara resmi membuka pendaftaran hibah penelitian internal untuk seluruh dosen UnivSM tahun anggaran 2026...</p>
+              </div>
+            </a>
+            <!-- Berita 3 -->
+            <a href="berita.html" class="bg-white rounded-2xl border border-gray-100 hover:shadow-md card-hover overflow-hidden group sm:col-span-2">
+              <div class="flex flex-col sm:flex-row">
+                <div class="sm:w-48 h-36 sm:h-auto bg-gradient-to-br from-purple-600 to-navy-800 flex-shrink-0 relative overflow-hidden">
+                  <div class="absolute inset-0 flex items-center justify-center text-white/30"><i class="ri-seminar-line text-6xl"></i></div>
+                  <span class="absolute top-3 left-3 bg-purple-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">SEMINAR</span>
+                </div>
+                <div class="p-4 flex-1">
+                  <p class="text-[11px] text-gray-400 mb-1.5"><i class="ri-calendar-line mr-1"></i>15 Mei 2026</p>
+                  <h4 class="text-sm font-bold text-navy-800 group-hover:text-navy-600 leading-snug mb-2">Seminar Nasional Tridharma UnivSM 2026: Riset untuk Negeri</h4>
+                  <p class="text-xs text-gray-500 line-clamp-2">Seminar nasional bertema "Sinergi Tridharma untuk Mewujudkan Pembangunan Berkelanjutan" dihadiri oleh ratusan peserta dari berbagai perguruan tinggi di Indonesia...</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• SAMBUTAN KETUA â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="fade-up">
+          <span class="text-xs font-bold text-gold-600 tracking-widest uppercase mb-3 block">Sambutan</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-navy-800 title-bar mb-6">Ketua LPPM UnivSM</h2>
+          <div class="space-y-4 text-gray-600 text-sm leading-relaxed">
+            <p>Assalamu'alaikum Wr. Wb.</p>
+            <p>Selamat datang di website resmi Lembaga Penelitian dan Pengabdian kepada Masyarakat (LPPM) Universitas Sapta Mandiri. LPPM hadir sebagai garda terdepan dalam mendorong terciptanya budaya riset yang inovatif, kolaboratif, dan berdampak nyata bagi masyarakat.</p>
+            <p>Melalui platform digital ini, kami menghadirkan layanan informasi, pengelolaan penelitian dan PkM, serta dokumentasi capaian Tridharma yang terintegrasi dan mudah diakses oleh seluruh sivitas akademika, mitra, dan masyarakat luas.</p>
+            <p>Kami berharap website ini menjadi sarana kolaborasi yang efektif dalam mewujudkan visi UnivSM sebagai universitas unggul berlandaskan nilai moral dan spiritual menuju daya saing nasional dan internasional pada tahun 2036.</p>
+            <p>Wassalamu'alaikum Wr. Wb.</p>
+          </div>
+          <div class="mt-6 pt-5 border-t border-gray-100">
+            <p class="font-bold text-navy-800">Anita Juniarti, M.Pd</p>
+            <p class="text-sm text-gray-500">Kepala LPPM Universitas Sapta Mandiri</p>
+          </div>
+        </div>
+        <div class="fade-up" data-delay="200">
+          <div class="relative">
+            <div class="absolute -top-4 -left-4 w-full h-full bg-navy-100 rounded-3xl"></div>
+            <div class="relative bg-gradient-to-br from-navy-800 to-navy-950 rounded-3xl p-8 text-white">
+              <i class="ri-double-quotes-l text-5xl text-gold-400/40 mb-4 block"></i>
+              <p class="text-lg font-medium leading-relaxed italic text-white/90">
+                "Menjadi pusat unggulan dalam penelitian dan pengabdian kepada masyarakat yang inovatif, berlandaskan nilai moral dan spiritual, serta berdaya saing nasional dan internasional pada tahun 2036."
+              </p>
+              <p class="mt-6 text-gold-400 text-sm font-semibold">&ndash; Visi LPPM UnivSM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• LINK PENTING â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="py-12 bg-navy-50 border-t border-navy-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h3 class="text-sm font-bold text-navy-700 uppercase tracking-widest mb-6 text-center">Tautan Penting</h3>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="https://sinta.kemdikbud.go.id" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:border-navy-400 hover:text-navy-800 transition-all shadow-sm hover:shadow"><i class="ri-external-link-line text-navy-500"></i> SINTA Kemdikbud</a>
+        <a href="https://pddikti.kemdikbud.go.id" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:border-navy-400 hover:text-navy-800 transition-all shadow-sm hover:shadow"><i class="ri-external-link-line text-navy-500"></i> PDDikti</a>
+        <a href="https://garuda.kemdikbud.go.id" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:border-navy-400 hover:text-navy-800 transition-all shadow-sm hover:shadow"><i class="ri-external-link-line text-navy-500"></i> Garuda Portal</a>
+        <a href="https://www.brin.go.id" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:border-navy-400 hover:text-navy-800 transition-all shadow-sm hover:shadow"><i class="ri-external-link-line text-navy-500"></i> BRIN</a>
+        <a href="https://lldikti.kemdikbud.go.id" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:border-navy-400 hover:text-navy-800 transition-all shadow-sm hover:shadow"><i class="ri-external-link-line text-navy-500"></i> LLDIKTI</a>
+        <a href="https://dgip.go.id" target="_blank" class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-xl border border-gray-200 text-sm font-medium text-gray-700 hover:border-navy-400 hover:text-navy-800 transition-all shadow-sm hover:shadow"><i class="ri-external-link-line text-navy-500"></i> DJKI (HKI)</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• FOOTER â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<footer class="bg-navy-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/img/logo-color.png" alt="Logo UnivSM" class="h-12 w-12 object-contain">
+          <div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div>
+        </div>
+        <p class="text-white/60 text-sm leading-relaxed mb-5">Mengelola dan memfasilitasi kegiatan penelitian dan pengabdian kepada masyarakat di lingkungan Universitas Sapta Mandiri.</p>
+        <div class="flex gap-2">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 bg-white/10 hover:bg-gold-500 rounded-full flex items-center justify-center transition-colors"><i class="ri-instagram-line"></i></a>
+          <a href="#" aria-label="YouTube" class="w-9 h-9 bg-white/10 hover:bg-gold-500 rounded-full flex items-center justify-center transition-colors"><i class="ri-youtube-line"></i></a>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 bg-white/10 hover:bg-gold-500 rounded-full flex items-center justify-center transition-colors"><i class="ri-facebook-circle-line"></i></a>
+          <a href="#" aria-label="WhatsApp" class="w-9 h-9 bg-white/10 hover:bg-gold-500 rounded-full flex items-center justify-center transition-colors"><i class="ri-whatsapp-line"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs mb-4 text-gold-400 uppercase tracking-widest">Tentang LPPM</h4>
+        <ul class="space-y-2.5 text-sm text-white/65">
+          <li><a href="profil.html#sejarah" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Sejarah LPPM</a></li>
+          <li><a href="profil.html#visi-misi" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Visi, Misi &amp; Tujuan</a></li>
+          <li><a href="profil.html#struktur" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Struktur Organisasi</a></li>
+          <li><a href="roadmap.html" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Roadmap Riset &amp; PkM</a></li>
+          <li><a href="profil.html#rkt" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Program Kerja (RKT)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs mb-4 text-gold-400 uppercase tracking-widest">Layanan</h4>
+        <ul class="space-y-2.5 text-sm text-white/65">
+          <li><a href="penelitian.html" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Penelitian</a></li>
+          <li><a href="pkm.html" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Pengabdian Masyarakat</a></li>
+          <li><a href="publikasi.html" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Publikasi &amp; Luaran</a></li>
+          <li><a href="dokumen.html" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Dokumen &amp; Template</a></li>
+          <li><a href="monev.html" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Monitoring &amp; Evaluasi</a></li>
+          <li><a href="kerjasama.html" class="hover:text-gold-400 transition-colors flex items-center gap-1.5"><i class="ri-arrow-right-s-line"></i>Kerja Sama</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs mb-4 text-gold-400 uppercase tracking-widest">Kontak</h4>
+        <ul class="space-y-3 text-sm text-white/65">
+          <li class="flex gap-2.5"><i class="ri-map-pin-line text-gold-400 flex-shrink-0 mt-0.5"></i><span>Jl. [Alamat Universitas Sapta Mandiri]</span></li>
+          <li class="flex gap-2.5 items-center"><i class="ri-phone-line text-gold-400 flex-shrink-0"></i><a href="tel:+62" class="hover:text-gold-400 transition-colors">(021) xxx-xxxx</a></li>
+          <li class="flex gap-2.5 items-center"><i class="ri-mail-line text-gold-400 flex-shrink-0"></i><a href="mailto:lppm@univsm.ac.id" class="hover:text-gold-400 transition-colors">lppm@univsm.ac.id</a></li>
+          <li class="flex gap-2.5 items-center"><i class="ri-time-line text-gold-400 flex-shrink-0"></i><span>Sen&mdash;Jum: 08.00&mdash;16.00 WIB</span></li>
+          <li class="flex gap-2.5 items-center"><i class="ri-global-line text-gold-400 flex-shrink-0"></i><a href="#" class="hover:text-gold-400 transition-colors">lppm.univsm.ac.id</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+      <span>Â&copy; 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</span>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-white/70 transition-colors">Kebijakan Privasi</a>
+        <a href="kontak.html" class="hover:text-white/70 transition-colors">Kontak</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Kembali ke atas" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40">
+  <i class="ri-arrow-up-line"></i>
+</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+

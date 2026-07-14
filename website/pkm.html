@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengabdian kepada Masyarakat — LPPM Universitas Sapta Mandiri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{navy:{50:'#eef1ff',100:'#e0e5ff',700:'#2d36bd',800:'#1d2b78',900:'#141d54',950:'#0c1237'},gold:{400:'#fbbf24',500:'#f0a500',600:'#d97706'}}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+<nav class="fixed top-0 inset-x-0 z-50 bg-navy-800" id="navbar"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex items-center justify-between h-16">
+  <a href="index.html" class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-10 w-10 object-contain"><div class="hidden sm:block leading-none"><p class="text-white font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-[11px]">Universitas Sapta Mandiri</p></div></a>
+  <div class="hidden lg:flex items-center gap-0.5 text-sm">
+    <a href="index.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Beranda</a>
+    <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Profil LPPM<svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="profil.html#sejarah" class="dropdown-item">Sejarah LPPM</a><a href="profil.html#visi-misi" class="dropdown-item">Visi, Misi &amp; Tujuan</a><a href="profil.html#struktur" class="dropdown-item">Struktur Organisasi</a></div></div>
+    <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-gold-300 font-semibold hover:bg-white/10 rounded-lg">Tridharma<svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="penelitian.html" class="dropdown-item">Penelitian</a><a href="pkm.html" class="dropdown-item font-semibold text-navy-800">Pengabdian Masyarakat</a><a href="roadmap.html" class="dropdown-item">Roadmap Riset &amp; PkM</a><a href="publikasi.html" class="dropdown-item">Publikasi &amp; Luaran</a><a href="hibah.html" class="dropdown-item">Hibah &amp; Insentif</a></div></div>
+    <div class="dropdown"><button class="dropdown-btn flex items-center gap-1 px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Layanan<svg class="w-3.5 h-3.5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></button><div class="dropdown-menu"><a href="dokumen.html" class="dropdown-item">Dokumen &amp; Template</a><a href="monev.html" class="dropdown-item">Monitoring &amp; Evaluasi</a><a href="kerjasama.html" class="dropdown-item">Kerja Sama</a></div></div>
+    <a href="berita.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Berita &amp; Agenda</a>
+    <a href="kontak.html" class="px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Kontak</a>
+  </div>
+  <button class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10" id="menu-btn"><svg class="w-6 h-6 icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="w-6 h-6 icon-close hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+</div></div>
+<div class="lg:hidden hidden bg-navy-900 border-t border-white/10" id="mobile-menu"><div class="px-4 py-3 space-y-1 text-sm"><a href="index.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Beranda</a><a href="penelitian.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Penelitian</a><a href="pkm.html" class="block px-3 py-2 text-gold-400 font-semibold hover:bg-white/10 rounded-lg">PkM</a><a href="publikasi.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Publikasi</a><a href="dokumen.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Dokumen</a><a href="kontak.html" class="block px-3 py-2 text-white/90 hover:bg-white/10 rounded-lg">Kontak</a></div></div>
+</nav>
+
+<main class="page-content">
+  <div class="page-header-bg py-10 px-4"><div class="max-w-7xl mx-auto">
+    <nav class="text-xs text-white/50 mb-3 flex items-center gap-2"><a href="index.html" class="hover:text-white/80">Beranda</a><span>/</span><span class="text-white/80">Pengabdian kepada Masyarakat</span></nav>
+    <h1 class="text-3xl font-bold text-white">Pengabdian kepada Masyarakat (PkM)</h1>
+    <p class="text-white/65 mt-2 text-sm">Layanan dan informasi program PkM berbasis riset dan kebutuhan nyata masyarakat</p>
+  </div></div>
+
+  <!-- STATS -->
+  <div class="bg-white border-b border-gray-100 py-5"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+    <div><p class="text-2xl font-extrabold text-navy-800" data-counter="38">0</p><p class="text-xs text-gray-500 mt-1">PkM Aktif 2026</p></div>
+    <div><p class="text-2xl font-extrabold text-navy-800" data-counter="112">0</p><p class="text-xs text-gray-500 mt-1">Total Kegiatan PkM</p></div>
+    <div><p class="text-2xl font-extrabold text-navy-800" data-counter="25">0</p><p class="text-xs text-gray-500 mt-1">Desa/Kelurahan Mitra</p></div>
+    <div><p class="text-2xl font-extrabold text-navy-800" data-counter="1840">0</p><p class="text-xs text-gray-500 mt-1">Masyarakat Terdampak</p></div>
+  </div></div></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div data-tabs>
+      <div class="flex flex-wrap gap-2 mb-8 p-1.5 bg-white rounded-2xl shadow-sm border border-gray-100 w-fit">
+        <button class="tab-btn" data-tab-btn="pedoman">Pedoman PkM</button>
+        <button class="tab-btn" data-tab-btn="skema">Skema PkM</button>
+        <button class="tab-btn" data-tab-btn="jadwal">Jadwal</button>
+        <button class="tab-btn" data-tab-btn="daftar">Daftar Kegiatan</button>
+        <button class="tab-btn" data-tab-btn="dampak">Dampak &amp; Dokumentasi</button>
+        <button class="tab-btn" data-tab-btn="template">Template</button>
+      </div>
+
+      <!-- PEDOMAN -->
+      <div data-tab-panel="pedoman" class="tab-panel">
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2 bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <h3 class="text-xl font-bold text-navy-800 mb-4">Pedoman PkM UnivSM</h3>
+            <div class="space-y-4 text-sm text-gray-700 leading-relaxed">
+              <p>Program Pengabdian kepada Masyarakat (PkM) UnivSM merupakan kegiatan sivitas akademika yang dilaksanakan secara terstruktur untuk memberdayakan dan mendampingi masyarakat berdasarkan hasil penelitian.</p>
+              <h4 class="font-bold text-navy-800">Prinsip Pelaksanaan PkM</h4>
+              <ul class="list-disc pl-5 space-y-1"><li>Berbasis hasil penelitian yang telah dilakukan</li><li>Sesuai kebutuhan nyata masyarakat sasaran</li><li>Berlandaskan nilai moral dan spiritual</li><li>Berorientasi pada dampak yang berkelanjutan</li><li>Melibatkan mahasiswa sebagai mitra pelaksana</li></ul>
+              <h4 class="font-bold text-navy-800">Ketentuan Umum</h4>
+              <ul class="list-disc pl-5 space-y-1"><li>Dosen tetap UnivSM wajib melaksanakan minimal 1 PkM per tahun akademik</li><li>PkM dapat dilakukan secara mandiri maupun berkelompok</li><li>Laporan akhir PkM wajib disertai dokumentasi foto dan surat keterangan mitra</li><li>Hasil PkM didiseminasikan melalui prosiding atau laporan publik</li></ul>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-navy-800 mb-4">Unduhan</h3>
+            <div class="space-y-3">
+              <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0 text-xl"><i class="ri-file-pdf-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Pedoman PkM 2026</p><p class="text-xs text-gray-500 mt-0.5">PDF · Versi terbaru</p></div></a>
+              <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0 text-xl"><i class="ri-file-word-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Template Proposal PkM</p><p class="text-xs text-gray-500 mt-0.5">DOCX · Edisi 2026</p></div></a>
+              <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0 text-xl"><i class="ri-file-word-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Template Laporan PkM</p><p class="text-xs text-gray-500 mt-0.5">DOCX · Edisi 2026</p></div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKEMA -->
+      <div data-tab-panel="skema" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Skema Program PkM</h3>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 card-hover"><div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center text-green-700 mb-4"><i class="ri-user-line text-lg"></i></div><h4 class="font-bold text-navy-800 mb-2">PkM Mandiri</h4><p class="text-xs text-gray-500 mb-4">Kegiatan pengabdian oleh satu dosen di lingkungan masyarakat sekitar kampus.</p><div class="space-y-1.5 text-xs text-gray-600"><div class="flex gap-2"><i class="ri-money-dollar-circle-line text-gold-500"></i><span>Dana: Rp 2.000.000 – 4.000.000</span></div><div class="flex gap-2"><i class="ri-time-line text-gold-500"></i><span>Durasi: 4–6 bulan</span></div><div class="flex gap-2"><i class="ri-file-text-line text-gold-500"></i><span>Luaran: Laporan + prosiding</span></div></div></div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 card-hover"><div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-700 mb-4"><i class="ri-microscope-line text-lg"></i></div><h4 class="font-bold text-navy-800 mb-2">PkM Berbasis Riset</h4><p class="text-xs text-gray-500 mb-4">PkM yang merupakan implementasi langsung dari hasil penelitian dosen kepada masyarakat.</p><div class="space-y-1.5 text-xs text-gray-600"><div class="flex gap-2"><i class="ri-money-dollar-circle-line text-gold-500"></i><span>Dana: Rp 5.000.000 – 10.000.000</span></div><div class="flex gap-2"><i class="ri-time-line text-gold-500"></i><span>Durasi: 6 bulan</span></div><div class="flex gap-2"><i class="ri-file-text-line text-gold-500"></i><span>Luaran: Artikel + produk/modul</span></div></div></div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 card-hover"><div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center text-purple-700 mb-4"><i class="ri-graduation-cap-line text-lg"></i></div><h4 class="font-bold text-navy-800 mb-2">PkM KKN-Tematik</h4><p class="text-xs text-gray-500 mb-4">Kuliah Kerja Nyata tematik yang diintegrasikan dengan tema PkM dosen dan program studi.</p><div class="space-y-1.5 text-xs text-gray-600"><div class="flex gap-2"><i class="ri-group-line text-gold-500"></i><span>Peserta: Dosen + mahasiswa KKN</span></div><div class="flex gap-2"><i class="ri-time-line text-gold-500"></i><span>Durasi: 1 semester</span></div><div class="flex gap-2"><i class="ri-file-text-line text-gold-500"></i><span>Luaran: Laporan + produk dampak</span></div></div></div>
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 card-hover"><div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center text-orange-700 mb-4"><i class="ri-handshake-line text-lg"></i></div><h4 class="font-bold text-navy-800 mb-2">PkM Kolaborasi Mitra</h4><p class="text-xs text-gray-500 mb-4">PkM bersama mitra pemerintah, industri, atau NGO dengan pembagian peran dan pendanaan.</p><div class="space-y-1.5 text-xs text-gray-600"><div class="flex gap-2"><i class="ri-money-dollar-circle-line text-gold-500"></i><span>Dana: Sharing UnivSM + mitra</span></div><div class="flex gap-2"><i class="ri-time-line text-gold-500"></i><span>Durasi: Sesuai MoU</span></div><div class="flex gap-2"><i class="ri-file-text-line text-gold-500"></i><span>Luaran: Dampak nyata + laporan</span></div></div></div>
+        </div>
+      </div>
+
+      <!-- JADWAL -->
+      <div data-tab-panel="jadwal" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Jadwal PkM 2026</h3>
+        <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+          <table class="data-table">
+            <thead><tr><th>No.</th><th>Tahapan</th><th>Tanggal</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td class="font-semibold">Sosialisasi Pedoman PkM</td><td>Maret 2026</td><td><span class="badge-selesai">Selesai</span></td></tr>
+              <tr><td>2</td><td class="font-semibold">Batas Pengajuan Proposal PkM</td><td>30 Juni 2026</td><td><span class="badge-aktif">Aktif</span></td></tr>
+              <tr><td>3</td><td class="font-semibold">Seleksi dan Penetapan Pelaksana</td><td>Juli 2026</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td>4</td><td class="font-semibold">Pelaksanaan Kegiatan PkM</td><td>Agustus – November 2026</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td>5</td><td class="font-semibold">Monitoring &amp; Evaluasi PkM</td><td>Oktober 2026</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+              <tr><td>6</td><td class="font-semibold">Laporan Akhir PkM</td><td>30 November 2026</td><td><span class="badge-proses">Akan Datang</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DAFTAR -->
+      <div data-tab-panel="daftar" class="tab-panel">
+        <div class="flex flex-col sm:flex-row gap-4 mb-6"><h3 class="text-xl font-bold text-navy-800 flex-1">Daftar Kegiatan PkM</h3><select class="form-input form-select w-auto text-sm"><option>Semua Tahun</option><option selected>2026</option><option>2025</option></select></div>
+        <div class="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
+          <table class="data-table">
+            <thead><tr><th>No.</th><th>Judul PkM</th><th>Ketua Pelaksana</th><th>Lokasi/Mitra</th><th>Tahun</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td class="font-medium">Pelatihan Literasi Digital untuk Ibu Rumah Tangga Pengusaha UMKM</td><td>Hendra Wijaya, M.M.</td><td>Kel. Harapan Jaya</td><td>2026</td><td><span class="badge-aktif">Aktif</span></td></tr>
+              <tr><td>2</td><td class="font-medium">Pendampingan Penyusunan Laporan Keuangan Sederhana bagi Pengurus BUMDES</td><td>Sri Lestari, M.Ak.</td><td>Desa Makmur Sejati</td><td>2026</td><td><span class="badge-aktif">Aktif</span></td></tr>
+              <tr><td>3</td><td class="font-medium">Sosialisasi Kesehatan Reproduksi Remaja Berbasis Nilai Spiritual</td><td>dr. Ratna Kumala, M.Kes.</td><td>SMA Negeri 5</td><td>2026</td><td><span class="badge-aktif">Aktif</span></td></tr>
+              <tr><td>4</td><td class="font-medium">Workshop Pengembangan Media Pembelajaran Inovatif untuk Guru SD</td><td>Dewi Kusuma, M.Pd.</td><td>Kec. Jatiasih</td><td>2025</td><td><span class="badge-selesai">Selesai</span></td></tr>
+              <tr><td>5</td><td class="font-medium">Penyuluhan Hukum Perlindungan Konsumen di Pasar Tradisional</td><td>Bambang Santoso, S.H., M.H.</td><td>Pasar Induk Kramat</td><td>2025</td><td><span class="badge-selesai">Selesai</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DAMPAK -->
+      <div data-tab-panel="dampak" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Dampak &amp; Dokumentasi PkM</h3>
+        <div class="grid sm:grid-cols-3 gap-4 mb-8">
+          <div class="p-5 bg-green-50 rounded-2xl text-center"><p class="text-3xl font-extrabold text-green-700" data-counter="1840">0</p><p class="text-xs text-gray-500 mt-1">Masyarakat Terdampak</p></div>
+          <div class="p-5 bg-blue-50 rounded-2xl text-center"><p class="text-3xl font-extrabold text-blue-700" data-counter="25">0</p><p class="text-xs text-gray-500 mt-1">Lokasi PkM</p></div>
+          <div class="p-5 bg-purple-50 rounded-2xl text-center"><p class="text-3xl font-extrabold text-purple-700" data-counter="18">0</p><p class="text-xs text-gray-500 mt-1">Mitra Aktif</p></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden card-hover"><div class="h-36 bg-gradient-to-br from-green-600 to-teal-800 flex items-center justify-center"><i class="ri-community-line text-5xl text-white/30"></i></div><div class="p-4"><span class="text-xs font-semibold text-green-600 uppercase tracking-wider">UMKM</span><h4 class="font-bold text-navy-800 text-sm mt-1 mb-2">Pelatihan Digital Marketing UMKM Harapan Jaya</h4><p class="text-xs text-gray-500">45 pelaku UMKM mendapat pelatihan pemasaran digital, omset rata-rata naik 30% dalam 3 bulan.</p></div></div>
+          <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden card-hover"><div class="h-36 bg-gradient-to-br from-blue-600 to-navy-800 flex items-center justify-center"><i class="ri-graduation-cap-line text-5xl text-white/30"></i></div><div class="p-4"><span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">PENDIDIKAN</span><h4 class="font-bold text-navy-800 text-sm mt-1 mb-2">Workshop Media Pembelajaran Guru SD Jatiasih</h4><p class="text-xs text-gray-500">60 guru SD meningkat kompetensinya dalam pengembangan media interaktif berbasis teknologi.</p></div></div>
+          <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden card-hover"><div class="h-36 bg-gradient-to-br from-orange-500 to-red-700 flex items-center justify-center"><i class="ri-heart-pulse-line text-5xl text-white/30"></i></div><div class="p-4"><span class="text-xs font-semibold text-orange-600 uppercase tracking-wider">KESEHATAN</span><h4 class="font-bold text-navy-800 text-sm mt-1 mb-2">Sosialisasi Kesehatan Remaja Berbasis Nilai Spiritual</h4><p class="text-xs text-gray-500">320 siswa SMA mendapat edukasi kesehatan reproduksi integratif berbasis nilai-nilai keagamaan.</p></div></div>
+        </div>
+      </div>
+
+      <!-- TEMPLATE -->
+      <div data-tab-panel="template" class="tab-panel">
+        <h3 class="text-xl font-bold text-navy-800 mb-6">Template &amp; Dokumen PkM</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0 text-xl"><i class="ri-file-word-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Template Proposal PkM</p><p class="text-xs text-gray-400 mt-0.5">DOCX · Edisi 2026</p></div></a>
+          <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 flex-shrink-0 text-xl"><i class="ri-file-word-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Template Laporan Kemajuan PkM</p><p class="text-xs text-gray-400 mt-0.5">DOCX · Edisi 2026</p></div></a>
+          <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0 text-xl"><i class="ri-file-word-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Template Laporan Akhir PkM</p><p class="text-xs text-gray-400 mt-0.5">DOCX · Edisi 2026</p></div></a>
+          <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 flex-shrink-0 text-xl"><i class="ri-book-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Format Logbook PkM</p><p class="text-xs text-gray-400 mt-0.5">DOCX · Edisi 2026</p></div></a>
+          <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 flex-shrink-0 text-xl"><i class="ri-file-text-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Surat Keterangan Mitra PkM</p><p class="text-xs text-gray-400 mt-0.5">DOCX · Edisi 2026</p></div></a>
+          <a href="dokumen.html" class="doc-card group"><div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center text-teal-600 flex-shrink-0 text-xl"><i class="ri-file-text-line"></i></div><div><p class="text-sm font-semibold text-navy-800">Berita Acara Monev PkM</p><p class="text-xs text-gray-400 mt-0.5">DOCX · Edisi 2026</p></div></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 bg-gradient-to-r from-green-800 to-teal-900 rounded-2xl p-8 text-white flex flex-col sm:flex-row items-center justify-between gap-5">
+      <div><h4 class="font-bold text-lg mb-1">Ingin Berkontribusi melalui PkM?</h4><p class="text-white/70 text-sm">Hubungi LPPM untuk konsultasi proposal dan informasi skema pendanaan PkM terbaru.</p></div>
+      <div class="flex flex-wrap gap-3"><a href="kontak.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-500 hover:bg-gold-400 text-navy-900 font-bold rounded-xl transition-colors whitespace-nowrap"><i class="ri-customer-service-2-line"></i>Konsultasi LPPM</a><a href="dokumen.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/15 hover:bg-white/25 text-white font-semibold rounded-xl border border-white/30 transition-colors whitespace-nowrap"><i class="ri-download-2-line"></i>Unduh Template</a></div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-navy-900 text-white mt-8"><div class="max-w-7xl mx-auto px-4 py-10"><div class="flex flex-col sm:flex-row items-center justify-between gap-4"><div class="flex items-center gap-3"><img src="assets/img/logo-color.png" alt="Logo" class="h-9 w-9 object-contain"><div><p class="font-bold text-sm">LPPM UnivSM</p><p class="text-gold-400 text-xs">Universitas Sapta Mandiri</p></div></div><div class="flex flex-wrap gap-5 text-sm text-white/60"><a href="index.html" class="hover:text-gold-400">Beranda</a><a href="penelitian.html" class="hover:text-gold-400">Penelitian</a><a href="publikasi.html" class="hover:text-gold-400">Publikasi</a><a href="dokumen.html" class="hover:text-gold-400">Dokumen</a><a href="kontak.html" class="hover:text-gold-400">Kontak</a></div></div><div class="mt-6 pt-5 border-t border-white/10 text-center text-xs text-white/35">© 2026 LPPM Universitas Sapta Mandiri. Hak Cipta Dilindungi.</div></div></footer>
+<button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-navy-800 hover:bg-gold-500 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 opacity-0 z-40"><i class="ri-arrow-up-line"></i></button>
+<script src="assets/js/main.js"></script>
+</body></html>
