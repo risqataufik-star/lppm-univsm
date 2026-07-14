@@ -212,13 +212,23 @@ function initForms() {
       btn.disabled = true;
 
       const fd = new FormData(form);
+      // Formulir kerjasama.html punya field "Nama Institusi/Mitra" dan "Jenis Mitra"
+      // yang tidak ada kolomnya di pesanSchema — dilipat ke subjek/isi di sini agar
+      // tetap terkirim tanpa mengubah bentuk payload {nama,email,telepon,jenis,subjek,isi,website}.
+      const institusi = fd.get('institusi');
+      const jenisMitra = fd.get('jenis_mitra');
+      let subjek = fd.get('subjek') || '';
+      let isi = fd.get('isi') || '';
+      if (institusi) subjek = 'Kerjasama - ' + institusi + (subjek ? ' — ' + subjek : '');
+      if (jenisMitra) isi = 'Jenis Mitra: ' + jenisMitra + '\n\n' + isi;
+
       const body = {
         nama: fd.get('nama') || '',
         email: fd.get('email') || '',
         telepon: fd.get('telepon') || '',
         jenis: form.dataset.jenis || 'kontak',
-        subjek: fd.get('subjek') || '',
-        isi: fd.get('isi') || '',
+        subjek: subjek,
+        isi: isi,
         website: fd.get('website') || '', // honeypot
       };
 
