@@ -1,6 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import {
+  PageHeader,
+  Alert,
+  TableEmptyRow,
+  inputCls,
+  labelCls,
+  cardCls,
+  btnPrimary,
+  btnGhost,
+  theadCls,
+  thCls,
+  tdCls,
+  rowEditBtn,
+  rowDeleteBtn,
+} from '@/components/admin/ui';
+import { NewsIcon, PlusIcon, EditIcon, TrashIcon } from '@/components/admin/icons';
 
 type Berita = {
   id: string;
@@ -29,9 +45,6 @@ const emptyForm = (): Partial<Berita> => ({
   tanggal: new Date().toISOString().slice(0, 10),
   published: false,
 });
-
-const inputCls =
-  'w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-navy-800 focus:ring-2 focus:ring-navy-800/20 outline-none';
 
 export default function BeritaAdminPage() {
   const [rows, setRows] = useState<Berita[]>([]);
@@ -104,28 +117,29 @@ export default function BeritaAdminPage() {
   }
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-navy-800">Berita &amp; Agenda</h1>
-        <button
-          onClick={() => setForm(emptyForm())}
-          className="rounded-lg bg-navy-800 hover:bg-navy-700 text-white text-sm font-semibold px-4 py-2"
-        >
-          + Tulis Baru
-        </button>
-      </div>
+    <div className="max-w-6xl">
+      <PageHeader
+        icon={<NewsIcon className="w-6 h-6" />}
+        title="Berita & Agenda"
+        subtitle="Kelola berita, pengumuman, dan agenda situs LPPM."
+        action={
+          <button onClick={() => setForm(emptyForm())} className={btnPrimary}>
+            <PlusIcon className="w-4 h-4" /> Tulis Baru
+          </button>
+        }
+      />
 
       {form && (
-        <form onSubmit={save} className="bg-white rounded-2xl border border-gray-200 p-6 mb-6 space-y-4">
+        <form onSubmit={save} className={`${cardCls} p-6 mb-6 space-y-4`}>
           <h2 className="font-bold text-navy-800">{form.id ? 'Edit' : 'Tulis'} Berita</h2>
-          {error && <p className="rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2">{error}</p>}
+          {error && <Alert kind="error">{error}</Alert>}
           <div className="grid sm:grid-cols-3 gap-4">
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium mb-1">Judul</label>
+              <label className={labelCls}>Judul</label>
               <input className={inputCls} value={form.judul ?? ''} onChange={(e) => set('judul', e.target.value)} required />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Kategori</label>
+              <label className={labelCls}>Kategori</label>
               <select className={inputCls} value={form.kategori} onChange={(e) => set('kategori', e.target.value as Berita['kategori'])}>
                 {KATEGORI.map((k) => <option key={k.value} value={k.value}>{k.label}</option>)}
               </select>
@@ -133,80 +147,89 @@ export default function BeritaAdminPage() {
           </div>
           <div className="grid sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Tanggal</label>
+              <label className={labelCls}>Tanggal</label>
               <input type="date" className={inputCls} value={form.tanggal ?? ''} onChange={(e) => set('tanggal', e.target.value)} required />
             </div>
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium mb-1">Gambar (opsional, maks 3 MB)</label>
+              <label className={labelCls}>Gambar (opsional, maks 3 MB)</label>
               <input
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
-                className="text-sm"
+                className="block w-full text-sm text-gray-500 file:mr-3 file:rounded-lg file:border-0 file:bg-navy-50 file:px-3 file:py-2 file:text-sm file:font-medium file:text-navy-700 hover:file:bg-navy-100 file:cursor-pointer"
                 onChange={(e) => e.target.files?.[0] && uploadGambar(e.target.files[0])}
               />
               {form.gambar_url && (
-                <img src={form.gambar_url} alt="Pratinjau" className="mt-2 h-20 rounded-lg object-cover" />
+                <img src={form.gambar_url} alt="Pratinjau" className="mt-2 h-20 rounded-lg object-cover border border-gray-200" />
               )}
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Ringkasan</label>
+            <label className={labelCls}>Ringkasan</label>
             <input className={inputCls} value={form.ringkasan ?? ''} onChange={(e) => set('ringkasan', e.target.value)} />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">
-              Konten (markdown sederhana: `## Judul`, `**tebal**`, `- daftar`)
+            <label className={labelCls}>
+              Konten <span className="font-normal text-gray-400">(markdown sederhana: ## Judul, **tebal**, - daftar)</span>
             </label>
             <textarea rows={10} className={inputCls} value={form.konten ?? ''} onChange={(e) => set('konten', e.target.value)} />
           </div>
-          <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" checked={!!form.published} onChange={(e) => set('published', e.target.checked)} />
+          <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer select-none">
+            <input type="checkbox" className="w-4 h-4 rounded accent-navy-800" checked={!!form.published} onChange={(e) => set('published', e.target.checked)} />
             Publikasikan sekarang
           </label>
           <div className="flex gap-2">
-            <button type="submit" disabled={busy} className="rounded-lg bg-navy-800 hover:bg-navy-700 disabled:opacity-60 text-white text-sm font-semibold px-4 py-2">
+            <button type="submit" disabled={busy} className={btnPrimary}>
               {busy ? 'Menyimpan...' : 'Simpan'}
             </button>
-            <button type="button" onClick={() => setForm(null)} className="rounded-lg border border-gray-300 text-sm px-4 py-2">
+            <button type="button" onClick={() => setForm(null)} className={btnGhost}>
               Batal
             </button>
           </div>
         </form>
       )}
 
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+      <div className={`${cardCls} overflow-x-auto`}>
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-navy-800 text-white text-left">
-              <th className="px-4 py-3 font-medium">Judul</th>
-              <th className="px-4 py-3 font-medium">Kategori</th>
-              <th className="px-4 py-3 font-medium">Tanggal</th>
-              <th className="px-4 py-3 font-medium">Status</th>
-              <th className="px-4 py-3 font-medium">Aksi</th>
+            <tr className={theadCls}>
+              <th className={thCls}>Judul</th>
+              <th className={thCls}>Kategori</th>
+              <th className={thCls}>Tanggal</th>
+              <th className={thCls}>Status</th>
+              <th className={`${thCls} text-right`}>Aksi</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {!rows.length && (
-              <tr><td colSpan={5} className="px-4 py-8 text-center text-gray-400">Belum ada berita.</td></tr>
+              <TableEmptyRow colSpan={5} icon={<NewsIcon className="w-6 h-6" />} text="Belum ada berita." />
             )}
             {rows.map((b) => (
-              <tr key={b.id}>
-                <td className="px-4 py-3 font-medium text-gray-800">{b.judul}</td>
-                <td className="px-4 py-3 capitalize">{b.kategori}</td>
-                <td className="px-4 py-3">{new Date(b.tanggal + 'T00:00:00').toLocaleDateString('id-ID')}</td>
-                <td className="px-4 py-3">
+              <tr key={b.id} className="hover:bg-gray-50 transition-colors">
+                <td className={`${tdCls} font-medium text-gray-800`}>{b.judul}</td>
+                <td className={`${tdCls} capitalize`}>{b.kategori}</td>
+                <td className={tdCls}>{new Date(b.tanggal + 'T00:00:00').toLocaleDateString('id-ID')}</td>
+                <td className={tdCls}>
                   <button
                     onClick={() => togglePublish(b)}
-                    className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                      b.published ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                    title="Klik untuk mengubah status"
+                    className={`text-xs font-semibold px-2.5 py-1 rounded-full transition cursor-pointer ${
+                      b.published
+                        ? 'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'
+                        : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
                     }`}
                   >
                     {b.published ? 'Tayang' : 'Draf'}
                   </button>
                 </td>
-                <td className="px-4 py-3 space-x-3 whitespace-nowrap">
-                  <button onClick={() => setForm(b)} className="text-navy-600 hover:underline">Edit</button>
-                  <button onClick={() => remove(b)} className="text-red-600 hover:underline">Hapus</button>
+                <td className={`${tdCls} whitespace-nowrap text-right`}>
+                  <div className="inline-flex gap-1">
+                    <button onClick={() => setForm(b)} className={rowEditBtn}>
+                      <EditIcon className="w-3.5 h-3.5" /> Edit
+                    </button>
+                    <button onClick={() => remove(b)} className={rowDeleteBtn}>
+                      <TrashIcon className="w-3.5 h-3.5" /> Hapus
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

@@ -1,6 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import {
+  PageHeader,
+  Alert,
+  TableEmptyRow,
+  inputCls,
+  labelCls,
+  cardCls,
+  btnPrimary,
+  btnGhost,
+  theadCls,
+  thCls,
+  tdCls,
+  rowEditBtn,
+  rowDeleteBtn,
+} from '@/components/admin/ui';
+import { DocIcon, UploadIcon, EditIcon, TrashIcon, DownloadIcon } from '@/components/admin/icons';
 
 type Dokumen = {
   id: string;
@@ -20,9 +36,6 @@ const KATEGORI = [
   { value: 'laporan', label: 'Laporan' },
   { value: 'lainnya', label: 'Lainnya' },
 ];
-
-const inputCls =
-  'w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-navy-800 focus:ring-2 focus:ring-navy-800/20 outline-none';
 
 const fmtSize = (b: number) =>
   b > 1048576 ? `${(b / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(b / 1024))} KB`;
@@ -96,90 +109,98 @@ export default function DokumenAdminPage() {
   }
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-navy-800">Dokumen &amp; Template</h1>
-        <button
-          onClick={() => setForm({ kategori: 'pedoman' })}
-          className="rounded-lg bg-navy-800 hover:bg-navy-700 text-white text-sm font-semibold px-4 py-2"
-        >
-          + Unggah Dokumen
-        </button>
-      </div>
+    <div className="max-w-6xl">
+      <PageHeader
+        icon={<DocIcon className="w-6 h-6" />}
+        title="Dokumen & Template"
+        subtitle="Unggah pedoman, template, SK, dan laporan untuk pusat unduhan."
+        action={
+          <button onClick={() => setForm({ kategori: 'pedoman' })} className={btnPrimary}>
+            <UploadIcon className="w-4 h-4" /> Unggah Dokumen
+          </button>
+        }
+      />
 
       {form && (
-        <form onSubmit={save} className="bg-white rounded-2xl border border-gray-200 p-6 mb-6 space-y-4">
+        <form onSubmit={save} className={`${cardCls} p-6 mb-6 space-y-4`}>
           <h2 className="font-bold text-navy-800">{form.id ? 'Edit' : 'Unggah'} Dokumen</h2>
-          {error && <p className="rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2">{error}</p>}
+          {error && <Alert kind="error">{error}</Alert>}
           <div className="grid sm:grid-cols-3 gap-4">
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium mb-1">Judul</label>
+              <label className={labelCls}>Judul</label>
               <input className={inputCls} value={form.judul ?? ''} onChange={(e) => set('judul', e.target.value)} required />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Kategori</label>
+              <label className={labelCls}>Kategori</label>
               <select className={inputCls} value={form.kategori} onChange={(e) => set('kategori', e.target.value as Dokumen['kategori'])}>
                 {KATEGORI.map((k) => <option key={k.value} value={k.value}>{k.label}</option>)}
               </select>
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Deskripsi</label>
+            <label className={labelCls}>Deskripsi</label>
             <input className={inputCls} value={form.deskripsi ?? ''} onChange={(e) => set('deskripsi', e.target.value)} />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">File (PDF/DOC/DOCX/XLS/XLSX, maks 10 MB)</label>
+            <label className={labelCls}>File (PDF/DOC/DOCX/XLS/XLSX, maks 10 MB)</label>
             <input
               type="file"
               accept=".pdf,.doc,.docx,.xls,.xlsx"
-              className="text-sm"
+              className="block w-full text-sm text-gray-500 file:mr-3 file:rounded-lg file:border-0 file:bg-navy-50 file:px-3 file:py-2 file:text-sm file:font-medium file:text-navy-700 hover:file:bg-navy-100 file:cursor-pointer"
               onChange={(e) => e.target.files?.[0] && uploadFile(e.target.files[0])}
             />
             {form.nama_file && (
-              <p className="mt-1 text-xs text-gray-500">
-                Terunggah: {form.nama_file} ({fmtSize(form.ukuran_bytes ?? 0)})
+              <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 rounded-lg px-2.5 py-1">
+                <DownloadIcon className="w-3.5 h-3.5" />
+                {form.nama_file} ({fmtSize(form.ukuran_bytes ?? 0)})
               </p>
             )}
           </div>
           <div className="flex gap-2">
-            <button type="submit" disabled={busy} className="rounded-lg bg-navy-800 hover:bg-navy-700 disabled:opacity-60 text-white text-sm font-semibold px-4 py-2">
+            <button type="submit" disabled={busy} className={btnPrimary}>
               {busy ? 'Menyimpan...' : 'Simpan'}
             </button>
-            <button type="button" onClick={() => setForm(null)} className="rounded-lg border border-gray-300 text-sm px-4 py-2">
+            <button type="button" onClick={() => setForm(null)} className={btnGhost}>
               Batal
             </button>
           </div>
         </form>
       )}
 
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+      <div className={`${cardCls} overflow-x-auto`}>
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-navy-800 text-white text-left">
-              <th className="px-4 py-3 font-medium">Judul</th>
-              <th className="px-4 py-3 font-medium">Kategori</th>
-              <th className="px-4 py-3 font-medium">File</th>
-              <th className="px-4 py-3 font-medium">Ukuran</th>
-              <th className="px-4 py-3 font-medium">Aksi</th>
+            <tr className={theadCls}>
+              <th className={thCls}>Judul</th>
+              <th className={thCls}>Kategori</th>
+              <th className={thCls}>File</th>
+              <th className={thCls}>Ukuran</th>
+              <th className={`${thCls} text-right`}>Aksi</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {!rows.length && (
-              <tr><td colSpan={5} className="px-4 py-8 text-center text-gray-400">Belum ada dokumen.</td></tr>
+              <TableEmptyRow colSpan={5} icon={<DocIcon className="w-6 h-6" />} text="Belum ada dokumen." />
             )}
             {rows.map((d) => (
-              <tr key={d.id}>
-                <td className="px-4 py-3 font-medium text-gray-800">{d.judul}</td>
-                <td className="px-4 py-3 capitalize">{d.kategori}</td>
-                <td className="px-4 py-3">
-                  <a href={d.file_url} target="_blank" rel="noopener noreferrer" className="text-navy-600 hover:underline">
-                    {d.nama_file}
+              <tr key={d.id} className="hover:bg-gray-50 transition-colors">
+                <td className={`${tdCls} font-medium text-gray-800`}>{d.judul}</td>
+                <td className={`${tdCls} capitalize`}>{d.kategori}</td>
+                <td className={tdCls}>
+                  <a href={d.file_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-navy-600 hover:text-navy-800 hover:underline">
+                    <DownloadIcon className="w-3.5 h-3.5" /> {d.nama_file}
                   </a>
                 </td>
-                <td className="px-4 py-3">{fmtSize(d.ukuran_bytes)}</td>
-                <td className="px-4 py-3 space-x-3 whitespace-nowrap">
-                  <button onClick={() => setForm(d)} className="text-navy-600 hover:underline">Edit</button>
-                  <button onClick={() => remove(d)} className="text-red-600 hover:underline">Hapus</button>
+                <td className={`${tdCls} tabular-nums`}>{fmtSize(d.ukuran_bytes)}</td>
+                <td className={`${tdCls} whitespace-nowrap text-right`}>
+                  <div className="inline-flex gap-1">
+                    <button onClick={() => setForm(d)} className={rowEditBtn}>
+                      <EditIcon className="w-3.5 h-3.5" /> Edit
+                    </button>
+                    <button onClick={() => remove(d)} className={rowDeleteBtn}>
+                      <TrashIcon className="w-3.5 h-3.5" /> Hapus
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}

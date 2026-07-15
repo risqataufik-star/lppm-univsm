@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { PageHeader, Alert, cardCls, inputCls, labelCls, btnPrimary } from '@/components/admin/ui';
+import { SettingsIcon } from '@/components/admin/icons';
 
 const STATS = [
   { key: 'stat_penelitian', label: 'Penelitian Aktif' },
@@ -9,9 +11,6 @@ const STATS = [
   { key: 'stat_hki', label: 'HKI Terdaftar' },
   { key: 'stat_mitra', label: 'Mitra Aktif' },
 ];
-
-const inputCls =
-  'w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-navy-800 focus:ring-2 focus:ring-navy-800/20 outline-none';
 
 export default function PengaturanAdminPage() {
   const [values, setValues] = useState<Record<string, string>>({});
@@ -44,26 +43,31 @@ export default function PengaturanAdminPage() {
 
   return (
     <div className="max-w-lg">
-      <h1 className="text-2xl font-bold text-navy-800 mb-2">Pengaturan</h1>
-      <p className="text-sm text-gray-500 mb-6">Angka statistik yang tampil di beranda situs publik.</p>
-      <form onSubmit={save} className="bg-white rounded-2xl border border-gray-200 p-6 space-y-4">
-        {msg && <p className="rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm px-3 py-2">{msg}</p>}
-        {error && <p className="rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2">{error}</p>}
-        {STATS.map((s) => (
-          <div key={s.key}>
-            <label className="block text-sm font-medium mb-1">{s.label}</label>
-            <input
-              type="number"
-              min={0}
-              className={inputCls}
-              value={values[s.key] ?? ''}
-              onChange={(e) => setValues({ ...values, [s.key]: e.target.value })}
-              required
-            />
-          </div>
-        ))}
-        <button type="submit" disabled={busy} className="rounded-lg bg-navy-800 hover:bg-navy-700 disabled:opacity-60 text-white text-sm font-semibold px-4 py-2">
-          {busy ? 'Menyimpan...' : 'Simpan'}
+      <PageHeader
+        icon={<SettingsIcon className="w-6 h-6" />}
+        title="Pengaturan"
+        subtitle="Angka statistik yang tampil di beranda situs publik."
+      />
+      <form onSubmit={save} className={`${cardCls} p-6 space-y-4`}>
+        {msg && <Alert kind="success">{msg}</Alert>}
+        {error && <Alert kind="error">{error}</Alert>}
+        <div className="grid sm:grid-cols-2 gap-4">
+          {STATS.map((s) => (
+            <div key={s.key}>
+              <label className={labelCls}>{s.label}</label>
+              <input
+                type="number"
+                min={0}
+                className={inputCls}
+                value={values[s.key] ?? ''}
+                onChange={(e) => setValues({ ...values, [s.key]: e.target.value })}
+                required
+              />
+            </div>
+          ))}
+        </div>
+        <button type="submit" disabled={busy} className={btnPrimary}>
+          {busy ? 'Menyimpan...' : 'Simpan Perubahan'}
         </button>
       </form>
     </div>

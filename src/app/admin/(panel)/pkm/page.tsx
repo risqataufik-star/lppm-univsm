@@ -1,6 +1,7 @@
 'use client';
 
 import ResourceCrud from '@/components/admin/ResourceCrud';
+import { CommunityIcon } from '@/components/admin/icons';
 
 const STATUS = [
   { value: 'aktif', label: 'Aktif' },
@@ -13,6 +14,8 @@ export default function PkmAdminPage() {
     <ResourceCrud
       resource="pkm"
       title="Pengabdian kepada Masyarakat"
+      subtitle="Daftar kegiatan pengabdian kepada masyarakat."
+      icon={<CommunityIcon className="w-6 h-6" />}
       fields={[
         { name: 'judul', label: 'Judul', type: 'text', required: true },
         { name: 'ketua', label: 'Ketua', type: 'text', required: true },

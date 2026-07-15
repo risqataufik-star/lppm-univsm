@@ -1,6 +1,7 @@
 'use client';
 
 import ResourceCrud from '@/components/admin/ResourceCrud';
+import { PublicationIcon } from '@/components/admin/icons';
 
 const JENIS = [
   { value: 'artikel', label: 'Artikel Jurnal' },
@@ -14,6 +15,8 @@ export default function PublikasiAdminPage() {
     <ResourceCrud
       resource="publikasi"
       title="Publikasi & Luaran"
+      subtitle="Artikel jurnal, buku, HKI, dan produk inovasi."
+      icon={<PublicationIcon className="w-6 h-6" />}
       fields={[
         { name: 'judul', label: 'Judul', type: 'text', required: true },
         { name: 'penulis', label: 'Penulis', type: 'text', required: true },

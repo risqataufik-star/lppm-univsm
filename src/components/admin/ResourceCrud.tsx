@@ -1,6 +1,22 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import {
+  PageHeader,
+  Alert,
+  TableEmptyRow,
+  inputCls,
+  labelCls,
+  cardCls,
+  btnPrimary,
+  btnGhost,
+  theadCls,
+  thCls,
+  tdCls,
+  rowEditBtn,
+  rowDeleteBtn,
+} from './ui';
+import { PlusIcon, EditIcon, TrashIcon } from './icons';
 
 export type Field = {
   name: string;
@@ -14,17 +30,18 @@ export type Column = { key: string; label: string };
 
 type Row = Record<string, unknown> & { id: string };
 
-const inputCls =
-  'w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-navy-800 focus:ring-2 focus:ring-navy-800/20 outline-none';
-
 export default function ResourceCrud({
   resource,
   title,
+  subtitle,
+  icon,
   fields,
   columns,
 }: {
   resource: string;
   title: string;
+  subtitle?: string;
+  icon: React.ReactNode;
   fields: Field[];
   columns: Column[];
 }) {
@@ -75,22 +92,26 @@ export default function ResourceCrud({
   }
 
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-navy-800">{title}</h1>
-        <button onClick={openNew} className="rounded-lg bg-navy-800 hover:bg-navy-700 text-white text-sm font-semibold px-4 py-2">
-          + Tambah
-        </button>
-      </div>
+    <div className="max-w-6xl">
+      <PageHeader
+        icon={icon}
+        title={title}
+        subtitle={subtitle}
+        action={
+          <button onClick={openNew} className={btnPrimary}>
+            <PlusIcon className="w-4 h-4" /> Tambah
+          </button>
+        }
+      />
 
       {form && (
-        <form onSubmit={save} className="bg-white rounded-2xl border border-gray-200 p-6 mb-6 space-y-4">
+        <form onSubmit={save} className={`${cardCls} p-6 mb-6 space-y-4`}>
           <h2 className="font-bold text-navy-800">{form.id ? 'Edit' : 'Tambah'} {title}</h2>
-          {error && <p className="rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm px-3 py-2">{error}</p>}
+          {error && <Alert kind="error">{error}</Alert>}
           <div className="grid sm:grid-cols-2 gap-4">
             {fields.map((f) => (
               <div key={f.name} className={f.type === 'textarea' ? 'sm:col-span-2' : ''}>
-                <label className="block text-sm font-medium mb-1">{f.label}</label>
+                <label className={labelCls}>{f.label}</label>
                 {f.type === 'select' ? (
                   <select
                     className={inputCls}
@@ -119,36 +140,42 @@ export default function ResourceCrud({
             ))}
           </div>
           <div className="flex gap-2">
-            <button type="submit" disabled={busy} className="rounded-lg bg-navy-800 hover:bg-navy-700 disabled:opacity-60 text-white text-sm font-semibold px-4 py-2">
+            <button type="submit" disabled={busy} className={btnPrimary}>
               {busy ? 'Menyimpan...' : 'Simpan'}
             </button>
-            <button type="button" onClick={() => setForm(null)} className="rounded-lg border border-gray-300 text-sm px-4 py-2">
+            <button type="button" onClick={() => setForm(null)} className={btnGhost}>
               Batal
             </button>
           </div>
         </form>
       )}
 
-      <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto">
+      <div className={`${cardCls} overflow-x-auto`}>
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-navy-800 text-white text-left">
-              {columns.map((c) => <th key={c.key} className="px-4 py-3 font-medium">{c.label}</th>)}
-              <th className="px-4 py-3 font-medium">Aksi</th>
+            <tr className={theadCls}>
+              {columns.map((c) => <th key={c.key} className={thCls}>{c.label}</th>)}
+              <th className={`${thCls} text-right`}>Aksi</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {!rows.length && (
-              <tr><td colSpan={columns.length + 1} className="px-4 py-8 text-center text-gray-400">Belum ada data.</td></tr>
+              <TableEmptyRow colSpan={columns.length + 1} icon={icon} text="Belum ada data." />
             )}
             {rows.map((row) => (
-              <tr key={row.id}>
+              <tr key={row.id} className="hover:bg-gray-50 transition-colors">
                 {columns.map((c) => (
-                  <td key={c.key} className="px-4 py-3 text-gray-800">{String(row[c.key] ?? '')}</td>
+                  <td key={c.key} className={tdCls}>{String(row[c.key] ?? '')}</td>
                 ))}
-                <td className="px-4 py-3 space-x-3 whitespace-nowrap">
-                  <button onClick={() => { setForm(row); setError(''); }} className="text-navy-600 hover:underline">Edit</button>
-                  <button onClick={() => remove(row)} className="text-red-600 hover:underline">Hapus</button>
+                <td className={`${tdCls} whitespace-nowrap text-right`}>
+                  <div className="inline-flex gap-1">
+                    <button onClick={() => { setForm(row); setError(''); }} className={rowEditBtn}>
+                      <EditIcon className="w-3.5 h-3.5" /> Edit
+                    </button>
+                    <button onClick={() => remove(row)} className={rowDeleteBtn}>
+                      <TrashIcon className="w-3.5 h-3.5" /> Hapus
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
