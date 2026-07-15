@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -18,4 +19,39 @@
   --color-gold-400: #fbbf24;
   --color-gold-500: #f0a500;
   --color-gold-600: #d97706;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Gradasi brand untuk panel & aksen admin */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #0c1237 0%, #1d2b78 55%, #2d36bd 100%);
+}
+
+/* Animasi drawer mobile admin (dikontrol manual, lepas dari toggle utility) */
+@keyframes admin-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes admin-drawer-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+.admin-overlay-in { animation: admin-overlay-in 0.2s ease-out; }
+.admin-drawer-in { animation: admin-drawer-in 0.25s ease-out; }
+
+/* Hormati preferensi reduce-motion (UX: reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
