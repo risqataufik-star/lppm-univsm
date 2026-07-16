@@ -177,6 +177,34 @@
     if (data.length) tbody.innerHTML = data.map(rowFn).join('');
   }
 
+  /* ── Jurnal OJS ── */
+  async function fillOjsJurnal() {
+    const wrap = document.getElementById('list-ojs-jurnal');
+    if (!wrap) return;
+    const data = await getJson('/api/ojs/jurnal');
+    if (!data.length) return;
+    wrap.innerHTML = data.map((j) =>
+      '<div class="p-6 rounded-2xl border border-gray-100 shadow-sm bg-white card-hover flex flex-col">' +
+      '<h3 class="font-bold text-navy-800 mb-2 leading-snug">' + esc(j.nama) + '</h3>' +
+      '<p class="text-xs text-gray-400 mb-4"><i class="ri-article-line"></i> ' + esc(j.jml_artikel) + ' artikel · ' + esc(j.jml_terbitan) + ' terbitan</p>' +
+      '<a href="' + esc(j.url) + '" target="_blank" rel="noopener" class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-navy-700 hover:text-gold-600"><i class="ri-external-link-line"></i> Kunjungi di OJS</a>' +
+      '</div>'
+    ).join('');
+  }
+
+  async function fillOjsArtikel() {
+    const wrap = document.getElementById('list-ojs-artikel');
+    if (!wrap) return;
+    const data = await getJson('/api/ojs/artikel?limit=10');
+    if (!data.length) { wrap.innerHTML = '<p class="text-gray-500 text-sm">Belum ada artikel. Kunjungi <a href="https://ojs.univsm.ac.id" target="_blank" rel="noopener" class="text-navy-700 font-semibold hover:underline">OJS UnivSM</a>.</p>'; return; }
+    wrap.innerHTML = data.map((a) =>
+      '<article class="bg-white rounded-xl border border-gray-100 p-4 shadow-sm">' +
+      '<a href="' + esc(a.url) + '" target="_blank" rel="noopener" class="font-semibold text-navy-800 hover:text-navy-600 leading-snug">' + esc(a.judul) + '</a>' +
+      '<p class="text-xs text-gray-500 mt-1">' + esc(a.penulis) + (a.tanggal ? ' · ' + fmtTgl(a.tanggal) : '') + '</p>' +
+      '</article>'
+    ).join('');
+  }
+
   /* ── Init (kegagalan dibiarkan senyap — fallback statis tampil) ── */
   document.addEventListener('DOMContentLoaded', () => {
     [
@@ -187,6 +215,8 @@
       fillTable('list-penelitian', '/api/penelitian', rowKegiatan),
       fillTable('list-pkm', '/api/pkm', rowKegiatan),
       fillTable('list-publikasi', '/api/publikasi', rowPublikasi),
+      fillOjsJurnal(),
+      fillOjsArtikel(),
     ].forEach((p) => p.catch((err) => console.warn('api-content:', err.message)));
   });
 })();
