@@ -227,6 +227,17 @@ export function ReplyIcon(p: IconProps) {
   );
 }
 
+export function ChartIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M3 3v18h18" />
+      <rect x="7" y="12" width="3" height="5" rx="0.5" />
+      <rect x="12" y="8" width="3" height="9" rx="0.5" />
+      <rect x="17" y="5" width="3" height="12" rx="0.5" />
+    </Svg>
+  );
+}
+
 export function MenuIcon(p: IconProps) {
   return (
     <Svg {...p}>

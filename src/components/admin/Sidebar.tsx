@@ -12,6 +12,7 @@ import {
   PublicationIcon,
   MessageIcon,
   SettingsIcon,
+  ChartIcon,
 } from './icons';
 
 const items = [
@@ -21,6 +22,7 @@ const items = [
   { href: '/admin/penelitian', label: 'Penelitian', Icon: ResearchIcon },
   { href: '/admin/pkm', label: 'PkM', Icon: CommunityIcon },
   { href: '/admin/publikasi', label: 'Publikasi', Icon: PublicationIcon },
+  { href: '/admin/monev-ojs', label: 'Monev OJS', Icon: ChartIcon },
   { href: '/admin/pesan', label: 'Pesan Masuk', Icon: MessageIcon },
   { href: '/admin/pengaturan', label: 'Pengaturan', Icon: SettingsIcon },
 ];
