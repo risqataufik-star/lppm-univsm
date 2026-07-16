@@ -107,3 +107,38 @@ insert into storage.buckets (id, name, public) values
   ('dokumen', 'dokumen', true),
   ('gambar', 'gambar', true)
 on conflict (id) do nothing;
+
+-- ============ Integrasi OJS UnivSM ============
+create table if not exists ojs_jurnal (
+  kode text primary key,
+  nama text not null,
+  url text not null,
+  jml_artikel int not null default 0,
+  jml_terbitan int not null default 0,
+  terbit_terakhir date,
+  updated_at timestamptz
+);
+
+create table if not exists ojs_artikel (
+  id text primary key,
+  jurnal_kode text not null,
+  judul text not null,
+  penulis text not null default '',
+  tanggal date,
+  tahun int,
+  issue text not null default '',
+  url text not null default '',
+  created_at timestamptz not null default now()
+);
+
+create index if not exists idx_ojs_artikel_jurnal on ojs_artikel (jurnal_kode);
+create index if not exists idx_ojs_artikel_tahun on ojs_artikel (tahun);
+
+alter table ojs_jurnal enable row level security;
+alter table ojs_artikel enable row level security;
+
+insert into pengaturan (key, value) values
+  ('ojs_last_sync', ''),
+  ('ojs_last_status', ''),
+  ('ojs_resume_token', '')
+on conflict (key) do nothing;
