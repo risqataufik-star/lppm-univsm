@@ -74,3 +74,7 @@ export const daftarDosenSchema = z.object({
   no_hp: z.string().trim().regex(/^[0-9+\-\s]{8,20}$/, 'Nomor HP tidak valid.'),
   website: z.string().default(''), // honeypot — harus kosong
 });
+
+export const statusDosenSchema = z.object({
+  status: z.enum(['aktif', 'ditolak'], { errorMap: () => ({ message: 'Status akun tidak valid.' }) }),
+});
