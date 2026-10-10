@@ -49,7 +49,7 @@ export default function LoginDosenPage() {
         <h2 className="text-2xl font-bold text-navy-800">Masuk Layanan Dosen</h2>
         <p className="text-sm text-gray-500 mt-1">Gunakan akun yang sudah diverifikasi LPPM.</p>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form method="post" onSubmit={handleSubmit} className="space-y-5">
         <PesanGalat pesan={error} />
         <IconInput
           id="email"

@@ -65,7 +65,7 @@ export default function DaftarDosenPage() {
             <h2 className="text-2xl font-bold text-navy-800">Daftar Akun Dosen</h2>
             <p className="text-sm text-gray-500 mt-1">Lengkapi data sesuai identitas dosen Anda.</p>
           </div>
-          <form onSubmit={kirim} className="space-y-4">
+          <form method="post" onSubmit={kirim} className="space-y-4">
             <PesanGalat pesan={error} />
             <div>
               <label htmlFor="nama" className={labelCls}>Nama Lengkap & Gelar</label>

@@ -58,7 +58,7 @@ export default function LoginPage() {
         <h2 className="text-2xl font-bold text-navy-800">Selamat datang kembali</h2>
         <p className="text-sm text-gray-500 mt-1">Masuk untuk melanjutkan ke panel admin.</p>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form method="post" onSubmit={handleSubmit} className="space-y-5">
         <PesanGalat pesan={error} />
         <IconInput
           id="email"
