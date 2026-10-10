@@ -142,3 +142,48 @@ insert into pengaturan (key, value) values
   ('ojs_last_status', ''),
   ('ojs_resume_token', '')
 on conflict (key) do nothing;
+
+-- ============ Layanan Dosen ============
+create table if not exists profil (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  nama text not null,
+  email text not null,
+  nidn text not null default '',
+  prodi text not null default '',
+  no_hp text not null default '',
+  peran text not null default 'dosen' check (peran in ('admin','dosen')),
+  status text not null default 'menunggu' check (status in ('menunggu','aktif','ditolak')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz
+);
+
+create table if not exists pengajuan (
+  id uuid primary key default gen_random_uuid(),
+  dosen_id uuid not null references profil(user_id) on delete cascade,
+  jenis text not null check (jenis in ('penelitian','pkm')),
+  judul text not null,
+  skema text not null,
+  tahun int not null,
+  anggota text not null default '',
+  sumber_dana text not null default '',
+  ringkasan text not null default '',
+  proposal_path text not null,
+  status text not null default 'diajukan' check (status in ('diajukan','revisi','ditolak','disetujui','terbit')),
+  catatan text not null default '',
+  surat_tugas_path text,
+  sk_path text,
+  publik_id uuid,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz
+);
+
+create index if not exists idx_pengajuan_dosen on pengajuan (dosen_id);
+create index if not exists idx_pengajuan_status on pengajuan (status);
+
+alter table profil enable row level security;
+alter table pengajuan enable row level security;
+
+-- Bucket PRIVAT untuk proposal, Surat Tugas, SK (unduh via signed URL)
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('pengajuan', 'pengajuan', false, 10485760, array['application/pdf'])
+on conflict (id) do nothing;
