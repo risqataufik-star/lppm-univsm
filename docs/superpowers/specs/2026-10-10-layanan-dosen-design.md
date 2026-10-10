@@ -64,9 +64,10 @@ on conflict (user_id) do nothing;
 RLS aktif di kedua tabel tanpa policy (akses hanya via service role di server — konsisten dengan tabel lain). Index: `pengajuan(dosen_id)`, `pengajuan(status)`.
 
 ### Storage
-- Bucket baru **`pengajuan`, privat** (`public = false`). Path: `<dosen_id>/<pengajuan_id>/proposal-<timestamp>.pdf`, `.../surat-tugas-<timestamp>.pdf`, `.../sk-<timestamp>.pdf`.
+- Bucket baru **`pengajuan`, privat** (`public = false`, `file_size_limit` 10 MB, `allowed_mime_types` `application/pdf`). Path: proposal `<dosen_id>/proposal/<uuid>.pdf`; surat `<dosen_id>/<pengajuan_id>/surat-tugas-<ms>.pdf` dan `.../sk-<ms>.pdf`.
+- **Unggah langsung dari browser ke Storage** (revisi 10 Okt 2026 — fungsi Vercel membatasi body request 4,5 MB, sehingga unggah 10 MB lewat API server tidak mungkin): server menerbitkan token unggah sekali-pakai (`createSignedUploadUrl`) untuk path yang **ditentukan server** → browser `uploadToSignedUrl` → API menerima **path** dan memverifikasi: path cocok dengan pemanggil/pengajuan, objek ada, ukuran ≤ 10 MB, diawali byte `%PDF-`. Objek yang gagal verifikasi dihapus.
 - Unduhan via **signed URL** berumur 5 menit, hanya diterbitkan setelah cek kepemilikan (dosen pemilik) atau peran admin.
-- Batas: PDF saja (`application/pdf`), maks **10 MB**.
+- Batas: PDF saja, maks **10 MB**. Satu berkas proposal hanya boleh dipakai satu pengajuan.
 
 ### Skema kegiatan (pilihan form, sesuai taksonomi situs)
 - Penelitian: `Penelitian Mandiri`, `Penelitian Kelompok`, `Penelitian Kolaborasi`, `Hibah Eksternal Dikti`
@@ -123,9 +124,10 @@ Semua error `{ error: string }` berbahasa Indonesia; validasi zod.
 
 **Dosen (`requireDosen`)**
 - `GET /api/dosen/pengajuan` → pengajuan milik sendiri (urut terbaru)
-- `POST /api/dosen/pengajuan` — multipart: field form + `proposal` (PDF ≤10 MB) → upload, insert `diajukan`
+- `POST /api/dosen/unggah` → `{ path, token }` token unggah proposal
+- `POST /api/dosen/pengajuan` — JSON: field form + `proposal_path` (hasil unggah) → verifikasi berkas, insert `diajukan`
 - `GET /api/dosen/pengajuan/[id]` → detail milik sendiri (404 bila bukan miliknya)
-- `PUT /api/dosen/pengajuan/[id]` — hanya status `revisi`; multipart (field + `proposal` opsional) → status `diajukan`, `catatan` dikosongkan
+- `PUT /api/dosen/pengajuan/[id]` — hanya status `revisi`; JSON (field + `proposal_path` opsional) → status `diajukan`, `catatan` dikosongkan; proposal lama dihapus bila diganti
 - `GET /api/dosen/pengajuan/[id]/file?jenis=proposal|surat_tugas|sk` → redirect 302 ke signed URL
 
 **Admin (`requireAdmin`)**
@@ -134,7 +136,8 @@ Semua error `{ error: string }` berbahasa Indonesia; validasi zod.
 - `GET /api/admin/pengajuan?status=&jenis=` → semua pengajuan + nama dosen
 - `GET /api/admin/pengajuan/[id]` → detail + profil dosen
 - `POST /api/admin/pengajuan/[id]/keputusan` — `{ aksi: 'setujui'|'revisi'|'tolak', catatan }` (catatan wajib untuk revisi/tolak)
-- `POST /api/admin/pengajuan/[id]/surat` — multipart `{ jenis: 'surat_tugas'|'sk', file }`; hanya bila status `disetujui`/`terbit`
+- `POST /api/admin/pengajuan/[id]/unggah` — `{ jenis: 'surat_tugas'|'sk' }` → `{ path, token }`; hanya bila status `disetujui`/`terbit`
+- `POST /api/admin/pengajuan/[id]/surat` — JSON `{ jenis, path }` → verifikasi berkas, simpan; file lama jenis yang sama dihapus
 - `GET /api/admin/pengajuan/[id]/file?jenis=` → redirect 302 ke signed URL
 
 ## Halaman
@@ -156,8 +159,9 @@ Semua error `{ error: string }` berbahasa Indonesia; validasi zod.
 
 ## Penanganan Error
 
-- Upload gagal / bukan PDF / >10 MB → 400 dengan pesan jelas; baris DB tidak dibuat.
-- Pengajuan dibuat tapi upload sukses dan insert gagal → file yang terunggah dihapus (best-effort).
+- File >10 MB ditolak di browser dan oleh batas bucket; bukan PDF (byte awal ≠ `%PDF-`) → 400 dan objek dihapus; baris DB tidak dibuat.
+- Path berkas milik dosen/pengajuan lain → 400; berkas proposal yang sudah dipakai → 409.
+- Berkas yang terunggah tapi tidak pernah dikirim (pengguna membatalkan) dapat tertinggal di folder `proposal/` milik dosen — diterima (tidak dapat diakses publik, ukuran kecil).
 - Transisi status tidak sah → 409.
 - Akses ke pengajuan orang lain → 404 (tidak membocorkan keberadaan).
 - Supabase lambat/terhenti: middleware tidak 504 (timeout 3 dtk → ke login); halaman menampilkan pesan error ramah.
