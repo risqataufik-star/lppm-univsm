@@ -46,6 +46,21 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string }> 
       ? NextResponse.json({ error: 'Gagal menyimpan surat.' }, { status: 500 })
       : NextResponse.json({ error: 'Status pengajuan sudah berubah. Muat ulang halaman.' }, { status: 409 });
   }
+  let status = hasil.status;
+  if (status !== 'terbit') {
+    // ST & SK yang disimpan bersamaan masing-masing membaca kolom lain masih kosong;
+    // naikkan status berdasarkan isi baris terbaru, bukan baris yang dibaca di awal.
+    const { data: naik } = await db
+      .from('pengajuan')
+      .update({ status: 'terbit' })
+      .eq('id', id)
+      .eq('status', 'disetujui')
+      .not('surat_tugas_path', 'is', null)
+      .not('sk_path', 'is', null)
+      .select('status')
+      .maybeSingle();
+    if (naik) status = naik.status;
+  }
   if (lama && lama !== path) await hapusFile(lama);
-  return NextResponse.json({ ok: true, status: hasil.status });
+  return NextResponse.json({ ok: true, status });
 }

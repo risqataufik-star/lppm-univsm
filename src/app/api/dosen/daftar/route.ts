@@ -16,7 +16,8 @@ export async function POST(req: Request) {
   if (website) return NextResponse.json({ ok: true }, { status: 201 }); // honeypot: pura-pura sukses
 
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
-  if (!rateLimitOk(`daftar:${ip}`)) {
+  // Longgar: dosen sering mendaftar bersama dari satu IP kampus (NAT); akun tetap perlu persetujuan LPPM.
+  if (!rateLimitOk(`daftar:${ip}`, 30)) {
     return NextResponse.json(
       { error: 'Terlalu banyak percobaan pendaftaran. Silakan coba lagi nanti.' },
       { status: 429 },

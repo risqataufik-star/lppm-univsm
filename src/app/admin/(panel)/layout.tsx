@@ -1,17 +1,11 @@
-import { redirect } from 'next/navigation';
 import AdminShell from '@/components/admin/AdminShell';
-import { getSesi } from '@/lib/auth';
+import { requireAdminPage } from '@/lib/auth';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
 export const dynamic = 'force-dynamic';
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
-  const sesi = await getSesi();
-  if (!sesi) redirect('/admin/login');
-  const p = sesi.profil;
-  if (!p || p.peran !== 'admin' || p.status !== 'aktif') {
-    redirect(p?.peran === 'dosen' ? '/dosen' : '/admin/login?e=akses');
-  }
+  await requireAdminPage();
 
   const db = supabaseAdmin();
   const [aj, akun] = await Promise.all([

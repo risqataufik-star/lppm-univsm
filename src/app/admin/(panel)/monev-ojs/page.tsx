@@ -1,4 +1,5 @@
 import { supabaseAdmin } from '@/lib/supabase/admin';
+import { requireAdminPage } from '@/lib/auth';
 import { PageHeader, cardCls, theadCls, thCls, tdCls } from '@/components/admin/ui';
 import { ChartIcon } from '@/components/admin/icons';
 import SyncOjsButton from '@/components/admin/SyncOjsButton';
@@ -11,6 +12,7 @@ type Jurnal = {
 };
 
 export default async function MonevOjsPage() {
+  await requireAdminPage();
   const db = supabaseAdmin();
   const [{ data: jurnalData }, { data: tahunData }, { data: setelan }] = await Promise.all([
     db.from('ojs_jurnal').select('*').order('nama', { ascending: true }),

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { redirect } from 'next/navigation';
 import { supabaseServer } from '@/lib/supabase/server';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 
@@ -39,6 +40,19 @@ export async function requireAdmin(): Promise<NextResponse | null> {
     return NextResponse.json({ error: 'Akses khusus admin LPPM.' }, { status: 403 });
   }
   return null;
+}
+
+// Penjaga server component halaman admin. Penjagaan di layout saja tidak cukup:
+// Next.js merender segmen halaman sejajar dengan layout dan dapat melewatkan layout
+// pada navigasi RSC parsial, sehingga data halaman bisa terkirim ke non-admin.
+export async function requireAdminPage(): Promise<Profil> {
+  const sesi = await getSesi();
+  if (!sesi) redirect('/admin/login');
+  const p = sesi.profil;
+  if (!p || p.peran !== 'admin' || p.status !== 'aktif') {
+    redirect(p?.peran === 'dosen' ? '/dosen' : '/admin/login?e=akses');
+  }
+  return p;
 }
 
 // Profil dosen aktif, atau respons 401/403 siap-kirim.

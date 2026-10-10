@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { supabaseAdmin } from '@/lib/supabase/admin';
+import { requireAdminPage } from '@/lib/auth';
 import {
   NewsIcon,
   DocIcon,
@@ -28,6 +29,7 @@ const JENIS_BADGE: Record<string, string> = {
 export const dynamic = 'force-dynamic';
 
 export default async function DashboardPage() {
+  await requireAdminPage();
   const db = supabaseAdmin();
   const counts = await Promise.all(
     CARDS.map((c) => db.from(c.table).select('*', { count: 'exact', head: true })),
