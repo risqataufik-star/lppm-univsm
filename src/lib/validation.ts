@@ -94,3 +94,20 @@ export const pengajuanSchema = z
     message: 'Skema tidak sesuai dengan jenis kegiatan.',
     path: ['skema'],
   });
+
+export const keputusanSchema = z
+  .object({
+    aksi: z.enum(['setujui', 'revisi', 'tolak'], { errorMap: () => ({ message: 'Aksi tidak valid.' }) }),
+    catatan: z.string().trim().default(''),
+  })
+  .refine((d) => d.aksi === 'setujui' || d.catatan.length >= 5, {
+    message: 'Catatan wajib diisi (minimal 5 karakter) untuk revisi atau penolakan.',
+    path: ['catatan'],
+  });
+
+const jenisSurat = z.enum(['surat_tugas', 'sk'], { errorMap: () => ({ message: 'Jenis surat tidak valid.' }) });
+export const jenisSuratSchema = z.object({ jenis: jenisSurat });
+export const suratSchema = z.object({
+  jenis: jenisSurat,
+  path: z.string().min(1, 'Berkas surat belum diunggah.'),
+});
