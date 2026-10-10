@@ -64,3 +64,13 @@ export const pengaturanSchema = z.object({
   stat_hki: angka,
   stat_mitra: angka,
 });
+
+export const daftarDosenSchema = z.object({
+  nama: z.string().trim().min(3, 'Nama lengkap minimal 3 karakter.'),
+  email: z.string().trim().toLowerCase().email('Email tidak valid.'),
+  password: z.string().min(8, 'Password minimal 8 karakter.'),
+  nidn: z.string().trim().regex(/^\d{8,18}$/, 'NIDN/NIDK harus berupa angka (8–18 digit).'),
+  prodi: z.string().trim().min(2, 'Program studi wajib diisi.'),
+  no_hp: z.string().trim().regex(/^[0-9+\-\s]{8,20}$/, 'Nomor HP tidak valid.'),
+  website: z.string().default(''), // honeypot — harus kosong
+});
