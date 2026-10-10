@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SKEMA } from '@/lib/pengajuan-shared';
 
 export const beritaSchema = z.object({
   judul: z.string().min(3, 'Judul minimal 3 karakter.'),
@@ -78,3 +79,18 @@ export const daftarDosenSchema = z.object({
 export const statusDosenSchema = z.object({
   status: z.enum(['aktif', 'ditolak'], { errorMap: () => ({ message: 'Status akun tidak valid.' }) }),
 });
+
+export const pengajuanSchema = z
+  .object({
+    jenis: z.enum(['penelitian', 'pkm'], { errorMap: () => ({ message: 'Jenis kegiatan tidak valid.' }) }),
+    judul: z.string().trim().min(10, 'Judul minimal 10 karakter.'),
+    skema: z.string().trim(),
+    tahun: z.coerce.number().int().min(2000, 'Tahun tidak valid.').max(2100, 'Tahun tidak valid.'),
+    anggota: z.string().trim().default(''),
+    sumber_dana: z.string().trim().default(''),
+    ringkasan: z.string().trim().default(''),
+  })
+  .refine((d) => SKEMA[d.jenis].includes(d.skema), {
+    message: 'Skema tidak sesuai dengan jenis kegiatan.',
+    path: ['skema'],
+  });
