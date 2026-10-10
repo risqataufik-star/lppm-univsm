@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { supabaseAdmin } from '@/lib/supabase/admin';
-import { supabaseServer } from '@/lib/supabase/server';
 import { requireAdmin } from '@/lib/auth';
 
 export type CrudConfig = {
@@ -21,12 +20,9 @@ export type CrudConfig = {
 export function makeListRoutes(cfg: CrudConfig) {
   async function GET(req: Request) {
     const url = new URL(req.url);
-    let skipPublicFilter = false;
-    if (url.searchParams.get('all') === '1') {
-      const supabase = await supabaseServer();
-      const { data: { user } } = await supabase.auth.getUser();
-      skipPublicFilter = !!user;
-    }
+    // ?all=1 (lihat draf) hanya untuk admin aktif — dosen yang login tetap melihat versi publik
+    const skipPublicFilter =
+      url.searchParams.get('all') === '1' && (await requireAdmin()) === null;
     let q = supabaseAdmin().from(cfg.table).select('*');
     if (!skipPublicFilter) {
       for (const [k, v] of Object.entries(cfg.publicOnly ?? {})) q = q.eq(k, v);
