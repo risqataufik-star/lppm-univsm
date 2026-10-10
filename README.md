@@ -2,7 +2,8 @@
 
 Satu aplikasi Next.js berisi:
 - **Situs publik** — HTML statis di `public/` (beranda, profil, penelitian, PkM, publikasi, dokumen, monev, kerjasama, berita, kontak, hibah, roadmap)
-- **Panel admin** — `/admin` (kelola berita, dokumen unduhan, data penelitian/PkM/publikasi, pesan masuk, statistik beranda)
+- **Panel admin** — `/admin` (kelola berita, dokumen unduhan, data penelitian/PkM/publikasi, pesan masuk, statistik beranda, Monev OJS, verifikasi pengajuan & akun dosen)
+- **Layanan Dosen** — `/dosen` (dosen mendaftar, mengajukan penelitian/PkM, mengunduh Surat Tugas & SK)
 - **API** — `/api/*` (Supabase Postgres + Storage + Auth)
 
 ## Menjalankan Lokal
@@ -14,8 +15,11 @@ Satu aplikasi Next.js berisi:
 ## Setup Supabase (sekali saja)
 
 1. Buat project di https://supabase.com (region Singapore).
-2. SQL Editor → jalankan seluruh isi `supabase/schema.sql` (membuat tabel, RLS, seed statistik, bucket `dokumen` & `gambar`).
-3. Authentication → Users → Add user → email & password admin (centang Auto Confirm).
+2. SQL Editor → jalankan seluruh isi `supabase/schema.sql` (tabel, RLS, seed statistik, bucket `dokumen` & `gambar` publik, bucket `pengajuan` privat).
+3. Authentication → Users → Add user → email & password admin (centang Auto Confirm), lalu jadikan admin (lihat "Akun Admin").
+4. Authentication → Sign In / Providers → Email → **matikan "Allow new users to sign up"**. Akun dosen dibuat lewat halaman `/dosen/daftar`, bukan sign-up publik Supabase.
+
+> Proyek yang sudah berjalan sebelum Oktober 2026: jalankan sekali `supabase/migrasi-2026-10-peran.sql` agar akun admin lama mendapat peran admin. Jangan dijalankan ulang.
 
 ## Deploy ke Vercel
 
@@ -35,4 +39,22 @@ Satu aplikasi Next.js berisi:
 
 ## Akun Admin
 
-Satu akun (dibuat manual di Supabase Auth). Tidak ada halaman registrasi. Ganti password lewat Supabase Dashboard → Authentication → Users.
+Akses panel admin ditentukan tabel `profil` (`peran = 'admin'`, `status = 'aktif'`). Menambah admin baru:
+
+1. Supabase → Authentication → Users → Add user (centang Auto Confirm).
+2. SQL Editor:
+   ```sql
+   insert into profil (user_id, nama, email, peran, status)
+   select id, email, email, 'admin', 'aktif' from auth.users where email = 'email-admin-baru@univsm.ac.id'
+   on conflict (user_id) do update set peran = 'admin', status = 'aktif';
+   ```
+
+Tanpa langkah 2, akun ditolak oleh panel admin. Ganti password lewat Supabase → Authentication → Users.
+
+## Akun Dosen
+
+Dosen mendaftar di `/dosen/daftar` → status **menunggu** → admin menyetujui di **Panel Admin → Akun Dosen**. Dosen aktif dapat mengajukan penelitian/PkM; admin memverifikasi di **Pengajuan**, lalu mengunggah Surat Tugas & SK (PDF, maks 10 MB, diunggah langsung ke Storage privat).
+
+## Alat Uji (pengembangan)
+
+`node scripts/uji.mjs` — membuat akun dosen uji (`@example.com`), cookie sesi, unggah berkas, dan `bersihkan` untuk menghapus semua data uji. Jalankan `bersihkan` setiap selesai menguji karena database bersama produksi.

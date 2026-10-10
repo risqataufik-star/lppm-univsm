@@ -7,6 +7,8 @@ import {
   CommunityIcon,
   PublicationIcon,
   MessageIcon,
+  InboxIcon,
+  UserCheckIcon,
 } from '@/components/admin/icons';
 
 const CARDS = [
@@ -36,6 +38,10 @@ export default async function DashboardPage() {
     .eq('status', 'baru')
     .order('created_at', { ascending: false })
     .limit(10);
+  const [ajBaru, akunBaru] = await Promise.all([
+    db.from('pengajuan').select('id', { count: 'exact', head: true }).eq('status', 'diajukan'),
+    db.from('profil').select('user_id', { count: 'exact', head: true }).eq('peran', 'dosen').eq('status', 'menunggu'),
+  ]);
 
   return (
     <div className="max-w-6xl">
@@ -58,6 +64,34 @@ export default async function DashboardPage() {
             <p className="text-sm text-gray-500 mt-0.5">{c.label}</p>
           </Link>
         ))}
+      </div>
+
+      <h2 className="font-bold text-navy-800 mb-3">Perlu Tindakan</h2>
+      <div className="grid sm:grid-cols-2 gap-4 mb-8">
+        <Link
+          href="/admin/pengajuan"
+          className="flex items-center gap-4 bg-white rounded-2xl border border-gray-200 p-5 transition hover:shadow-lg hover:shadow-navy-900/5 hover:border-navy-200"
+        >
+          <span className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+            <InboxIcon className="w-6 h-6" />
+          </span>
+          <div>
+            <p className="text-2xl font-extrabold text-navy-800 tabular-nums">{ajBaru.count ?? 0}</p>
+            <p className="text-sm text-gray-500">Pengajuan menunggu verifikasi</p>
+          </div>
+        </Link>
+        <Link
+          href="/admin/akun-dosen"
+          className="flex items-center gap-4 bg-white rounded-2xl border border-gray-200 p-5 transition hover:shadow-lg hover:shadow-navy-900/5 hover:border-navy-200"
+        >
+          <span className="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+            <UserCheckIcon className="w-6 h-6" />
+          </span>
+          <div>
+            <p className="text-2xl font-extrabold text-navy-800 tabular-nums">{akunBaru.count ?? 0}</p>
+            <p className="text-sm text-gray-500">Akun dosen menunggu persetujuan</p>
+          </div>
+        </Link>
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">

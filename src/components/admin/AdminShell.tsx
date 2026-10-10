@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import Sidebar from './Sidebar';
+import Sidebar, { type Badges } from './Sidebar';
 import { MenuIcon } from './icons';
 
-export default function AdminShell({ children }: { children: React.ReactNode }) {
+export default function AdminShell({ children, badges }: { children: React.ReactNode; badges?: Badges }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -12,7 +12,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       {/* Sidebar desktop (fixed) */}
       <aside className="hidden lg:block w-64 shrink-0">
         <div className="fixed inset-y-0 left-0 w-64">
-          <Sidebar />
+          <Sidebar badges={badges} />
         </div>
       </aside>
 
@@ -25,7 +25,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
             aria-hidden="true"
           />
           <div className="admin-drawer-in absolute inset-y-0 left-0 w-72 max-w-[80%] shadow-2xl">
-            <Sidebar onNavigate={() => setOpen(false)} />
+            <Sidebar badges={badges} onNavigate={() => setOpen(false)} />
           </div>
         </div>
       )}

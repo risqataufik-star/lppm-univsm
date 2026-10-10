@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation';
 import LogoutButton from './LogoutButton';
 import {
   DashboardIcon,
+  InboxIcon,
+  UserCheckIcon,
   NewsIcon,
   DocIcon,
   ResearchIcon,
@@ -15,8 +17,12 @@ import {
   ChartIcon,
 } from './icons';
 
-const items = [
+export type Badges = { pengajuan: number; dosen: number };
+
+const items: { href: string; label: string; Icon: typeof DashboardIcon; badge?: keyof Badges }[] = [
   { href: '/admin', label: 'Dashboard', Icon: DashboardIcon },
+  { href: '/admin/pengajuan', label: 'Pengajuan', Icon: InboxIcon, badge: 'pengajuan' },
+  { href: '/admin/akun-dosen', label: 'Akun Dosen', Icon: UserCheckIcon, badge: 'dosen' },
   { href: '/admin/berita', label: 'Berita & Agenda', Icon: NewsIcon },
   { href: '/admin/dokumen', label: 'Dokumen', Icon: DocIcon },
   { href: '/admin/penelitian', label: 'Penelitian', Icon: ResearchIcon },
@@ -27,16 +33,12 @@ const items = [
   { href: '/admin/pengaturan', label: 'Pengaturan', Icon: SettingsIcon },
 ];
 
-export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
+export default function Sidebar({ onNavigate, badges }: { onNavigate?: () => void; badges?: Badges }) {
   const path = usePathname();
   return (
     <div className="h-full flex flex-col bg-navy-900 text-white">
       <div className="flex items-center gap-3 px-5 h-16 border-b border-white/10 shrink-0">
-        <img
-          src="/assets/img/logo-color.png"
-          alt="Logo UnivSM"
-          className="h-9 w-9 object-contain"
-        />
+        <img src="/assets/img/logo-color.png" alt="Logo UnivSM" className="h-9 w-9 object-contain" />
         <div className="leading-tight">
           <p className="font-bold text-sm">Admin LPPM</p>
           <p className="text-gold-400 text-[10px] tracking-widest uppercase">Universitas Sapta Mandiri</p>
@@ -44,8 +46,9 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       </div>
 
       <nav className="flex-1 overflow-y-auto p-3 space-y-0.5">
-        {items.map(({ href, label, Icon }) => {
-          const active = path === href;
+        {items.map(({ href, label, Icon, badge }) => {
+          const active = path === href || (href !== '/admin' && path.startsWith(`${href}/`));
+          const jumlah = badge ? badges?.[badge] ?? 0 : 0;
           return (
             <Link
               key={href}
@@ -62,6 +65,16 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                 className={`w-5 h-5 shrink-0 ${active ? 'text-navy-900' : 'text-white/60 group-hover:text-white'}`}
               />
               {label}
+              {jumlah > 0 && (
+                <span
+                  aria-label={`${jumlah} perlu tindakan`}
+                  className={`ml-auto min-w-5 h-5 px-1.5 rounded-full text-[11px] font-bold flex items-center justify-center tabular-nums ${
+                    active ? 'bg-navy-900 text-white' : 'bg-gold-500 text-navy-900'
+                  }`}
+                >
+                  {jumlah}
+                </span>
+              )}
             </Link>
           );
         })}
