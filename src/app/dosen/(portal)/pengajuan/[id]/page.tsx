@@ -4,16 +4,10 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import PengajuanForm from '@/components/dosen/PengajuanForm';
+import PanelLaporan from '@/components/dosen/PanelLaporan';
 import { Alert, btnGhost, cardCls } from '@/components/admin/ui';
 import { DownloadIcon } from '@/components/admin/icons';
-import {
-  FILE_LABEL,
-  JENIS_LABEL,
-  STATUS_BADGE,
-  STATUS_LABEL,
-  type FileJenis,
-  type Pengajuan,
-} from '@/lib/pengajuan-shared';
+import { FILE_LABEL, JENIS_LABEL, labelPengajuan, type FileJenis, type Pengajuan } from '@/lib/pengajuan-shared';
 
 export default function DetailPengajuanPage() {
   const { id } = useParams<{ id: string }>();
@@ -45,7 +39,9 @@ export default function DetailPengajuanPage() {
     'proposal',
     ...(p.surat_tugas_path ? (['surat_tugas'] as const) : []),
     ...(p.sk_path ? (['sk'] as const) : []),
+    ...(p.laporan_path ? (['laporan'] as const) : []),
   ];
+  const lbl = labelPengajuan(p);
 
   return (
     <div className="max-w-3xl space-y-6">
@@ -59,7 +55,7 @@ export default function DetailPengajuanPage() {
             </p>
             <h1 className="text-xl font-bold text-navy-800 mt-1">{p.judul}</h1>
           </div>
-          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_BADGE[p.status]}`}>{STATUS_LABEL[p.status]}</span>
+          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${lbl.badge}`}>{lbl.label}</span>
         </div>
         <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
           <div>
@@ -80,7 +76,7 @@ export default function DetailPengajuanPage() {
       {p.catatan && (p.status === 'revisi' || p.status === 'ditolak') && (
         <Alert kind="error">Catatan LPPM: {p.catatan}</Alert>
       )}
-      {p.status === 'terbit' && (
+      {p.status === 'terbit' && !p.laporan_status && (
         <Alert kind="success">Surat Tugas dan SK telah terbit. Silakan unduh di bawah.</Alert>
       )}
 
@@ -94,6 +90,8 @@ export default function DetailPengajuanPage() {
           ))}
         </div>
       </div>
+
+      {p.status === 'terbit' && <PanelLaporan p={p} onSelesai={setP} />}
 
       {p.status === 'revisi' && (
         <div>

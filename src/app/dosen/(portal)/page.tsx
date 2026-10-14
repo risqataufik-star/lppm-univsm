@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { PageHeader, Alert, TableEmptyRow, cardCls, btnPrimary, theadCls, thCls, tdCls } from '@/components/admin/ui';
 import { DocIcon, PlusIcon } from '@/components/admin/icons';
-import { JENIS_LABEL, STATUS_BADGE, STATUS_LABEL, type Pengajuan } from '@/lib/pengajuan-shared';
+import { JENIS_LABEL, labelPengajuan, type Pengajuan } from '@/lib/pengajuan-shared';
 
 export default function PengajuanSayaPage() {
   const [rows, setRows] = useState<Pengajuan[] | null>(null);
@@ -63,7 +63,7 @@ export default function PengajuanSayaPage() {
                 <td className={tdCls}>{JENIS_LABEL[p.jenis]}</td>
                 <td className={`${tdCls} tabular-nums`}>{p.tahun}</td>
                 <td className={tdCls}>
-                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_BADGE[p.status]}`}>{STATUS_LABEL[p.status]}</span>
+                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${labelPengajuan(p).badge}`}>{labelPengajuan(p).label}</span>
                 </td>
                 <td className={tdCls}>{new Date(p.created_at).toLocaleDateString('id-ID')}</td>
               </tr>
