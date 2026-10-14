@@ -5,8 +5,8 @@ import { useParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, btnGhost, cardCls } from '@/components/admin/ui';
 import { DownloadIcon } from '@/components/admin/icons';
-import { PanelKeputusan, PanelSurat } from '@/components/admin/PengajuanAksi';
-import { JENIS_LABEL, STATUS_BADGE, STATUS_LABEL, type Pengajuan } from '@/lib/pengajuan-shared';
+import { PanelKeputusan, PanelPemeriksaanLaporan, PanelSurat } from '@/components/admin/PengajuanAksi';
+import { JENIS_LABEL, labelPengajuan, type Pengajuan } from '@/lib/pengajuan-shared';
 
 type Detail = Pengajuan & {
   profil: { nama: string; email: string; nidn: string; prodi: string; no_hp: string } | null;
@@ -50,7 +50,7 @@ export default function DetailPengajuanAdminPage() {
             </p>
             <h1 className="text-xl font-bold text-navy-800 mt-1">{p.judul}</h1>
           </div>
-          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_BADGE[p.status]}`}>{STATUS_LABEL[p.status]}</span>
+          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${labelPengajuan(p).badge}`}>{labelPengajuan(p).label}</span>
         </div>
         <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
           <div>
@@ -92,6 +92,7 @@ export default function DetailPengajuanAdminPage() {
 
       {p.catatan && <Alert kind={p.status === 'ditolak' || p.status === 'revisi' ? 'error' : 'success'}>Catatan: {p.catatan}</Alert>}
       {p.status === 'diajukan' && <PanelKeputusan id={p.id} onSelesai={load} />}
+      {p.status === 'terbit' && <PanelPemeriksaanLaporan p={p} onSelesai={load} />}
       {(p.status === 'disetujui' || p.status === 'terbit') && <PanelSurat p={p} onSelesai={load} />}
     </div>
   );

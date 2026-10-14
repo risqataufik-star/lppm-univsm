@@ -8,11 +8,12 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   await requireAdminPage();
 
   const db = supabaseAdmin();
-  const [aj, akun] = await Promise.all([
+  const [aj, lap, akun] = await Promise.all([
     db.from('pengajuan').select('id', { count: 'exact', head: true }).eq('status', 'diajukan'),
+    db.from('pengajuan').select('id', { count: 'exact', head: true }).eq('laporan_status', 'dikirim'),
     db.from('profil').select('user_id', { count: 'exact', head: true }).eq('peran', 'dosen').eq('status', 'menunggu'),
   ]);
   return (
-    <AdminShell badges={{ pengajuan: aj.count ?? 0, dosen: akun.count ?? 0 }}>{children}</AdminShell>
+    <AdminShell badges={{ pengajuan: (aj.count ?? 0) + (lap.count ?? 0), dosen: akun.count ?? 0 }}>{children}</AdminShell>
   );
 }

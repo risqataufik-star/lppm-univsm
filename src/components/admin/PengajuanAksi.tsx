@@ -153,3 +153,79 @@ export function PanelSurat({ p, onSelesai }: { p: Pengajuan; onSelesai: () => vo
     </div>
   );
 }
+
+export function PanelPemeriksaanLaporan({ p, onSelesai }: { p: Pengajuan; onSelesai: () => void }) {
+  const [catatan, setCatatan] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+  const unduh = p.laporan_path && (
+    <a href={`/api/admin/pengajuan/${p.id}/file?jenis=laporan`} target="_blank" rel="noopener noreferrer" className={btnGhost}>
+      <DownloadIcon className="w-4 h-4" /> Unduh Laporan
+    </a>
+  );
+
+  async function putuskan(aksi: 'terima' | 'revisi') {
+    if (aksi === 'revisi' && catatan.trim().length < 5) {
+      setError('Tulis catatan (minimal 5 karakter) untuk revisi laporan.');
+      return;
+    }
+    const tanya =
+      aksi === 'terima'
+        ? 'Terima laporan ini? Kegiatan akan tercatat selesai di daftar publik.'
+        : 'Kembalikan laporan ini ke dosen untuk revisi?';
+    if (!confirm(tanya)) return;
+    setBusy(true);
+    setError('');
+    const res = await fetch(`/api/admin/pengajuan/${p.id}/laporan`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ aksi, catatan }),
+    });
+    const json = await res.json().catch(() => ({}));
+    setBusy(false);
+    if (!res.ok) {
+      setError(json.error || 'Gagal menyimpan keputusan laporan.');
+      return;
+    }
+    setCatatan('');
+    onSelesai();
+  }
+
+  if (p.laporan_status !== 'dikirim') {
+    return (
+      <div className={`${cardCls} p-6 space-y-3`}>
+        <h2 className="font-bold text-navy-800">Laporan Akhir</h2>
+        <p className="text-sm text-gray-600">
+          {p.laporan_status === 'diterima'
+            ? 'Laporan telah diterima. Kegiatan tercatat selesai.'
+            : p.laporan_status === 'revisi'
+              ? `Menunggu dosen mengirim ulang laporan. Catatan: ${p.laporan_catatan}`
+              : 'Dosen belum mengirim laporan akhir.'}
+        </p>
+        {unduh}
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${cardCls} p-6 space-y-4`}>
+      <h2 className="font-bold text-navy-800">Pemeriksaan Laporan</h2>
+      {error && <Alert kind="error">{error}</Alert>}
+      {unduh}
+      <div>
+        <label htmlFor="catatan-laporan" className={labelCls}>
+          Catatan untuk dosen <span className="font-normal text-gray-400">(wajib untuk revisi)</span>
+        </label>
+        <textarea id="catatan-laporan" rows={3} value={catatan} onChange={(e) => setCatatan(e.target.value)} className={inputCls} />
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <button disabled={busy} onClick={() => putuskan('terima')} className={btnSuccess}>
+          <CheckIcon className="w-4 h-4" /> Terima Laporan
+        </button>
+        <button disabled={busy} onClick={() => putuskan('revisi')} className={btnGhost}>
+          <EditIcon className="w-4 h-4" /> Minta Revisi
+        </button>
+      </div>
+    </div>
+  );
+}

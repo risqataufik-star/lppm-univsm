@@ -4,29 +4,25 @@ import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import { PageHeader, Alert, TableEmptyRow, cardCls, inputCls, theadCls, thCls, tdCls, rowEditBtn } from '@/components/admin/ui';
 import { InboxIcon } from '@/components/admin/icons';
-import {
-  JENIS_LABEL,
-  STATUS_BADGE,
-  STATUS_LABEL,
-  type Pengajuan,
-  type StatusPengajuan,
-} from '@/lib/pengajuan-shared';
+import { JENIS_LABEL, labelPengajuan, type Pengajuan, type StatusPengajuan } from '@/lib/pengajuan-shared';
 
-type Baris = Pick<Pengajuan, 'id' | 'jenis' | 'judul' | 'skema' | 'tahun' | 'status' | 'created_at'> & {
+type Baris = Pick<Pengajuan, 'id' | 'jenis' | 'judul' | 'skema' | 'tahun' | 'status' | 'laporan_status' | 'created_at'> & {
   profil: { nama: string; prodi: string } | null;
 };
+type Filter = '' | StatusPengajuan | 'laporan';
 
-const FILTER: { v: '' | StatusPengajuan; l: string }[] = [
+const FILTER: { v: Filter; l: string }[] = [
   { v: '', l: 'Semua' },
   { v: 'diajukan', l: 'Diajukan' },
   { v: 'revisi', l: 'Revisi' },
   { v: 'disetujui', l: 'Disetujui' },
   { v: 'terbit', l: 'Terbit' },
   { v: 'ditolak', l: 'Ditolak' },
+  { v: 'laporan', l: 'Laporan Masuk' },
 ];
 
 export default function PengajuanAdminPage() {
-  const [status, setStatus] = useState<'' | StatusPengajuan>('');
+  const [status, setStatus] = useState<Filter>('');
   const [jenis, setJenis] = useState('');
   const [rows, setRows] = useState<Baris[]>([]);
   const [error, setError] = useState('');
@@ -34,7 +30,8 @@ export default function PengajuanAdminPage() {
   const load = useCallback(async () => {
     setError('');
     const q = new URLSearchParams();
-    if (status) q.set('status', status);
+    if (status === 'laporan') q.set('laporan', 'dikirim');
+    else if (status) q.set('status', status);
     if (jenis) q.set('jenis', jenis);
     const res = await fetch(`/api/admin/pengajuan?${q}`, { cache: 'no-store' });
     if (!res.ok) {
@@ -98,7 +95,7 @@ export default function PengajuanAdminPage() {
                 <td className={`${tdCls} max-w-sm`}>{r.judul}</td>
                 <td className={tdCls}>{JENIS_LABEL[r.jenis]}</td>
                 <td className={tdCls}>
-                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_BADGE[r.status]}`}>{STATUS_LABEL[r.status]}</span>
+                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${labelPengajuan(r).badge}`}>{labelPengajuan(r).label}</span>
                 </td>
                 <td className={`${tdCls} text-right`}>
                   <Link href={`/admin/pengajuan/${r.id}`} className={rowEditBtn}>Periksa</Link>

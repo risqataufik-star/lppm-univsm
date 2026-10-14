@@ -40,9 +40,10 @@ export default async function DashboardPage() {
     .eq('status', 'baru')
     .order('created_at', { ascending: false })
     .limit(10);
-  const [ajBaru, akunBaru] = await Promise.all([
+  const [ajBaru, akunBaru, lapBaru] = await Promise.all([
     db.from('pengajuan').select('id', { count: 'exact', head: true }).eq('status', 'diajukan'),
     db.from('profil').select('user_id', { count: 'exact', head: true }).eq('peran', 'dosen').eq('status', 'menunggu'),
+    db.from('pengajuan').select('id', { count: 'exact', head: true }).eq('laporan_status', 'dikirim'),
   ]);
 
   return (
@@ -69,7 +70,7 @@ export default async function DashboardPage() {
       </div>
 
       <h2 className="font-bold text-navy-800 mb-3">Perlu Tindakan</h2>
-      <div className="grid sm:grid-cols-2 gap-4 mb-8">
+      <div className="grid sm:grid-cols-3 gap-4 mb-8">
         <Link
           href="/admin/pengajuan"
           className="flex items-center gap-4 bg-white rounded-2xl border border-gray-200 p-5 transition hover:shadow-lg hover:shadow-navy-900/5 hover:border-navy-200"
@@ -92,6 +93,18 @@ export default async function DashboardPage() {
           <div>
             <p className="text-2xl font-extrabold text-navy-800 tabular-nums">{akunBaru.count ?? 0}</p>
             <p className="text-sm text-gray-500">Akun dosen menunggu persetujuan</p>
+          </div>
+        </Link>
+        <Link
+          href="/admin/pengajuan"
+          className="flex items-center gap-4 bg-white rounded-2xl border border-gray-200 p-5 transition hover:shadow-lg hover:shadow-navy-900/5 hover:border-navy-200"
+        >
+          <span className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <DocIcon className="w-6 h-6" />
+          </span>
+          <div>
+            <p className="text-2xl font-extrabold text-navy-800 tabular-nums">{lapBaru.count ?? 0}</p>
+            <p className="text-sm text-gray-500">Laporan menunggu pemeriksaan</p>
           </div>
         </Link>
       </div>
