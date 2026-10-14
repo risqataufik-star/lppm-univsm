@@ -5,7 +5,7 @@ import { urlUnduh } from '@/lib/pengajuan-server';
 import { KOLOM_FILE, type FileJenis } from '@/lib/pengajuan-shared';
 
 export const dynamic = 'force-dynamic';
-const JENIS: FileJenis[] = ['proposal', 'surat_tugas', 'sk'];
+const JENIS: FileJenis[] = ['proposal', 'surat_tugas', 'sk', 'laporan'];
 
 export async function GET(req: Request, ctx: { params: Promise<{ id: string }> }) {
   const denied = await requireAdmin();
@@ -15,7 +15,7 @@ export async function GET(req: Request, ctx: { params: Promise<{ id: string }> }
   if (!JENIS.includes(jenis)) return NextResponse.json({ error: 'Jenis berkas tidak valid.' }, { status: 400 });
   const { data } = await supabaseAdmin()
     .from('pengajuan')
-    .select('proposal_path,surat_tugas_path,sk_path')
+    .select('proposal_path,surat_tugas_path,sk_path,laporan_path')
     .eq('id', id)
     .maybeSingle();
   if (!data) return NextResponse.json({ error: 'Pengajuan tidak ditemukan.' }, { status: 404 });

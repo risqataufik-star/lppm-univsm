@@ -4,7 +4,7 @@
 //   node scripts/uji.mjs cookie-admin EMAIL PASS → cetak header Cookie sesi admin
 //   node scripts/uji.mjs bersihkan               → hapus akun uji + pengajuan, file, baris publiknya
 //   node scripts/uji.mjs set-status ID STATUS    → ubah status pengajuan langsung (khusus uji)
-//   node scripts/uji.mjs berkas ID               → file Storage proposal & surat milik pengajuan ID
+//   node scripts/uji.mjs berkas ID               → file Storage proposal & berkas per-pengajuan (ST, SK, laporan)
 //   node scripts/uji.mjs unggah "COOKIE" FILE ENDPOINT [JSON]
 //                                                → minta token di ENDPOINT, unggah FILE ke Storage, cetak path
 // BASE=http://localhost:3000 (default) bisa diganti lewat env.
@@ -85,7 +85,7 @@ if (cmd === 'daftar') {
   const { data: surat } = await db.storage.from('pengajuan').list(`${aj.dosen_id}/${a1}`);
   console.log(JSON.stringify({
     proposal: (prop ?? []).map((f) => f.name),
-    surat: (surat ?? []).map((f) => f.name),
+    per_pengajuan: (surat ?? []).map((f) => f.name), // surat-tugas-*, sk-*, laporan-*
   }));
 } else if (cmd === 'unggah') {
   const [ck, file, endpoint, json] = [a1, a2, process.argv[5], process.argv[6]];
