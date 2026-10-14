@@ -173,12 +173,17 @@ create table if not exists pengajuan (
   surat_tugas_path text,
   sk_path text,
   publik_id uuid,
+  laporan_path text,
+  laporan_status text check (laporan_status in ('dikirim','revisi','diterima')),
+  laporan_catatan text not null default '',
+  laporan_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz
 );
 
 create index if not exists idx_pengajuan_dosen on pengajuan (dosen_id);
 create index if not exists idx_pengajuan_status on pengajuan (status);
+create index if not exists idx_pengajuan_laporan_status on pengajuan (laporan_status);
 
 alter table profil enable row level security;
 alter table pengajuan enable row level security;

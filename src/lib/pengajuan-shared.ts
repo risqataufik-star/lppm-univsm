@@ -1,6 +1,7 @@
 export type Jenis = 'penelitian' | 'pkm';
 export type StatusPengajuan = 'diajukan' | 'revisi' | 'ditolak' | 'disetujui' | 'terbit';
-export type FileJenis = 'proposal' | 'surat_tugas' | 'sk';
+export type FileJenis = 'proposal' | 'surat_tugas' | 'sk' | 'laporan';
+export type LaporanStatus = 'dikirim' | 'revisi' | 'diterima';
 
 export type Pengajuan = {
   id: string;
@@ -18,6 +19,10 @@ export type Pengajuan = {
   surat_tugas_path: string | null;
   sk_path: string | null;
   publik_id: string | null;
+  laporan_path: string | null;
+  laporan_status: LaporanStatus | null;
+  laporan_catatan: string;
+  laporan_at: string | null;
   created_at: string;
   updated_at: string | null;
 };
@@ -51,10 +56,31 @@ export const FILE_LABEL: Record<FileJenis, string> = {
   proposal: 'Proposal',
   surat_tugas: 'Surat Tugas',
   sk: 'SK',
+  laporan: 'Laporan',
 };
 
 export const KOLOM_FILE = {
   proposal: 'proposal_path',
   surat_tugas: 'surat_tugas_path',
   sk: 'sk_path',
+  laporan: 'laporan_path',
 } as const satisfies Record<FileJenis, keyof Pengajuan>;
+
+// Label & badge gabungan status pengajuan + status laporan akhir.
+export function labelPengajuan(p: Pick<Pengajuan, 'status' | 'laporan_status'>): { label: string; badge: string } {
+  if (p.status === 'terbit') {
+    if (p.laporan_status === 'dikirim') return { label: 'Laporan Diperiksa', badge: 'bg-blue-100 text-blue-700' };
+    if (p.laporan_status === 'revisi') return { label: 'Laporan Perlu Revisi', badge: 'bg-amber-100 text-amber-700' };
+    if (p.laporan_status === 'diterima') return { label: 'Selesai', badge: 'bg-slate-200 text-slate-800' };
+  }
+  return { label: STATUS_LABEL[p.status], badge: STATUS_BADGE[p.status] };
+}
+
+// Alasan laporan tidak dapat dikirim, atau null bila boleh.
+export function alasanTolakLaporan(p: Pick<Pengajuan, 'status' | 'laporan_status'>): string | null {
+  if (p.status !== 'terbit') return 'Laporan hanya dapat diunggah setelah ST & SK terbit.';
+  if (p.laporan_status === 'dikirim' || p.laporan_status === 'diterima') {
+    return 'Laporan sedang diperiksa atau sudah diterima.';
+  }
+  return null;
+}

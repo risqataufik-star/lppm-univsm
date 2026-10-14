@@ -111,3 +111,17 @@ export const suratSchema = z.object({
   jenis: jenisSurat,
   path: z.string().min(1, 'Berkas surat belum diunggah.'),
 });
+
+export const laporanSchema = z.object({
+  path: z.string().min(1, 'Berkas laporan belum diunggah.'),
+});
+
+export const keputusanLaporanSchema = z
+  .object({
+    aksi: z.enum(['terima', 'revisi'], { errorMap: () => ({ message: 'Aksi tidak valid.' }) }),
+    catatan: z.string().trim().default(''),
+  })
+  .refine((d) => d.aksi === 'terima' || d.catatan.length >= 5, {
+    message: 'Catatan wajib diisi (minimal 5 karakter) untuk revisi laporan.',
+    path: ['catatan'],
+  });

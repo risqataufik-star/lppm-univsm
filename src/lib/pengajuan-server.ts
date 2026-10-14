@@ -4,8 +4,9 @@ import { MAX_PDF, type FileJenis } from '@/lib/pengajuan-shared';
 
 export const BUCKET = 'pengajuan';
 const UUID = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
+// Berkas per-pengajuan (Surat Tugas, SK, laporan akhir) di <dosen>/<pengajuan>/<awalan>-<epoch>.pdf.
 type JenisSurat = Exclude<FileJenis, 'proposal'>;
-const AWALAN: Record<JenisSurat, string> = { surat_tugas: 'surat-tugas', sk: 'sk' };
+const AWALAN: Record<JenisSurat, string> = { surat_tugas: 'surat-tugas', sk: 'sk', laporan: 'laporan' };
 
 export function pathProposalBaru(dosenId: string): string {
   return `${dosenId}/proposal/${randomUUID()}.pdf`;
