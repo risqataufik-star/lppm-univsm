@@ -19,7 +19,7 @@ Satu aplikasi Next.js berisi:
 3. Authentication → Users → Add user → email & password admin (centang Auto Confirm), lalu jadikan admin (lihat "Akun Admin").
 4. Authentication → Sign In / Providers → Email → **matikan "Allow new users to sign up"**. Akun dosen dibuat lewat halaman `/dosen/daftar`, bukan sign-up publik Supabase.
 
-> Proyek yang sudah berjalan sebelum Oktober 2026: jalankan sekali `supabase/migrasi-2026-10-peran.sql` agar akun admin lama mendapat peran admin (jangan dijalankan ulang), lalu `supabase/migrasi-2026-10-laporan.sql` untuk kolom laporan akhir (aman bila terulang).
+> Proyek yang sudah berjalan sebelum Oktober 2026: jalankan sekali `supabase/migrasi-2026-10-peran.sql` agar akun admin lama mendapat peran admin (jangan dijalankan ulang), lalu `supabase/migrasi-2026-10-laporan.sql` untuk kolom laporan akhir dan `supabase/migrasi-2026-10-publikasi.sql` untuk jenis pengajuan publikasi (keduanya aman bila terulang).
 
 ## Deploy ke Vercel
 
@@ -53,7 +53,7 @@ Tanpa langkah 2, akun ditolak oleh panel admin. Ganti password lewat Supabase �
 
 ## Akun Dosen
 
-Dosen mendaftar di `/dosen/daftar` → status **menunggu** → admin menyetujui di **Panel Admin → Akun Dosen**. Dosen aktif dapat mengajukan penelitian/PkM; admin memverifikasi di **Pengajuan**, lalu mengunggah Surat Tugas & SK (PDF, maks 10 MB, diunggah langsung ke Storage privat).
+Dosen mendaftar di `/dosen/daftar` → status **menunggu** → admin menyetujui di **Panel Admin → Akun Dosen**. Dosen aktif dapat mengajukan penelitian, PkM, atau publikasi (skema Artikel Jurnal/Prosiding/Buku/HKI — yang disetujui otomatis masuk daftar Publikasi); admin memverifikasi di **Pengajuan**, lalu mengunggah Surat Tugas & SK (PDF, maks 10 MB, diunggah langsung ke Storage privat).
 
 Setelah ST & SK terbit, dosen mengunggah **laporan akhir** (PDF) di halaman detail pengajuan. Admin memeriksanya lewat filter **Laporan Masuk**: **Terima** (kegiatan di daftar publik otomatis berstatus *selesai*) atau **Minta Revisi** dengan catatan.
 
