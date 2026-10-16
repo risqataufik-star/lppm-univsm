@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { requireAdmin } from '@/lib/auth';
 import { keputusanSchema } from '@/lib/validation';
-import type { Pengajuan, StatusPengajuan } from '@/lib/pengajuan-shared';
+import { barisPublik, type Pengajuan, type StatusPengajuan } from '@/lib/pengajuan-shared';
 
 const HASIL: Record<'setujui' | 'revisi' | 'tolak', StatusPengajuan> = {
   setujui: 'disetujui',
@@ -41,19 +41,8 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string }> 
   if (aksi === 'setujui') {
     const p = aj as Pengajuan;
     const { data: prof } = await db.from('profil').select('nama').eq('user_id', p.dosen_id).single();
-    const { data: pub, error: pubErr } = await db
-      .from(p.jenis)
-      .insert({
-        judul: p.judul,
-        ketua: prof?.nama ?? '',
-        anggota: p.anggota,
-        skema: p.skema,
-        tahun: p.tahun,
-        sumber_dana: p.sumber_dana,
-        status: 'aktif',
-      })
-      .select('id')
-      .single();
+    const { tabel, data: baris } = barisPublik(p, prof?.nama ?? '');
+    const { data: pub, error: pubErr } = await db.from(tabel).insert(baris).select('id').single();
     if (pubErr || !pub) {
       await db.from('pengajuan').update({ status: 'diajukan', catatan: '' }).eq('id', id);
       return NextResponse.json(

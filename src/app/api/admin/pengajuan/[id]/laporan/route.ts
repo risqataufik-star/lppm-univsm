@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { requireAdmin } from '@/lib/auth';
 import { keputusanLaporanSchema } from '@/lib/validation';
-import type { Pengajuan } from '@/lib/pengajuan-shared';
+import { adaStatusPublik, type Pengajuan } from '@/lib/pengajuan-shared';
 
 // Pemeriksaan laporan akhir: hanya dari 'dikirim'. Diterima → kegiatan publik 'selesai'.
 export async function POST(req: Request, ctx: { params: Promise<{ id: string }> }) {
@@ -36,7 +36,7 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string }> 
   }
 
   const aj = data as Pengajuan;
-  if (aksi === 'terima' && aj.publik_id) {
+  if (aksi === 'terima' && aj.publik_id && adaStatusPublik(aj.jenis)) {
     // Baris publik yang sudah dihapus admin → update 0 baris, bukan error; laporan tetap diterima.
     const { error: pubErr } = await db.from(aj.jenis).update({ status: 'selesai', updated_at: now }).eq('id', aj.publik_id);
     if (pubErr) {
