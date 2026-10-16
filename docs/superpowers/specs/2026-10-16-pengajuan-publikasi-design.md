@@ -11,7 +11,7 @@
 |---|---|
 | Alur Publikasi | Sama dengan penelitian/PkM: proposal saat mengajukan → verifikasi → ST & SK → laporan akhir → terima/revisi |
 | Skema Publikasi | Artikel Jurnal, Prosiding, Buku, HKI |
-| Saat disetujui | Otomatis masuk tabel publik `publikasi` |
+| Pencatatan publik | **Revisi 16 Okt (keputusan user):** publikasi dicatat ke tabel `publikasi` saat **laporan diterima**, bukan saat disetujui — agar daftar publik hanya memuat luaran yang sudah jadi. Penelitian/PkM tetap dicatat saat disetujui |
 | Pemetaan kategori | Artikel Jurnal & Prosiding → `artikel`; Buku → `buku`; HKI → `hki` |
 | Penulis | Nama dosen pengusul + isi "Anggota Tim" (dipisah koma, yang kosong dilewati) |
 | Laporan diterima | Penelitian/PkM: baris publik → `selesai` (seperti sekarang). Publikasi: tabel `publikasi` tidak punya kolom status → langkah dilewati; pengajuan berlabel **Selesai** |

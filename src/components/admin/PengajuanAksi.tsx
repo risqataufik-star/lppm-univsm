@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Alert, btnDangerOutline, btnGhost, btnPrimary, btnSuccess, cardCls, inputCls, labelCls } from './ui';
 import { CheckIcon, DownloadIcon, EditIcon, UploadIcon } from './icons';
-import { FILE_LABEL, type Pengajuan } from '@/lib/pengajuan-shared';
+import { FILE_LABEL, dicatatSaatDisetujui, type Jenis, type Pengajuan } from '@/lib/pengajuan-shared';
 import { unggahPdf } from '@/lib/unggah-client';
 
 const fileCls =
@@ -15,7 +15,7 @@ const TANYA = {
   tolak: 'Tolak pengajuan ini? Keputusan ini final.',
 } as const;
 
-export function PanelKeputusan({ id, onSelesai }: { id: string; onSelesai: () => void }) {
+export function PanelKeputusan({ id, jenis, onSelesai }: { id: string; jenis: Jenis; onSelesai: () => void }) {
   const [catatan, setCatatan] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -25,7 +25,11 @@ export function PanelKeputusan({ id, onSelesai }: { id: string; onSelesai: () =>
       setError('Tulis catatan (minimal 5 karakter) untuk revisi atau penolakan.');
       return;
     }
-    if (!confirm(TANYA[aksi])) return;
+    const tanya =
+      aksi === 'setujui' && !dicatatSaatDisetujui(jenis)
+        ? 'Setujui pengajuan ini? Publikasi akan tercatat di daftar Publikasi situs setelah laporannya diterima.'
+        : TANYA[aksi];
+    if (!confirm(tanya)) return;
     setBusy(true);
     setError('');
     const res = await fetch(`/api/admin/pengajuan/${id}/keputusan`, {
@@ -171,7 +175,9 @@ export function PanelPemeriksaanLaporan({ p, onSelesai }: { p: Pengajuan; onSele
     }
     const tanya =
       aksi === 'terima'
-        ? 'Terima laporan ini? Kegiatan akan tercatat selesai di daftar publik.'
+        ? dicatatSaatDisetujui(p.jenis)
+          ? 'Terima laporan ini? Kegiatan akan tercatat selesai di daftar publik.'
+          : 'Terima laporan ini? Publikasi akan tercatat di daftar Publikasi situs.'
         : 'Kembalikan laporan ini ke dosen untuk revisi?';
     if (!confirm(tanya)) return;
     setBusy(true);
@@ -197,7 +203,9 @@ export function PanelPemeriksaanLaporan({ p, onSelesai }: { p: Pengajuan; onSele
         <h2 className="font-bold text-navy-800">Laporan Akhir</h2>
         <p className="text-sm text-gray-600">
           {p.laporan_status === 'diterima'
-            ? 'Laporan telah diterima. Kegiatan tercatat selesai.'
+            ? dicatatSaatDisetujui(p.jenis)
+              ? 'Laporan telah diterima. Kegiatan tercatat selesai.'
+              : 'Laporan telah diterima. Publikasi tercatat di daftar Publikasi situs.'
             : p.laporan_status === 'revisi'
               ? `Menunggu dosen mengirim ulang laporan. Catatan: ${p.laporan_catatan}`
               : 'Dosen belum mengirim laporan akhir.'}

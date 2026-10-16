@@ -53,7 +53,7 @@ Tanpa langkah 2, akun ditolak oleh panel admin. Ganti password lewat Supabase �
 
 ## Akun Dosen
 
-Dosen mendaftar di `/dosen/daftar` → status **menunggu** → admin menyetujui di **Panel Admin → Akun Dosen**. Dosen aktif dapat mengajukan penelitian, PkM, atau publikasi (skema Artikel Jurnal/Prosiding/Buku/HKI — yang disetujui otomatis masuk daftar Publikasi); admin memverifikasi di **Pengajuan**, lalu mengunggah Surat Tugas & SK (PDF, maks 10 MB, diunggah langsung ke Storage privat).
+Dosen mendaftar di `/dosen/daftar` → status **menunggu** → admin menyetujui di **Panel Admin → Akun Dosen**. Dosen aktif dapat mengajukan penelitian, PkM, atau publikasi (skema Artikel Jurnal/Prosiding/Buku/HKI — tercatat otomatis di daftar Publikasi setelah laporannya diterima); admin memverifikasi di **Pengajuan**, lalu mengunggah Surat Tugas & SK (PDF, maks 10 MB, diunggah langsung ke Storage privat).
 
 Setelah ST & SK terbit, dosen mengunggah **laporan akhir** (PDF) di halaman detail pengajuan. Admin memeriksanya lewat filter **Laporan Masuk**: **Terima** (kegiatan di daftar publik otomatis berstatus *selesai*) atau **Minta Revisi** dengan catatan.
 

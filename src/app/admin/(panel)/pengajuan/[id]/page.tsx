@@ -91,7 +91,7 @@ export default function DetailPengajuanAdminPage() {
       </div>
 
       {p.catatan && <Alert kind={p.status === 'ditolak' || p.status === 'revisi' ? 'error' : 'success'}>Catatan: {p.catatan}</Alert>}
-      {p.status === 'diajukan' && <PanelKeputusan id={p.id} onSelesai={load} />}
+      {p.status === 'diajukan' && <PanelKeputusan id={p.id} jenis={p.jenis} onSelesai={load} />}
       {p.status === 'terbit' && <PanelPemeriksaanLaporan p={p} onSelesai={load} />}
       {(p.status === 'disetujui' || p.status === 'terbit') && <PanelSurat p={p} onSelesai={load} />}
     </div>

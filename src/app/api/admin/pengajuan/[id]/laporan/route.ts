@@ -2,9 +2,10 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { requireAdmin } from '@/lib/auth';
 import { keputusanLaporanSchema } from '@/lib/validation';
-import { adaStatusPublik, type Pengajuan } from '@/lib/pengajuan-shared';
+import { barisPublik, dicatatSaatDisetujui, type Pengajuan } from '@/lib/pengajuan-shared';
 
-// Pemeriksaan laporan akhir: hanya dari 'dikirim'. Diterima → kegiatan publik 'selesai'.
+// Pemeriksaan laporan akhir: hanya dari 'dikirim'. Diterima → penelitian/PkM publik 'selesai';
+// publikasi baru dicatat ke daftar Publikasi.
 export async function POST(req: Request, ctx: { params: Promise<{ id: string }> }) {
   const denied = await requireAdmin();
   if (denied) return denied;
@@ -36,16 +37,21 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string }> 
   }
 
   const aj = data as Pengajuan;
-  if (aksi === 'terima' && aj.publik_id && adaStatusPublik(aj.jenis)) {
+  const batal = async (pesan: string) => {
+    await db.from('pengajuan').update({ laporan_status: 'dikirim' }).eq('id', id).eq('laporan_status', 'diterima');
+    return NextResponse.json({ error: `${pesan} Keputusan dibatalkan, silakan coba lagi.` }, { status: 500 });
+  };
+  if (aksi === 'terima' && dicatatSaatDisetujui(aj.jenis) && aj.publik_id) {
     // Baris publik yang sudah dihapus admin → update 0 baris, bukan error; laporan tetap diterima.
     const { error: pubErr } = await db.from(aj.jenis).update({ status: 'selesai', updated_at: now }).eq('id', aj.publik_id);
-    if (pubErr) {
-      await db.from('pengajuan').update({ laporan_status: 'dikirim' }).eq('id', id).eq('laporan_status', 'diterima');
-      return NextResponse.json(
-        { error: 'Gagal memperbarui daftar publik. Keputusan dibatalkan, silakan coba lagi.' },
-        { status: 500 },
-      );
-    }
+    if (pubErr) return batal('Gagal memperbarui daftar publik.');
+  }
+  if (aksi === 'terima' && !dicatatSaatDisetujui(aj.jenis) && !aj.publik_id) {
+    const { data: prof } = await db.from('profil').select('nama').eq('user_id', aj.dosen_id).maybeSingle();
+    const { tabel, data: baris } = barisPublik(aj, prof?.nama ?? '');
+    const { data: pub, error: pubErr } = await db.from(tabel).insert(baris).select('id').single();
+    if (pubErr || !pub) return batal('Gagal mencatat ke daftar publik.');
+    await db.from('pengajuan').update({ publik_id: pub.id }).eq('id', id);
   }
   return NextResponse.json({ ok: true, laporan_status: statusBaru });
 }

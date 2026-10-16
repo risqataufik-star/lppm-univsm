@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Alert, btnGhost, btnPrimary, cardCls } from '@/components/admin/ui';
 import { DownloadIcon, UploadIcon } from '@/components/admin/icons';
-import type { Pengajuan } from '@/lib/pengajuan-shared';
+import { dicatatSaatDisetujui, type Pengajuan } from '@/lib/pengajuan-shared';
 import { unggahPdf } from '@/lib/unggah-client';
 
 const fileCls =
@@ -54,7 +54,11 @@ export default function PanelLaporan({ p, onSelesai }: { p: Pengajuan; onSelesai
         <Alert kind="error">Laporan perlu revisi. Catatan LPPM: {p.laporan_catatan}</Alert>
       )}
       {p.laporan_status === 'diterima' && (
-        <Alert kind="success">Laporan diterima. Kegiatan tercatat selesai.</Alert>
+        <Alert kind="success">
+          {dicatatSaatDisetujui(p.jenis)
+            ? 'Laporan diterima. Kegiatan tercatat selesai.'
+            : 'Laporan diterima. Publikasi tercatat di daftar Publikasi situs.'}
+        </Alert>
       )}
       {error && <Alert kind="error">{error}</Alert>}
       {p.laporan_path && (

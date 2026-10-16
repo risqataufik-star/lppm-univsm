@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { requireAdmin } from '@/lib/auth';
 import { keputusanSchema } from '@/lib/validation';
-import { barisPublik, type Pengajuan, type StatusPengajuan } from '@/lib/pengajuan-shared';
+import { barisPublik, dicatatSaatDisetujui, type Pengajuan, type StatusPengajuan } from '@/lib/pengajuan-shared';
 
 const HASIL: Record<'setujui' | 'revisi' | 'tolak', StatusPengajuan> = {
   setujui: 'disetujui',
@@ -38,7 +38,8 @@ export async function POST(req: Request, ctx: { params: Promise<{ id: string }> 
       : NextResponse.json({ error: 'Pengajuan tidak ditemukan.' }, { status: 404 });
   }
 
-  if (aksi === 'setujui') {
+  // Publikasi dicatat ke daftar publik saat laporannya diterima (lihat route laporan).
+  if (aksi === 'setujui' && dicatatSaatDisetujui((aj as Pengajuan).jenis)) {
     const p = aj as Pengajuan;
     const { data: prof } = await db.from('profil').select('nama').eq('user_id', p.dosen_id).single();
     const { tabel, data: baris } = barisPublik(p, prof?.nama ?? '');

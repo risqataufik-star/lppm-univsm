@@ -29,10 +29,13 @@ export type Pengajuan = {
 
 export const MAX_PDF = 10 * 1024 * 1024;
 
+export const SKEMA_PUBLIKASI = ['Artikel Jurnal', 'Prosiding', 'Buku', 'HKI'] as const;
+export type SkemaPublikasi = (typeof SKEMA_PUBLIKASI)[number];
+
 export const SKEMA: Record<Jenis, readonly string[]> = {
   penelitian: ['Penelitian Mandiri', 'Penelitian Kelompok', 'Penelitian Kolaborasi', 'Hibah Eksternal Dikti'],
   pkm: ['PkM Mandiri', 'PkM Berbasis Riset', 'PkM KKN-Tematik', 'PkM Kolaborasi Mitra'],
-  publikasi: ['Artikel Jurnal', 'Prosiding', 'Buku', 'HKI'],
+  publikasi: SKEMA_PUBLIKASI,
 };
 
 export const JENIS_LABEL: Record<Jenis, string> = { penelitian: 'Penelitian', pkm: 'PkM', publikasi: 'Publikasi' };
@@ -87,19 +90,26 @@ export function alasanTolakLaporan(p: Pick<Pengajuan, 'status' | 'laporan_status
 }
 
 // Kategori daftar Publikasi publik untuk tiap skema pengajuan Publikasi.
-export const KATEGORI_PUBLIKASI: Record<string, 'artikel' | 'buku' | 'hki'> = {
+// Bertipe SkemaPublikasi: skema baru di SKEMA_PUBLIKASI tanpa kategori → galat kompilasi.
+export const KATEGORI_PUBLIKASI: Record<SkemaPublikasi, 'artikel' | 'buku' | 'hki'> = {
   'Artikel Jurnal': 'artikel',
   Prosiding: 'artikel',
   Buku: 'buku',
   HKI: 'hki',
 };
 
-// Tabel publik punya kolom status (aktif/proses/selesai)? Tabel publikasi tidak.
-export function adaStatusPublik(jenis: Jenis): boolean {
+// Penelitian/PkM dicatat ke daftar publik saat disetujui (status aktif → selesai saat laporan diterima).
+// Publikasi baru dicatat saat laporannya diterima, agar daftar publik hanya memuat luaran yang sudah jadi.
+export function dicatatSaatDisetujui(jenis: Jenis): boolean {
   return jenis !== 'publikasi';
 }
 
-// Baris yang dicatat ke daftar publik saat pengajuan disetujui.
+// Penulis publikasi: dosen pengusul + anggota (dipisah koma/titik koma/baris baru), tanpa bagian kosong.
+export function gabungPenulis(ketua: string, anggota: string): string {
+  return [ketua, ...anggota.split(/[,;\n]/)].map((s) => s.trim()).filter(Boolean).join(', ');
+}
+
+// Baris yang dicatat ke daftar publik (lihat dicatatSaatDisetujui untuk waktunya).
 export function barisPublik(
   p: Pick<Pengajuan, 'jenis' | 'judul' | 'skema' | 'tahun' | 'anggota' | 'sumber_dana'>,
   ketua: string,
@@ -109,8 +119,8 @@ export function barisPublik(
       tabel: 'publikasi',
       data: {
         judul: p.judul,
-        penulis: [ketua, p.anggota].map((s) => s.trim()).filter(Boolean).join(', '),
-        jenis: KATEGORI_PUBLIKASI[p.skema] ?? 'artikel',
+        penulis: gabungPenulis(ketua, p.anggota),
+        jenis: KATEGORI_PUBLIKASI[p.skema as SkemaPublikasi] ?? 'artikel',
         tahun: p.tahun,
       },
     };

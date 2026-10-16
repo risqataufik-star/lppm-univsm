@@ -42,7 +42,7 @@ export default function LoginDosenPage() {
     <AuthLayout
       judul="Layanan Dosen"
       sorotan="Pengajuan Penelitian, PkM & Publikasi"
-      deskripsi="Ajukan penelitian dan pengabdian kepada masyarakat, pantau statusnya, dan unduh Surat Tugas serta SK langsung dari portal ini."
+      deskripsi="Ajukan penelitian, pengabdian kepada masyarakat, dan publikasi, pantau statusnya, dan unduh Surat Tugas serta SK langsung dari portal ini."
       catatan="Khusus dosen Universitas Sapta Mandiri."
     >
       <div className="mb-8">
