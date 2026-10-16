@@ -82,7 +82,7 @@ export const statusDosenSchema = z.object({
 
 export const pengajuanSchema = z
   .object({
-    jenis: z.enum(['penelitian', 'pkm'], { errorMap: () => ({ message: 'Jenis kegiatan tidak valid.' }) }),
+    jenis: z.enum(['penelitian', 'pkm', 'publikasi'], { errorMap: () => ({ message: 'Jenis kegiatan tidak valid.' }) }),
     judul: z.string().trim().min(10, 'Judul minimal 10 karakter.'),
     skema: z.string().trim(),
     tahun: z.coerce.number().int().min(2000, 'Tahun tidak valid.').max(2100, 'Tahun tidak valid.'),

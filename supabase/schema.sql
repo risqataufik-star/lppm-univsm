@@ -160,7 +160,7 @@ create table if not exists profil (
 create table if not exists pengajuan (
   id uuid primary key default gen_random_uuid(),
   dosen_id uuid not null references profil(user_id) on delete cascade,
-  jenis text not null check (jenis in ('penelitian','pkm')),
+  jenis text not null check (jenis in ('penelitian','pkm','publikasi')),
   judul text not null,
   skema text not null,
   tahun int not null,

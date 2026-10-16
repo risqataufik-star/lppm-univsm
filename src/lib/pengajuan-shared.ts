@@ -1,4 +1,4 @@
-export type Jenis = 'penelitian' | 'pkm';
+export type Jenis = 'penelitian' | 'pkm' | 'publikasi';
 export type StatusPengajuan = 'diajukan' | 'revisi' | 'ditolak' | 'disetujui' | 'terbit';
 export type FileJenis = 'proposal' | 'surat_tugas' | 'sk' | 'laporan';
 export type LaporanStatus = 'dikirim' | 'revisi' | 'diterima';
@@ -32,9 +32,10 @@ export const MAX_PDF = 10 * 1024 * 1024;
 export const SKEMA: Record<Jenis, readonly string[]> = {
   penelitian: ['Penelitian Mandiri', 'Penelitian Kelompok', 'Penelitian Kolaborasi', 'Hibah Eksternal Dikti'],
   pkm: ['PkM Mandiri', 'PkM Berbasis Riset', 'PkM KKN-Tematik', 'PkM Kolaborasi Mitra'],
+  publikasi: ['Artikel Jurnal', 'Prosiding', 'Buku', 'HKI'],
 };
 
-export const JENIS_LABEL: Record<Jenis, string> = { penelitian: 'Penelitian', pkm: 'PkM' };
+export const JENIS_LABEL: Record<Jenis, string> = { penelitian: 'Penelitian', pkm: 'PkM', publikasi: 'Publikasi' };
 
 export const STATUS_LABEL: Record<StatusPengajuan, string> = {
   diajukan: 'Diajukan',
@@ -83,4 +84,47 @@ export function alasanTolakLaporan(p: Pick<Pengajuan, 'status' | 'laporan_status
     return 'Laporan sedang diperiksa atau sudah diterima.';
   }
   return null;
+}
+
+// Kategori daftar Publikasi publik untuk tiap skema pengajuan Publikasi.
+export const KATEGORI_PUBLIKASI: Record<string, 'artikel' | 'buku' | 'hki'> = {
+  'Artikel Jurnal': 'artikel',
+  Prosiding: 'artikel',
+  Buku: 'buku',
+  HKI: 'hki',
+};
+
+// Tabel publik punya kolom status (aktif/proses/selesai)? Tabel publikasi tidak.
+export function adaStatusPublik(jenis: Jenis): boolean {
+  return jenis !== 'publikasi';
+}
+
+// Baris yang dicatat ke daftar publik saat pengajuan disetujui.
+export function barisPublik(
+  p: Pick<Pengajuan, 'jenis' | 'judul' | 'skema' | 'tahun' | 'anggota' | 'sumber_dana'>,
+  ketua: string,
+): { tabel: Jenis; data: Record<string, unknown> } {
+  if (p.jenis === 'publikasi') {
+    return {
+      tabel: 'publikasi',
+      data: {
+        judul: p.judul,
+        penulis: [ketua, p.anggota].map((s) => s.trim()).filter(Boolean).join(', '),
+        jenis: KATEGORI_PUBLIKASI[p.skema] ?? 'artikel',
+        tahun: p.tahun,
+      },
+    };
+  }
+  return {
+    tabel: p.jenis,
+    data: {
+      judul: p.judul,
+      ketua,
+      anggota: p.anggota,
+      skema: p.skema,
+      tahun: p.tahun,
+      sumber_dana: p.sumber_dana,
+      status: 'aktif',
+    },
+  };
 }
