@@ -45,7 +45,7 @@ export default function DaftarDosenPage() {
     <AuthLayout
       judul="Layanan Dosen"
       sorotan="Pendaftaran Akun"
-      deskripsi="Daftarkan akun Anda. Setelah diverifikasi LPPM, Anda dapat mengajukan penelitian dan PkM secara daring."
+      deskripsi="Daftarkan akun Anda. Setelah diverifikasi LPPM, Anda dapat mengajukan penelitian, PkM, dan publikasi secara daring."
       catatan="Akun diaktifkan setelah verifikasi data oleh LPPM."
       lebar="max-w-md"
     >

@@ -29,7 +29,7 @@ export default function PengajuanSayaPage() {
       <PageHeader
         icon={<DocIcon className="w-6 h-6" />}
         title="Pengajuan Saya"
-        subtitle="Pantau status pengajuan penelitian dan PkM Anda."
+        subtitle="Pantau status pengajuan penelitian, PkM, dan publikasi Anda."
         action={
           <Link href="/dosen/ajukan" className={btnPrimary}>
             <PlusIcon className="w-4 h-4" /> Ajukan Baru

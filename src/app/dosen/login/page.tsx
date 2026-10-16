@@ -41,7 +41,7 @@ export default function LoginDosenPage() {
   return (
     <AuthLayout
       judul="Layanan Dosen"
-      sorotan="Pengajuan Penelitian & PkM"
+      sorotan="Pengajuan Penelitian, PkM & Publikasi"
       deskripsi="Ajukan penelitian dan pengabdian kepada masyarakat, pantau statusnya, dan unduh Surat Tugas serta SK langsung dari portal ini."
       catatan="Khusus dosen Universitas Sapta Mandiri."
     >

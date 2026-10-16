@@ -23,7 +23,7 @@ export default async function PortalLayout({ children }: { children: React.React
           </h1>
           <p className="text-sm text-gray-600 leading-relaxed">
             {p.status === 'menunggu'
-              ? 'Pendaftaran Anda sudah kami terima. Anda dapat mengajukan penelitian dan PkM setelah akun diverifikasi LPPM.'
+              ? 'Pendaftaran Anda sudah kami terima. Anda dapat mengajukan penelitian, PkM, dan publikasi setelah akun diverifikasi LPPM.'
               : 'Pendaftaran akun Anda tidak disetujui. Silakan hubungi LPPM untuk informasi lebih lanjut.'}
           </p>
         </div>

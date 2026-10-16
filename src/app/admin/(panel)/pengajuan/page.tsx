@@ -48,7 +48,7 @@ export default function PengajuanAdminPage() {
       <PageHeader
         icon={<InboxIcon className="w-6 h-6" />}
         title="Pengajuan Dosen"
-        subtitle="Verifikasi pengajuan penelitian & PkM serta terbitkan Surat Tugas dan SK."
+        subtitle="Verifikasi pengajuan penelitian, PkM & publikasi serta terbitkan Surat Tugas dan SK."
       />
       <div className="flex flex-wrap items-center gap-2 mb-4">
         {FILTER.map((f) => (
@@ -66,6 +66,7 @@ export default function PengajuanAdminPage() {
           <option value="">Semua jenis</option>
           <option value="penelitian">Penelitian</option>
           <option value="pkm">PkM</option>
+          <option value="publikasi">Publikasi</option>
         </select>
       </div>
       {error && <div className="mb-4"><Alert kind="error">{error}</Alert></div>}

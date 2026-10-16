@@ -11,7 +11,7 @@ export default function AjukanPage() {
     <div className="max-w-3xl">
       <PageHeader
         icon={<PlusIcon className="w-6 h-6" />}
-        title="Ajukan Penelitian / PkM"
+        title="Ajukan Penelitian / PkM / Publikasi"
         subtitle="Lengkapi data kegiatan dan unggah proposal dalam format PDF."
       />
       <PengajuanForm

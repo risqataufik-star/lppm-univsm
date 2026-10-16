@@ -74,6 +74,7 @@ export default function PengajuanForm({
           <select id="jenis" name="jenis" value={jenis} onChange={(e) => gantiJenis(e.target.value as Jenis)} className={inputCls}>
             <option value="penelitian">Penelitian</option>
             <option value="pkm">Pengabdian kepada Masyarakat</option>
+            <option value="publikasi">Publikasi</option>
           </select>
         </div>
         <div>
